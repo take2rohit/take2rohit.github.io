@@ -4,12 +4,14 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 
 ### Tasks to be done
 
-- [ ] Add Papers and conference section
-- [ ] Add Courses and Skills
-- [ ] Add Education and Experiences
-- [ ] Add Hobbies
+- [X] Add Papers and conference section
+- [X] Add Courses and Skills
+- [ ] Add Education
 - [ ] Add Project details after clicking
-- [ ] Contact page not working
-- [ ] Phone number 
-- [ ] Create separate pages for every link
-- [ ] Remove those blue from topbar
+- [X] Contact page not working
+- [X] Phone number 
+- [ ] Create separate cards for every link in publication
+- [X] Remove those blue from topbar
+- [ ] Replace Certificates link by buttons
+- [ ] Add maps if possible
+- [ ] Add more projects
