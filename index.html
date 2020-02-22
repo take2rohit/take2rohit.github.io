@@ -1153,7 +1153,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-8">
                 <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Harmonic motion analyser</h2>
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Word2vec SkipGram and N-Gram model</h2>
                 <!-- Icon Divider -->
                 <div class="divider-custom">
                   <div class="divider-custom-line"></div>
@@ -1166,21 +1166,27 @@
                 <img class="img-fluid rounded mb-4" src="img/portfolio/word_emb.gif" alt="">
                 <h4 class="text-secondary text-uppercase mb-2  text-center">Aim</h4>
                 <!-- Portfolio Modal - Text -->
-                <p class="mb-2 mt-4 "> 
+                <p class="mb-1 mt-4 "> 
                   <ul>
                     <li>Aimed at reimplementation of famous Word2Vec research paper <a href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Paper 1</a> and <a href="https://arxiv.org/abs/1301.3781">Paper 2</a>  </li>
-                    <li>Aimed at retrieving data associated with the motion of tareget-object using elementary mathematics.</li>
-                    <li><i>This project was made for TechnoSeason, 2017 and was awarded first prize.</i></li>
+                    <li>Aimed to study indepth mathematics and linguistic models.</li>
+                    <li>This is a stepping stone project into to world of Natural Language Processing</li>
                   </ul>
                 </p>
 
-                <h4 class=" text-secondary text-uppercase mb-3 mt-2 text-center">Abstract</h4>
-                <p class="mb-5 text-justify">Simple harmonic motion can serve as a mathematical model for a variety of motions, such as the oscillation of a spring. With the aim of learning computer vision and MATLAB, I worked on analyzing the motion of a target-object undergoing a damped harmonic motion. The target-object was separated from the background using color thresholding and estimated as a point object. Coordinates of this point were recorded and used to estimate the parameters associated with the mathematical model of the system like maximum displacement, mean position, the velocity at different time instants. A mathematical model was estimated by fitting a curve to the recorded data using MATLAB Curve Fitting Toolbox.</p>
+                <h4 class=" text-secondary text-uppercase mb-1 mt-2 text-center">Abstract</h4>
+                <p class="mb-5 text-justify">Word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers. Conceptually it involves a mathematical embedding from a space with many dimensions per word to a continuous vector space with a much lower dimension. Word2vec is a group of related models that are used to produce word embeddings. These models are shallow, two-layer neural networks that are trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large corpus of text and produces a vector space, typically of several hundred dimensions, with each unique word in the corpus being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such that words that share common contexts in the corpus are located close to one another in the space</p>
+
+                <h4 class=" text-secondary text-uppercase mb-3 text-center">Conclusion</h4>
+                <img class="img-fluid rounded mb-5 mt-4" src="img/portfolio/word2vec.jpg" alt="">
+                <p class="mb-5 text-justify">From the above image we can see that the distance between 'Obama' and 'President' word vector in the projected 2D space  is least. This is because those two words are highly correlated. Similar justification goes with words pairs like 'media' and 'press', 'speaks' and 'greets', etc. The accuracy will increase with increase in voclabulary and training time. For my results visit the github repository. </p>. 
+
+
 
                 <div class="row text-center d-flex justify-content-center">
                   
                   <div class="text-center mt-2 ml-2 mr-2">
-                  <a class="btn btn-l btn-outline-primary" href="https://github.com/take2rohit/shm-analyzer">
+                  <a class="btn btn-l btn-outline-primary" href="https://github.com/take2rohit/NLP_word_embedding">
                     <i class="fas fa-code mr-2"></i>
                     Github
                   </a>
