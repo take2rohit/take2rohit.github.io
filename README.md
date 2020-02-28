@@ -13,11 +13,19 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 - [ ] Create separate cards for every link in publication
 - [X] Remove those blue from topbar
 - [ ] Replace Certificates link by buttons
-- [ ] Add maps if possible
-- [ ] Add more projects,courses and Skills
+- [X] Add maps if possible
+- [ ] Add more projects
+- [ ] Add more Courses
+- [ ] Add more Skills
 - [ ] Add this website to CV
 - [X] Rearrange sections
 - [ ] Get website verified
+- [X] Open link in new page
+
+### To be checked
+- [ ] All links
+- [ ] Webiste crawled
+
 
 ### Special Thanks
 
