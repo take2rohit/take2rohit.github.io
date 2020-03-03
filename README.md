@@ -21,6 +21,7 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 - [X] Rearrange sections
 - [ ] Get website verified
 - [X] Open link in new page
+- [ ] Improve website loading speed
 
 ### To be checked
 - [ ] All links
