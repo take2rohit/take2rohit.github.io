@@ -22,7 +22,7 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 - [ ] Get website verified
 - [X] Open link in new page
 - [ ] Improve website loading speed
-
+- [ ] Add A loading page
 ### To be checked
 - [ ] All links
 - [ ] Webiste crawled
