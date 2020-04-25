@@ -5,8 +5,8 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 ### Tasks to be done
 
 - [X] Add Papers and conference section
+- [ ] Change Layout of courses  
 - [ ] Add Education
-- [ ] Add more Courses
 - [ ] Add more Skills
 - [ ] Add Project details 
 	- [ ] on 3D CT scan
