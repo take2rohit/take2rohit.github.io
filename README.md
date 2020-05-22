@@ -1,4 +1,4 @@
-# My website
+# My Personal portfolio
 
 Click here to visit my portfolio: [https://take2rohit.github.io](https://take2rohit.github.io)
 
@@ -9,8 +9,9 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 - [ ] Change Layout of courses  
 - [ ] Add Education
 - [ ] Add more Skills
-- [ ] Add Project details 
-	- [ ] on 3D CT scan
+- [ ] Add Project details
+    - [ ] RL projects
+    - [ ] on 3D CT scan
     - [ ] Line Follower
 - [X] Contact page not working
 - [X] Phone number 
