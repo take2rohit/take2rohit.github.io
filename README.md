@@ -3,14 +3,15 @@
 Click here to visit my portfolio: [https://take2rohit.github.io](https://take2rohit.github.io)
 
 ### Tasks to be done
-- [ ] Add your intern experience
+
+- [X] Add your intern experience
 - [X] Add Papers and conference section
 - [ ] Change Layout of courses  
 - [ ] Add Education
 - [ ] Add more Skills
 - [ ] Add Project details 
 	- [ ] on 3D CT scan
-	- [ ] Line Follower
+    - [ ] Line Follower
 - [X] Contact page not working
 - [X] Phone number 
 - [X] Remove those blue from topbar
@@ -22,11 +23,11 @@ Click here to visit my portfolio: [https://take2rohit.github.io](https://take2ro
 - [ ] Add A loading page
 
 ### To be checked
+
 - [ ] All links
 - [ ] Webiste crawled
 - [X] Suggestion from general
 - [ ] Get website verified by Lab members
-
 
 ### Special Thanks
 
