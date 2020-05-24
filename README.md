@@ -2,6 +2,14 @@
 
 Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 
+### Caution
+
+In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
+- GitHub Readme
+- LinkedIn
+- Resume
+Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/)
+
 ### Tasks to be done
 
 - [X] Add your intern experience
@@ -33,4 +41,5 @@ Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 ### Special Thanks
 
 I couldn't have build this webiste without the suport of of Freelancer theme.
-<br>[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid, window modals for each portfolio item, and a working PHP contact form.
+
+[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid, window modals for each portfolio item, and a working PHP contact form.
