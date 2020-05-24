@@ -20,7 +20,8 @@
 
 </head>
 
-<body id="page-top" style="overflow-x : hidden;">
+<body id="page-top" style="overflow-x : hidden;" onload="myFunction()">
+  <div id="loading"></div>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -66,7 +67,7 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/rohit.jpg" alt="">
+      <img class="masthead-avatar mb-5" src="https://picsum.photos/300/300/?random" alt="">
 
       <!-- Masthead Heading -->
       <h1 class="masthead-heading text-uppercase mb-0">ROHIT LAL</h1>
@@ -1569,17 +1570,13 @@
   <script src="js/freelancer.min.js"></script>
 
   <!-- Custom loading -->
-  <script src="js/jquery3.js"></script>
-
-  <div class="loader-wrapper">
-    <span class="loader"><span class="loader-inner"></span></span>
-  </div>
-
   <script>
-      $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("slow");
-      });
+    var preloader = document.getElementById("loading");
+    function myFunction(){
+      preloader.style.display = 'none';
+    };
   </script>
+  
 
 </body>
 
