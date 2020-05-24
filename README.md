@@ -1,6 +1,6 @@
 # My Personal portfolio
 
-Click here to visit my portfolio: [https://take2rohit.github.io](https://take2rohit.github.io)
+Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 
 ### Tasks to be done
 
