@@ -9,7 +9,8 @@ In case the domain [https://rohitlal.live](https://rohitlal.live) expires change
 - LinkedIn
 - Instagram
 - Resume
-Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/)
+
+Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) incase the domain expires.
 
 ### Tasks to be done
 
