@@ -7,6 +7,7 @@ Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
 - GitHub Readme
 - LinkedIn
+- Instagram
 - Resume
 Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/)
 
