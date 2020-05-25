@@ -5,6 +5,7 @@ Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 ### Caution
 
 In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
+
 - GitHub Readme
 - LinkedIn
 - Instagram
@@ -20,11 +21,11 @@ Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) i
 - [ ] Add Education
 - [ ] Add more Skills
 - [ ] Add Project details
-    - [ ] RL projects
-    - [ ] on 3D CT scan
-    - [ ] Line Follower
+  - [ ] RL projects
+  - [ ] on 3D CT scan
+  - [ ] Line Follower
 - [X] Contact page not working
-- [X] Phone number 
+- [X] Phone number
 - [X] Remove those blue from topbar
 - [X] Add maps if possible
 - [X] Add this website to CV
