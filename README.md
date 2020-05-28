@@ -5,7 +5,8 @@ Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 ### Caution
 
 In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
-- GitHub Readme
+- This GitHub Readme
+- Github Bio
 - LinkedIn
 - Instagram
 - Resume
