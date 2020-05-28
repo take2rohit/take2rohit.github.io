@@ -15,7 +15,7 @@ Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) i
 
 ### Tasks to be done
 
-- [ ] Add a favicon logo for the title
+- [X] Add a favicon logo for the title
 - [X] Add your intern experience
 - [X] Add Papers and conference section
 - [ ] Change Layout of courses  
