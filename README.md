@@ -16,7 +16,7 @@ In case the domain [https://rohitlal.live](https://rohitlal.live) expires change
 Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) incase the domain expires.
 
 ### Tasks to be done
-- [ ] Add github certification
+- [X] Add github certification
 - [X] Add a favicon logo for the title
 - [X] Add your intern experience
 - [X] Add Papers and conference section
