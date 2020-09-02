@@ -2,7 +2,7 @@
 
 Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
 
-### Caution
+## Caution
 
 In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
 
@@ -15,37 +15,37 @@ In case the domain [https://rohitlal.live](https://rohitlal.live) expires change
 
 Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) incase the domain expires.
 
-### Tasks to be done
-- [X] Add github certification
-- [X] Add a favicon logo for the title
-- [X] Add your intern experience
-- [X] Add Papers and conference section
+## Tasks to be done
+Tasks to be done (Formatted as section)
+
+### General
 - [ ] Change Layout of courses  
 - [ ] Add Education
+- [ ] Add Achievement section
+- [ ] Add news section
+- [ ] Use a minimal loading
+
+### Experience Section
+- [ ] Add your intern experience
+- [ ] Add achievement section
+
+### Skill section
 - [ ] Add more Skills
-- [ ] Add Project details
-  - [ ] RL projects
-  - [ ] on 3D CT scan
-  - [ ] Line Follower
-- [X] Contact page not working
-- [X] Phone number
-- [X] Remove those blue from topbar
-- [X] Add maps if possible
-- [X] Add this website to CV
-- [X] Rearrange sections
-- [X] Open link in new page
-- [ ] Improve website loading speed
-- [X] Add A loading page
-    - [ ] Use a minimal loading
 
-### To be checked
+### Project Section
 
+  - [ ] add RL projects
+  - [ ] add Line Follower
+
+## To be checked
+
+- [ ] website loading speed
 - [ ] All links
 - [ ] Webiste crawled
-- [X] Suggestion from general
+- [x] Suggestion from general
 - [ ] Get website verified by Lab members
 
-### Special Thanks
+## Special Thanks
 
 I couldn't have build this webiste without the suport of of Freelancer theme.
 
