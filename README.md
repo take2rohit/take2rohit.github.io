@@ -21,13 +21,13 @@ Tasks to be done (Formatted as section)
 ### General
 - [ ] Change Layout of courses  
 - [ ] Add Education
-- [ ] Add Achievement section
-- [ ] Add news section
+- [x] Add Achievement section
+- [x] Add news section
 - [ ] Use a minimal loading
+- [ ] Conspicio style text appearing
 
 ### Experience Section
-- [ ] Add your intern experience
-- [ ] Add achievement section
+- [ ] Add DRDO experience
 
 ### Skill section
 - [ ] Add more Skills
