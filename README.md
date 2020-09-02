@@ -20,22 +20,21 @@ Tasks to be done (Formatted as section)
 
 ### General
 - [ ] Change Layout of courses  
-- [ ] Add Education
 - [x] Add Achievement section
 - [x] Add news section
 - [ ] Use a minimal loading
 - [ ] Conspicio style text appearing
 
 ### Experience Section
-- [ ] Add DRDO experience
+- [x] Add DRDO experience
+- [x] Add NUS experience
 
 ### Skill section
 - [ ] Add more Skills
 
 ### Project Section
-
-  - [ ] add RL projects
-  - [ ] add Line Follower
+- [x] add RL projects
+- [ ] add Line Follower
 
 ## To be checked
 
