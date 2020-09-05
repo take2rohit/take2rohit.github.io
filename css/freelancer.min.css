@@ -10172,8 +10172,8 @@
             width: 60px;
             height: 60px;
             position: absolute;
-            top: calc(50vh - 75px);
-            left: calc(50vw - 75px);
+            top: calc(50vh - 30px);
+            left: calc(50vw - 30px);
             border: 4px solid #Fff;
             top: 50%;
             animation: loader 2s infinite ease;
