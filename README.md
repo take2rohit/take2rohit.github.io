@@ -1,6 +1,7 @@
 # My Personal portfolio
 
-Click here to visit my portfolio: [https://rohitlal.live](https://rohitlal.live)
+- Click here to visit my portfolio: https://rohitlal.live/
+- My up-to-date CV can be found at: https://cv.rohitlal.live/
 
 ## Caution
 
