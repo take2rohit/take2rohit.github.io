@@ -19,6 +19,11 @@ Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) i
 ## Tasks to be done
 Tasks to be done (Formatted as section)
 
+### Photo gallery 
+- [ ] Add this new section
+- [ ] Add images of workshop done 
+- [ ] Add images of SIH competion, IvLabs working, etc.
+
 ### General
 - [ ] Change Layout of courses  
 - [x] Add Achievement section
