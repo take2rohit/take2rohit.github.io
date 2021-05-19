@@ -35,13 +35,6 @@ Tasks to be done (Formatted as section)
 - [x] Add DRDO experience
 - [x] Add NUS experience
 
-### Skill section
-- [ ] Add more Skills
-
-### Project Section
-- [x] add RL projects
-- [ ] add Line Follower
-
 ## To be checked
 
 - [ ] website loading speed
