@@ -30,6 +30,7 @@ Tasks to be done (Formatted as section)
 - [x] Add news section
 - [ ] Use a minimal loading
 - [ ] Conspicio style text appearing
+- [ ] Instead of big cards use listing of papers and courses section
 
 ### Experience Section
 - [x] Add DRDO experience
