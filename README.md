@@ -5,9 +5,10 @@
 
 ## Caution
 
-In case the domain [https://rohitlal.live](https://rohitlal.live) expires change all places where the website was mentioned like
+In case the domain [https://rohitlal.net](https://rohitlal.net) expires change all places where the website was mentioned like
 
-- GitHub Readme
+- GitHub Readme of all repos
+- IvLabs repos
 - This GitHub Readme
 - Github Bio
 - LinkedIn
