@@ -14,6 +14,7 @@ In case the domain [https://rohitlal.net](https://rohitlal.net) expires change a
 - LinkedIn
 - Instagram
 - Resume
+- HackMD
 
 Change website to [http://take2rohit.github.io/](http://take2rohit.github.io/) incase the domain expires.
 
