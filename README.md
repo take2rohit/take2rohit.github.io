@@ -1,7 +1,6 @@
 # My Personal portfolio
 
 - Click here to visit my portfolio: https://rohitlal.net/
-- My up-to-date CV can be found at: http://cv.rohitlal.net/
 
 ## Caution
 
