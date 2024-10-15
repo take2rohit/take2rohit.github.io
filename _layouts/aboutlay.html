@@ -1,0 +1,76 @@
+---
+layout: home
+---
+
+
+<header class="masthead bg-primary text-white text-center">
+	<div class="container d-flex align-items-center justify-content-center flex-column pt-4">
+
+		<!-- Masthead Avatar Image -->
+		<img class="masthead-avatar mb-5" src="{{ site.data.aboutme.DP_Link }}" alt="">
+
+		<!-- Masthead Heading -->
+		<h1 class="masthead-heading text-uppercase mb-0">{{ site.data.aboutme.Name }}</h1>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<!-- <div class="divider-custom-line"></div>
+			<div class="divider-custom-line"></div> -->
+		</div>
+
+		<!-- Masthead Subheading -->
+		<p class="masthead-subheading font-weight-light mb-0">{{ site.data.aboutme.Area_Of_Expertise }}</p>
+
+		<div class="col-lg-6 mb-5 mb-lg-0">
+			<br>
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Github }}" target="_blank">
+				<i class="fab fa-fw fa-github"></i>
+			</a>
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.LinkedIn }}"
+				target="_blank">
+				<i class="fab fa-fw fa-linkedin-in"></i>
+			</a>
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Email }}">
+				<i class="fab fa fa-envelope"></i>
+			</a>
+			<a class="btn btn-outline-light btn-social mx-1 my-1"
+				href="{{ site.data.aboutme.Scholar }}" target="_blank">
+				<i class="fab fa fa-user-graduate"></i>
+			</a>
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Twitter }}">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Instagram }}"
+				target="_blank">
+				<i class="fab fa-fw fa-instagram"></i>
+			</a>
+		</div>
+	</div>
+	<section class="container py-4 bg-light text-secondary mx-5" id="about">
+		<div class="container">
+
+			<!-- About Section Heading -->
+			<h2 class="page-section-heading text-center text-uppercase">About</h2>
+
+			<!-- Icon Divider -->
+			<div class="divider-custom">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fa fa-user-circle"></i>
+				</div>
+				<div class="divider-custom-line"></div>
+			</div>
+
+			<!-- About Section Content -->
+
+			<div class="lead text-justify text-black">
+				
+				{{ content }}
+
+			</div>
+
+		</div>
+
+	</section>
+</header>

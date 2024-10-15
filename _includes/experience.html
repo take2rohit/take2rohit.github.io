@@ -1,0 +1,53 @@
+<section id="experiences" class="page-section portfolio bg-primary">
+
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-white">Experiences</h2>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- IISc Experience 24/12/2021 -->
+        {% for exp in site.data.experience %}
+        <div class="row experience">
+            <div class="col-auto text-center flex-column d-none d-sm-flex">
+                <div class="row h-50">
+                    <div class="col border-right">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+                <div class="m-2">
+                    <span class="badge badge-pill border exp-fill">&nbsp;</span>
+                </div>
+                <div class="row h-50">
+                    <div class="col border-right">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title exp-company text-muted my-0">
+                            <a href="{{ exp.url }}" target="_blank" rel="noopener">{{ exp.company }}</a>
+                        </h4>
+                        <h5 class="card-title exp-title text-muted mt-0 mb-1">{{ exp.title }}</h5>
+                        <div class="text-muted exp-meta">
+                            <i class="fab fa fa-calendar-alt"></i> {{ exp.date }}&emsp;
+                            <span class="middot-divider"></span>
+                            <span><i class="fab fa fa-map-marker-alt"></i> {{ exp.location }}</span>
+                        </div>
+                        <div class="card-text">
+                            {{ exp.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

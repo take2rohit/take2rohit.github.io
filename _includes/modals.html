@@ -1,0 +1,67 @@
+{% for project in site.data.projects %}
+<div class="portfolio-modal modal fade" id="{{ project.modal }}" tabindex="-1" role="dialog" aria-labelledby="{{ project.modal }}Label" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
+      <div class="modal-body text-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ project.section1_title }}</h2>
+              
+              <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+              </div>
+              <img class="img-fluid rounded mb-4" src="{{ project.image }}" alt="">
+              {% if project.aim %}
+              <h4 class="text-secondary text-uppercase mb-2 text-center">AIM</h4>
+              <p class="mb-1 mt-4 ">{{ project.aim }}</p> 
+              {% endif %}
+              <h4 class=" text-secondary text-uppercase mb-3">Abstract</h4>
+              <p class="mb-5 text-justify">{{ project.abstract }}</p>
+              {% if project.section2_title %}
+              <h4 class=" text-secondary text-uppercase mb-0">{{ project.section2_title }}</h4>
+              <img class="img-fluid rounded mb-5 mt-4" src="{{ project.diagram }}" alt="">
+              {% endif %}
+              <div class="row text-center d-flex justify-content-center">
+                {% if project.paper %}
+                <div class="text-center mt-2 ml-2 mr-2">
+                  <a class="btn btn-l btn-outline-primary" href="{{ project.paper }}" target="_blank">
+                    <i class="fas fa-file-alt mr-2"></i> Paper
+                  </a>
+                </div>
+                {% endif %}
+                {% if project.video %}
+                <div class="text-center mt-2 ml-2 mr-2">
+                  <a class="btn btn-l btn-outline-primary" href="{{ project.video }}" target="_blank">
+                    <i class="fas fa-video mr-2"></i> Video
+                  </a>
+                </div>
+                {% endif %}
+                {% if project.github %}
+                <div class="text-center mt-2 ml-2 mr-2">
+                  <a class="btn btn-l btn-outline-primary" href="{{ project.github }}" target="_blank">
+                    <i class="fas fa-code mr-2"></i> GitHub
+                  </a>
+                </div>
+                {% endif %}
+                <button class="btn btn-primary mt-2 ml-2 mr-2" href="#" data-dismiss="modal">
+                  <i class="fas fa-times fa-fw"></i> Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

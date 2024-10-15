@@ -1,0 +1,39 @@
+<section class="page-section bg-primary text-white mb-0 text-center" id="courses">
+    <div class="container">
+
+        <!-- About Section Heading -->
+        <h2 class="page-section-heading text-center text-uppercase text-white">MOOCs</h2>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        {% for course in site.data.courses %}
+        <div class="card experience course">
+            <div class="card-body">
+                <h4 class="card-title exp-title text-muted my-0">{{ course.title }}</h4>
+                {{ if course.certificate or course.instructor or course.source_url }}
+                <p class="card-header-tabs text-primary">
+                    {% if course.certificate %}
+                    <a href="{{ course.certificate }}" target="_blank">Certificate</a> |
+                    {% elsif course.instructor %}
+                    <a href="{{ course.instructor_url }}" target="_blank">{{ course.instructor }}</a> |
+                    {% endif %}
+                    {% if course.source_url %}
+                    <a href="{{ course.source_url }}" target="_blank">{{ course.source }}</a>
+                    {% else %}
+                    {{ course.source }}
+                    {% endif %}
+                </p>
+                {{ endif }}
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</section>

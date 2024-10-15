@@ -1,0 +1,66 @@
+[
+    {
+      "date": "May 2024",
+      "description": "Joined <a href=\"https://www.earthdata.nasa.gov/esds/impact\">NASA IMPACT</a> as a Computer Scientist II."
+    },
+    {
+      "date": "Jan 2024",
+      "description": "Started working as a Teaching Assistant for a fantastic course on <a href=\"https://sites.google.com/ucr.edu/ee260b-w24/home\">Trustworthy AI</a> by <a href=\"https://jiachenli94.github.io/\">Prof. Jiachen Li</a>."
+    },
+    {
+      "date": "Nov 2023",
+      "description": "One paper on Self-Supervised Human Silhouette Extraction under Occlusion got accepted at WACV-2024 conference <a href=\"https://www.linkedin.com/posts/rohit-lal_ai-machinelearning-computervision-activity-7150061004364615680-M9pw?utm_source=share&utm_medium=member_desktop\">[LinkedIn Post]</a>."
+    },
+    {
+      "date": "July 2023",
+      "description": "One paper on Source free Pose Adaptation got accepted at <a href=\"https://iccv2023.thecvf.com/\">ICCV-2023</a> conference!"
+    },
+    {
+      "date": "Apr 2023",
+      "description": "Serving as a reviewer for <a href=\"https://iccv2023.thecvf.com/\">ICCV-2023</a> conference."
+    },
+    {
+      "date": "Mar 2023",
+      "description": "Our work at IISc on <i>Improving Domain Adaptation through Class Aware Frequency Transformation</i> got accepted to the <a href=\"https://www.springer.com/journal/11263\">International Journal of Computer Vision (IJCV)</a>."
+    },
+    {
+      "date": "Oct 2022",
+      "description": "Our paper on <i>CoNMix for Source-free Single and Multi-target Domain Adaptation</i> got accepted at the <a href=\"https://wacv2023.thecvf.com/home\">Winter Conference on Applications of Computer Vision (WACV) 2023</a>."
+    },
+    {
+      "date": "Apr 2022",
+      "description": "Paper on <a href=\"https://sites.google.com/view/sample-adv-trustworthy/\">Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems</a> got accepted at <a href=\"https://sites.google.com/nycu.edu.tw/hcis/home\">HCIS Workshop, CVPR'22</a>."
+    },
+    {
+      "date": "Oct 2021",
+      "description": "Our paper <a href=\"https://ivlabs.github.io/os-nsmt/\">Open-Set Multi-Source Multi-Target Domain Adaptation</a> got accepted at <a href=\"https://preregister.science/\">Pre-registration Workshop, NeurIPS'21</a>."
+    },
+    {
+      "date": "Aug 2021",
+      "description": "Our work at IISc on <a href=\"https://vclab-dev.github.io/CAFT/\">CAFT: Class Aware Frequency Transform for Reducing Domain Gap</a> got accepted at <a href=\"https://sites.google.com/view/tradicv\">TradiCV Workshop, ICCV'21 </a>."
+    },
+    {
+      "date": "Jul 2021",
+      "description": "Joining as a Project Assistant at <a href=\"http://visual-computing.in/home/\">Visual Computing Lab, IISc Bangalore</a>."
+    },
+    {
+      "date": "Nov 2020",
+      "description": "Completed my intern work at <a href=\"http://www.nus.edu.sg/\" target=\"_blank\">NUS - National University of Singapore</a> on 6DOF origami pose estimation. Check out the <a href=\"https://youtu.be/59ahQ5n6Snk\">Video Here</a>"
+    },
+    {
+      "date": "Aug 2020",
+      "description": "First position holder of <a href=\"https://www.sih.gov.in/\" rel=\"noopener\">Smart India Hackathon 2020</a> conducted by MHRD winning cash prize of Rs. 1,00,000 <a href=\"https://youtu.be/Y-EuzsubixI\">[Video Link]</a>."
+    },
+    {
+      "date": "Aug 2020",
+      "description": "Collaborated with a senior scientist at <a href=\"https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair\" rel=\"noopener\">CAIR Lab, DRDO</a> on drone image tracking, detection and pose estimation."
+    },
+    {
+      "date": "Jun 2020",
+      "description": "Made two GitHub repository <a href=\"https://github.com/IvLabs/resources\">IvLabs/resources</a> and <a href=\"https://github.com/IvLabs/ResearchPaperNotes\">IvLabs/ResearchPaperNotes</a> which started to gain popularity!"
+    },
+    {
+      "date": "Feb 2020",
+      "description": "Bagged two first position in two different competitions named 'Techno.Docx' and 'Electroblitz' at <a href=\"https://www.instagram.com/axis_vnit/?hl=en\">AXIS’20, VNIT | Central India’s Largest Techfest</a>."
+    }
+  ]

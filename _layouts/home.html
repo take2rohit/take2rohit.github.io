@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body id="page-top" style="overflow-x : hidden;" onload="myFunction()">
+
+
+  {% include header.html %}
+
+  <div class="container-fluid">
+    <div class="col-sm-12">
+      <div class="row">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+  {% include news.html %}
+  {% include publications.html %}
+  {% include projects.html %}
+  {% include experience.html %}
+  {% include skills.html %}
+  {% include courses.html %}
+  {% include footer.html %}
+  {% include scripts.html %}
+  {% include modals.html %}
+
+</body>
+
+</html>
