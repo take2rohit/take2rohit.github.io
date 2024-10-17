@@ -17,7 +17,7 @@
         <div class="card experience course">
             <div class="card-body">
                 <h4 class="card-title exp-title text-muted my-0">{{ course.title }}</h4>
-                {{ if course.certificate or course.instructor or course.source_url }}
+                {{ if course.source }}
                 <p class="card-header-tabs text-primary">
                     {% if course.certificate %}
                     <a href="{{ course.certificate }}" target="_blank">Certificate</a> |

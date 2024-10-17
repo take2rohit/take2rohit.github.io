@@ -23,10 +23,10 @@
               <img class="img-fluid rounded mb-4" src="{{ project.image }}" alt="">
               {% if project.aim %}
               <h4 class="text-secondary text-uppercase mb-2 text-center">AIM</h4>
-              <p class="mb-1 mt-4 ">{{ project.aim }}</p> 
+              <p class="mb-1 mt-4 ">{{ project.aim | markdownify }}</p> 
               {% endif %}
               <h4 class=" text-secondary text-uppercase mb-3">Abstract</h4>
-              <p class="mb-5 text-justify">{{ project.abstract }}</p>
+              <p class="mb-5 text-justify">{{ project.abstract | markdownify }}</p>
               {% if project.section2_title %}
               <h4 class=" text-secondary text-uppercase mb-0">{{ project.section2_title }}</h4>
               <img class="img-fluid rounded mb-5 mt-4" src="{{ project.diagram }}" alt="">

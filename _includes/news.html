@@ -17,11 +17,10 @@
                 {% for item in site.data.news %}
                 <li>
                     <p>
-                        <b>[{{ item.date }}]</b> {{ item.description }}
+                        <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '</p>', '' | replace: '<p>', '' }}
                     </p>
                 </li>
                 {% endfor %}
-
             </ul>
         </div>
     </div>

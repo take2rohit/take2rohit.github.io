@@ -42,7 +42,7 @@
                             <span><i class="fab fa fa-map-marker-alt"></i> {{ exp.location }}</span>
                         </div>
                         <div class="card-text">
-                            {{ exp.description }}
+                            {{ exp.description | markdownify }}
                         </div>
                     </div>
                 </div>
