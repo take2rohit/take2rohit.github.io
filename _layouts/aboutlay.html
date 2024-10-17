@@ -24,28 +24,37 @@ layout: home
 
 		<div class="col-lg-6 mb-5 mb-lg-0">
 			<br>
-			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Github }}" target="_blank">
+			{% if site.data.aboutme.Github %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Github }}" target="_blank">
 				<i class="fab fa-fw fa-github"></i>
-			</a>
-			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.LinkedIn }}"
-				target="_blank">
+			  </a>
+			{% endif %}
+			{% if site.data.aboutme.LinkedIn %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.LinkedIn }}" target="_blank">
 				<i class="fab fa-fw fa-linkedin-in"></i>
-			</a>
-			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Email }}">
+			  </a>
+			{% endif %}
+			{% if site.data.aboutme.Email %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Email }}">
 				<i class="fab fa fa-envelope"></i>
-			</a>
-			<a class="btn btn-outline-light btn-social mx-1 my-1"
-				href="{{ site.data.aboutme.Scholar }}" target="_blank">
+			  </a>
+			{% endif %}
+			{% if site.data.aboutme.Scholar %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Scholar }}" target="_blank">
 				<i class="fab fa fa-user-graduate"></i>
-			</a>
-			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Twitter }}">
+			  </a>
+			{% endif %}
+			{% if site.data.aboutme.Twitter %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Twitter }}">
 				<i class="fab fa-twitter"></i>
-			</a>
-			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Instagram }}"
-				target="_blank">
+			  </a>
+			{% endif %}
+			{% if site.data.aboutme.Instagram %}
+			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Instagram }}" target="_blank">
 				<i class="fab fa-fw fa-instagram"></i>
-			</a>
-		</div>
+			  </a>
+			{% endif %}
+		  </div>
 	</div>
 	<section class="container py-4 bg-light text-secondary mx-5" id="about">
 		<div class="container">
