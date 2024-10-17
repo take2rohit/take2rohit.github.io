@@ -1,4 +1,3 @@
-
 <section class="page-section text-secondary" id="recent-news">
     <!-- ############################# News/achievement Section ##################################-->
 
@@ -14,14 +13,19 @@
                 <div class="divider-custom-line"></div>
             </div>
             <ul>
-                {% for item in site.data.news %}
+                {% for item in site.data.news | limit:10 %}
                 <li>
                     <p>
-                        <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '</p>', '' | replace: '<p>', '' }}
+                        <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '
+                    </p>', '' | replace: '<p>', '' }}
                     </p>
                 </li>
                 {% endfor %}
             </ul>
+            <center><a href="#" data-toggle="modal" data-target="#newsModal">
+                <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
+                     See More
+                  </button></a></center>
         </div>
     </div>
 </section>

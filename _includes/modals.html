@@ -1,5 +1,6 @@
 {% for project in site.data.projects %}
-<div class="portfolio-modal modal fade" id="{{ project.modal }}" tabindex="-1" role="dialog" aria-labelledby="{{ project.modal }}Label" aria-hidden="true">
+<div class="portfolio-modal modal fade" id="{{ project.modal }}" tabindex="-1" role="dialog"
+  aria-labelledby="{{ project.modal }}Label" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -12,7 +13,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ project.section1_title }}</h2>
-              
+
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon">
@@ -23,7 +24,7 @@
               <img class="img-fluid rounded mb-4" src="{{ project.image }}" alt="">
               {% if project.aim %}
               <h4 class="text-secondary text-uppercase mb-2 text-center">AIM</h4>
-              <p class="mb-1 mt-4 ">{{ project.aim | markdownify }}</p> 
+              <p class="mb-1 mt-4 ">{{ project.aim | markdownify }}</p>
               {% endif %}
               <h4 class=" text-secondary text-uppercase mb-3">Abstract</h4>
               <p class="mb-5 text-justify">{{ project.abstract | markdownify }}</p>
@@ -65,3 +66,52 @@
   </div>
 </div>
 {% endfor %}
+
+<div class="portfolio-modal modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="newsModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
+      <div class="modal-body text-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">News
+                and Updates</h2>
+              <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+
+              </div>
+
+              <ul>
+
+                {% for item in site.data.news %}
+                <li>
+                  <p>
+                    <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '
+                  </p>', '' | replace: '<p>', '' }}
+                  </p>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
+                <i class="fas fa-times fa-fw"></i> Close Window
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
