@@ -2,7 +2,7 @@
   title: "Person Follower Mobile Robot"
   modal: personfollower
   abstract: >
-    "Helper robots are widely used in various situations, for ex-ample at airports and railway stations. 
+    Helper robots are widely used in various situations, for ex-ample at airports and railway stations. 
      This paper presents a pipelineto multiplex the tracking and detection of a person in dynamic envi-ronments 
      using a stereo camera in real-time. Recent developments inobject detection using ConvNets have led to 
      robust person detection.These deep convolutional neural networks generally fail to run with highframes 
@@ -11,20 +11,20 @@
      which makes the pipeline faster by many folds. TurtleBot-2 is used for prototyping the robot and tuning of 
      the motion controller.Robot Operating System (ROS) is used to set up communication be-tween various nodes of 
      the pipeline. The results found were comparableto current state-of-the-art person followers and can be 
-     readily usedinday to day life."
+     readily usedinday to day life.
   diagram:  img/portfolio/cyber_person.jpg
-  section1_title:  "Person Follower"
-  section2_title:  "Cyber-Physical Architecture"
+  section1_title:  Person Follower
+  section2_title:  Cyber-Physical Architecture
   paper:  https://drive.google.com/open?id=17Xxn3PumStUPc01p46W6luhm79xsPaNj
   video:  https://www.youtube.com/watch?v=XnrbU1050ls
   github:  https://github.com/khush3/person_following_bot
   aim:  # Add aim here
 
 - image: img/portfolio/number.webp
-  title: "Indian Number Plate Recognition"
+  title: Indian Number Plate Recognition
   modal: numberplate
   abstract: >
-    "Our current solution (implemented) provides a robust registration plate detection, 
+    Our current solution (implemented) provides a robust registration plate detection, 
     and extracts other features like car model, speed, face (if visible), date and time 
     of entry/exit and upload the extracted data to a centralized IoT integrated database. 
     Beneficiaries include malls, colleges, parking lots, etc. with multiple gates. Whenever 
@@ -32,10 +32,10 @@
     the owner can use the Alert feature to warn the guard. The web application has two levels 
     of access, the first providing general information about a specific car to the corresponding 
     owner, and the latter one for the Authority, which stores all the data of a campus. 
-    This can be used to monitor the traffic on the campus and for surveillance applications."
+    This can be used to monitor the traffic on the campus and for surveillance applications.
   diagram:  img/portfolio/cyber_number.jpg
-  section1_title:  "Number Plate Detection"
-  section2_title:  "Cyber-Physical Architecture"
+  section1_title:  Number Plate Detection
+  section2_title:  Cyber-Physical Architecture
   paper:  # Add paper link here
   video:  https://youtu.be/Y-EuzsubixI
   github:  https://github.com/conspicio-ai/alpr
@@ -54,7 +54,7 @@
     the passenger is in the taxi), and 4 destination locations. This problem was solved using the Q-Learning 
     Approach. The model trained is consistently among the top-5 in the [OpenAI Gym Leaderboard](https://github.com/openai/gym/wiki/Leaderboard).
   diagram:  # No diagram found in this example
-  section1_title: "Taxi v3 OpenAi Gym"
+  section1_title: Taxi v3 OpenAi Gym
   section2_title:  # No second section title found
   paper:  # Add paper link here if available 
   video: https://github.com/take2rohit/taxi_v3_openai/blob/master/result.gif
@@ -75,8 +75,8 @@
     **NOTE:** *This project was selected for SIH-20 from our internal hackathon conducted by college. 
     Further details will be shared after results of SIH-20*
   diagram:  img/portfolio/ckt_bal.jpg
-  section1_title:  "Self Balancing Platform"
-  section2_title:  "Circuit Diagram"
+  section1_title:  Self Balancing Platform
+  section2_title:  Circuit Diagram
   paper:  # Add paper link here
   video:  https://www.youtube.com/watch?v=1D1ZQ6mKg0k
   github:  https://github.com/take2rohit/self-balancing-platform
@@ -97,8 +97,8 @@
     being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such 
     that words that share common contexts in the corpus are located close to one another in the space.
   diagram: img/portfolio/word2vec.jpg
-  section1_title: "Word2vec SkipGram and N-Gram model"
-  section2_title: "Conclusion"
+  section1_title: Word2vec SkipGram and N-Gram model
+  section2_title: Conclusion
   paper: https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf 
   video:  # No video link found
   github: https://github.com/take2rohit/NLP_word_embedding
