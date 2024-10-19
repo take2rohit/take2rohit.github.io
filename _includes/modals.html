@@ -93,17 +93,9 @@
 
               </div>
 
-              <ul>
+              {% assign news_limit = site.data.news.k | default: 10 %}
+              {% include news-list.html news=site.data.news.news limit=site.data.news.news.size offset=news_limit %}
 
-                {% for item in site.data.news %}
-                <li>
-                  <p>
-                    <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '
-                  </p>', '' | replace: '<p>', '' }}
-                  </p>
-                </li>
-                {% endfor %}
-              </ul>
 
               <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
                 <i class="fas fa-times fa-fw"></i> Close Window

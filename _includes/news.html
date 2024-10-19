@@ -12,20 +12,14 @@
                 </div>
                 <div class="divider-custom-line"></div>
             </div>
-            <ul>
-                {% for item in site.data.news | limit:10 %}
-                <li>
-                    <p>
-                        <b>[{{ item.date }}]</b> {{ item.description | markdownify | replace: '
-                    </p>', '' | replace: '<p>', '' }}
-                    </p>
-                </li>
-                {% endfor %}
-            </ul>
+
+            {% assign news_limit = site.data.news.k | default: 10 %}
+            {% include news-list.html news=site.data.news.news limit=news_limit offset=0 %}
+
             <center><a href="#" data-toggle="modal" data-target="#newsModal">
-                <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
-                     See More
-                  </button></a></center>
+                    <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
+                        See More
+                    </button></a></center>
         </div>
     </div>
 </section>
