@@ -1,5 +1,5 @@
 - image: img/portfolio/person.webp
-  title: "Person Follower Mobile Robot"
+  title: Person Follower Mobile Robot
   modal: personfollower
   abstract: >
     Helper robots are widely used in various situations, for ex-ample at airports and railway stations. 
