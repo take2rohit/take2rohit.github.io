@@ -1,0 +1,80 @@
+k: 6     #limit the number of news to be displayed on the home page. default:10
+
+news:
+  - date: May 2024
+    description: >
+      Joined [NASA IMPACT](https://www.earthdata.nasa.gov/esds/impact) as a Computer Scientist II.
+
+  - date: Jan 2024
+    description: >
+      Started working as a Teaching Assistant for a fantastic course on 
+      [Trustworthy AI](https://sites.google.com/ucr.edu/ee260b-w24/home) by 
+      [Prof. Jiachen Li](https://jiachenli94.github.io/).
+
+  - date: Nov 2023
+    description: >
+      One paper on Self-Supervised Human Silhouette Extraction under Occlusion got accepted at 
+      WACV-2024 conference [[LinkedIn Post]](https://www.linkedin.com/posts/rohit-lal_ai-machinelearning-computervision-activity-7150061004364615680-M9pw?utm_source=share&utm_medium=member_desktop).
+
+  - date: July 2023
+    description: >
+      One paper on Source free Pose Adaptation got accepted at 
+      [ICCV-2023](https://iccv2023.thecvf.com/) conference!
+
+  - date: Apr 2023
+    description: >
+      Serving as a reviewer for [ICCV-2023](https://iccv2023.thecvf.com/) conference.
+
+  - date: Mar 2023
+    description: >
+      Our work at IISc on *Improving Domain Adaptation through Class Aware Frequency Transformation* 
+      got accepted to the [International Journal of Computer Vision (IJCV)](https://www.springer.com/journal/11263).
+
+  - date: Oct 2022
+    description: >
+      Our paper on *CoNMix for Source-free Single and Multi-target Domain Adaptation* 
+      got accepted at the [Winter Conference on Applications of Computer Vision (WACV) 2023](https://wacv2023.thecvf.com/home).
+
+  - date: Apr 2022
+    description: >
+      Paper on [Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems](https://sites.google.com/view/sample-adv-trustworthy/) 
+      got accepted at [HCIS Workshop, CVPR'22](https://sites.google.com/nycu.edu.tw/hcis/home).
+
+  - date: Oct 2021
+    description: >
+      Our paper [Open-Set Multi-Source Multi-Target Domain Adaptation](https://ivlabs.github.io/os-nsmt/)
+      got accepted at [Pre-registration Workshop, NeurIPS'21](https://preregister.science/).
+
+  - date: Aug 2021
+    description: >
+      Our work at IISc on [CAFT- Class Aware Frequency Transform for Reducing Domain Gap](https://vclab-dev.github.io/CAFT/) 
+      got accepted at [TradiCV Workshop, ICCV'21](https://sites.google.com/view/tradicv).
+
+  - date: Jul 2021
+    description: >
+      Joining as a Project Assistant at [Visual Computing Lab, IISc Bangalore](http://visual-computing.in/home/).
+
+  - date: Nov 2020
+    description: >
+      Completed my intern work at [NUS - National University of Singapore](http://www.nus.edu.sg/) 
+      on 6DOF origami pose estimation. Check out the [Video Here](https://youtu.be/59ahQ5n6Snk) 
+
+  - date: Aug 2020
+    description: >
+      First position holder of [Smart India Hackathon 2020](https://www.sih.gov.in/) 
+      conducted by MHRD winning cash prize of Rs. 1,00,000 [[Video Link]](https://youtu.be/Y-EuzsubixI).
+
+  - date: Aug 2020
+    description: >
+      Collaborated with a senior scientist at [CAIR Lab, DRDO](https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair) 
+      on drone image tracking, detection and pose estimation.
+
+  - date: Jun 2020
+    description: >
+      Made two GitHub repository [IvLabs/resources](https://github.com/IvLabs/resources) 
+      and [IvLabs/ResearchPaperNotes](https://github.com/IvLabs/ResearchPaperNotes) which started to gain popularity!
+
+  - date: Feb 2020
+    description: >
+      Bagged two first position in two different competitions named 'Techno.Docx' and 
+      'Electroblitz' at [AXIS'20, VNIT &#124; Central India's Largest Techfest](https://www.instagram.com/axis_vnit/?hl=en).

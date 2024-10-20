@@ -1,0 +1,111 @@
+################### Coferences and Journals ###################
+
+- paper: Improving Domain Adaptation through Class Aware Frequency Transformation
+  author: Vikash Kumar*, Himanshu Patil*, Rohit Lal, Anirban Chakraborty
+  pub: International Journal of Computer Vision (IJCV)
+  type: Journal
+  paper_link:  # Add paper link here if available
+  project_page:  # Add project page link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: CoNMix for Source-free Single and Multi-target Domain Adaptation
+  author: Vikash Kumar*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
+  pub: Winter Conference on Applications of Computer Vision (WACV), 2023
+  type: Conference
+  project_page: https://sites.google.com/view/conmix-vcl
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems
+  author: Gaurav Kumar Nayak*, Ruchit Rawal*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
+  pub: HCIS Workshop, Conference on Computer Vision and Pattern Recognition (CVPR)-2022
+  type: Workshop
+  project_page: https://sites.google.com/view/sample-adv-trustworthy/
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: Open-Set Multi-Source Multi-Target Domain Adaptation
+  author: Rohit Lal, Arihant Gaur, Aadhithya Iyer, Muhammed Abdullah Shaikh, Ritik Agrawal, Shital Chiddarwar
+  pub: Pre-registration Workshop, Neural Information Processing Systems (NeurIPS)-2021
+  type: Workshop
+  project_page: https://ivlabs.github.io/os-nsmt/
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: CAFT- Class Aware Frequency Transform for Reducing Domain Gap
+  author: Vikash Kumar, Sarthak Srivastava*, Rohit Lal*, Anirban Chakraborty
+  pub: TradiCV, International Conference on Computer Vision (ICCV) Workshop-2021
+  type: Workshop
+  project_page: https://vclab-dev.github.io/CAFT/
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: ScoopNet- A 6DOF Pose Estimation pipeline for Origami-inspired Worm Robots
+  author: Rohit Lal, Ruphan Swaminathan, Lalithkumar Seenivasan, Liang Qiu, Dr. Hongliang Ren
+  pub: International Conference on Development and Learning (ICDL), Beijing, China
+  type: Conference
+  paper_link:  # Add paper link here if available
+  project_page:  # Add project page link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video: https://www.youtube.com/watch?v=59ahQ5n6Snk&t=8s 
+
+- paper: Deep Self Correcting Tracker (DeepSCT) Mechanism
+  author: Khush Agrawal*, Rohit Lal*, Himanshu Patil*, Dr K. Surender, Dr Deep Gupta
+  pub: 26th National Conference on Communications (NCC)-2020, IIT Kharagpur
+  type: Conference
+  paper_link: https://drive.google.com/file/d/1PI0InajjLaD_4BVT5CwCbcSNavtQ1i-P/view?usp=sharing
+  project_page:  # Add project page link here if available
+  code_link: https://gitlab.com/khushagrawal/self_correcting_tracker
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: DeepSCT based Person Following Drone
+  author: Himanshu Patil*, Rohit Lal*, Khush Agrawal*, Dr. K. Surender
+  pub: Unmanned Aerial Systems in Geomatics-2021, IIT Roorkee
+  type: Conference
+  paper_link: https://drive.google.com/file/d/1Kn-M-An2Vjuka8jLWoleDlIme1o7JPqY/view?usp=sharing
+  project_page:  # Add project page link here if available
+  code_link: https://gitlab.com/khushagrawal/self_correcting_tracker
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: Person Following Mobile Robot using Multiplexed Detection and Tracking
+  author: Khush Agrawal*, Rohit Lal*
+  pub: International Conference on Advances in Mechanical Engineering (ICAME)-2020, VNIT Nagpur
+  type: Conference
+  paper_link: https://drive.google.com/file/d/17Xxn3PumStUPc01p46W6luhm79xsPaNj/view
+  project_page:  # Add project page link here if available
+  code_link: https://github.com/IvLabs/person_following_bot
+  bibtex: https://citation-needed.springer.com/v2/references/10.1007/978-981-15-3639-7_98?format=bibtex&flavour=citation
+  video: https://www.youtube.com/watch?v=XnrbU1050ls
+
+- paper: Cursor Control Using Face Gestures
+  author: Arihant Gaur, Akshata Kinage, Nilakshi Rekhawar, Shubhan Rukmangad, Rohit Lal, Dr. Shital Chiddarwar
+  pub: Conference on Soft Computing and Pattern Recognition, Hyderabad-2019
+  type: Conference
+  paper_link: https://drive.google.com/file/d/1f9a8VDooN2E_1S1GYJWgXSeT1ot-k7bw/view
+  project_page:  # Add project page link here if available
+  code_link: https://github.com/FlagArihant2000/cursor-control
+  bibtex: https://dblp.org/rec/conf/socpar/GaurKRRLC19.html?view=bibtex
+  video:  # Add video link here if available
+
+- paper: Real Time Human Computer Interaction Using Facial Gestures
+  author: Rohit Lal, Dr. Shital Chiddarwar
+  pub: 11th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IIT Kanpur-2019
+  type: Conference
+  paper_link: https://drive.google.com/file/d/1tAwLDMELoBM56GIS1ufl9DFvbPsxQlkY/view?usp=sharing
+  project_page:  # Add project page link here if available
+  code_link: https://github.com/FlagArihant2000/cursor-control
+  bibtex: https://dblp.org/rec/conf/icccnt/LalC19.html?view=bibtex
+  video:  # Add video link here if available

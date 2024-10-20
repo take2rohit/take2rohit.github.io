@@ -1,0 +1,14 @@
+<ul>
+  {% assign offset = include.offset | default: 0 %}
+  {% assign limit = include.limit | default: 10 %}
+  {% assign limited_news = include.news | slice: offset, limit %}
+
+  {% for item in limited_news %}
+    <li>
+      <p>
+        <b>[{{ item.date }}]</b> 
+        {{ item.description | markdownify | replace: '...', '' | replace: '<p>', '' }} 
+      </p>
+    </li>
+  {% endfor %}
+</ul>

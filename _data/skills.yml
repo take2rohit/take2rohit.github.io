@@ -1,0 +1,35 @@
+- image: img/software/py.png
+  name: Python
+
+- image: img/software/pytorch.png
+  name: PyTorch
+
+- image: img/software/tf.png
+  name: TensorFlow
+
+- image: img/software/cv.png
+  name: OpenCV
+
+- image: img/software/c.png
+  name: C/C++
+
+- image: img/software/matlab.png
+  name: MATLAB
+
+- image: img/software/ps.png
+  name: Photoshop
+
+- image: img/software/ai.png
+  name: Illustrator
+
+- image: img/software/git.png
+  name: GitHub
+
+- image: img/software/tex.png
+  name: LaTeX
+
+- image: img/software/gcp.png
+  name: GCP
+
+- image: img/software/ard.png
+  name: Arduino

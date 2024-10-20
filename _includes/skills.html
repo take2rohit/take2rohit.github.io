@@ -1,0 +1,30 @@
+<section class="page-section portfolio" id="skills">
+    <div class="container">
+
+        <!-- SKILLS Section Heading -->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Software Skills</h2>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- SKILLS Grid Items -->
+        <div class="row">
+            {% for skill in site.data.skills %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 h-25 w-25" style="width:50px;height:50px;">
+                <div class="portfolio-item text-center" data-toggle="modal">
+                    <img class="img-fluid" src="{{ skill.image }}" alt="">
+                    <h6 class="text-secondary mb-0" style="font-size:min(17px,2.5vw);text-align: center;">{{ skill.name
+                        }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>

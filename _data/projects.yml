@@ -1,0 +1,210 @@
+- image: img/portfolio/person.webp
+  title: Person Follower Mobile Robot
+  modal: personfollower
+  abstract: >
+    Helper robots are widely used in various situations, for ex-ample at airports and railway stations. 
+     This paper presents a pipelineto multiplex the tracking and detection of a person in dynamic envi-ronments 
+     using a stereo camera in real-time. Recent developments inobject detection using ConvNets have led to 
+     robust person detection.These deep convolutional neural networks generally fail to run with highframes 
+     rates on devices with less computing power. Trackers are alsoused to retain the identity of the target 
+     person as well as imposefewerconstraints on hardware. A concept of multiplexed detection and tracking is used 
+     which makes the pipeline faster by many folds. TurtleBot-2 is used for prototyping the robot and tuning of 
+     the motion controller.Robot Operating System (ROS) is used to set up communication be-tween various nodes of 
+     the pipeline. The results found were comparableto current state-of-the-art person followers and can be 
+     readily usedinday to day life.
+  diagram:  img/portfolio/cyber_person.jpg
+  section1_title:  Person Follower
+  section2_title:  Cyber-Physical Architecture
+  paper:  https://drive.google.com/open?id=17Xxn3PumStUPc01p46W6luhm79xsPaNj
+  video:  https://www.youtube.com/watch?v=XnrbU1050ls
+  github:  https://github.com/khush3/person_following_bot
+  aim:  # Add aim here
+
+- image: img/portfolio/number.webp
+  title: Indian Number Plate Recognition
+  modal: numberplate
+  abstract: >
+    Our current solution (implemented) provides a robust registration plate detection, 
+    and extracts other features like car model, speed, face (if visible), date and time 
+    of entry/exit and upload the extracted data to a centralized IoT integrated database. 
+    Beneficiaries include malls, colleges, parking lots, etc. with multiple gates. Whenever 
+    the gate camera detects a departing car, the corresponding owner gets notified. Further, 
+    the owner can use the Alert feature to warn the guard. The web application has two levels 
+    of access, the first providing general information about a specific car to the corresponding 
+    owner, and the latter one for the Authority, which stores all the data of a campus. 
+    This can be used to monitor the traffic on the campus and for surveillance applications.
+  diagram:  img/portfolio/cyber_number.jpg
+  section1_title:  Number Plate Detection
+  section2_title:  Cyber-Physical Architecture
+  paper:  # Add paper link here
+  video:  https://youtu.be/Y-EuzsubixI
+  github:  https://github.com/conspicio-ai/alpr
+  aim:  # Add aim here
+
+- image: img/portfolio/openai_taxi.gif
+  title: Solving Taxi v3 of OpenAi Gym
+  modal: rl
+  abstract: >
+    There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). 
+    When the episode starts, the taxi starts off at a random square and the passenger is at a random location. 
+    The taxi drives to the passenger's location, picks up the passenger, drives to the passenger's 
+    destination (another one of the four specified locations), and then drops off the passenger. 
+    Once the passenger is dropped off, the episode ends. Observations:- There are 500 discrete states 
+    since there are 25 taxi positions, 5 possible locations of the passenger (including the case when 
+    the passenger is in the taxi), and 4 destination locations. This problem was solved using the Q-Learning 
+    Approach. The model trained is consistently among the top-5 in the [OpenAI Gym Leaderboard](https://github.com/openai/gym/wiki/Leaderboard).
+  diagram:  # No diagram found in this example
+  section1_title: Taxi v3 OpenAi Gym
+  section2_title:  # No second section title found
+  paper:  # Add paper link here if available 
+  video: https://github.com/take2rohit/taxi_v3_openai/blob/master/result.gif
+  github: https://github.com/take2rohit/taxi_v3_openai
+  aim:  # No aim explicitly mentioned
+
+- image: img/portfolio/balance.webp
+  title: Self balancing Camera Platform
+  modal: selfbalance
+  abstract : >
+    Control system is designed to stabilize the camera gimbal system used in different airborne systems 
+    for applications such as target tracking, surveillance, aerial photography, autonomous navigation and 
+    so on. The technique is applied in everything from self-stabilizing cameras to helicopters and noise 
+    reducing equipment. This camera gimbal system replaces many traditional tracking systems such as radar 
+    which are heavy and large to mount on air vehicles. So, the stabilization of camera gimbal is very important 
+    to eliminate shakes and vibrations in photography, and provides accuracy.  
+    
+    **NOTE:** *This project was selected for SIH-20 from our internal hackathon conducted by college. 
+    Further details will be shared after results of SIH-20*
+  diagram:  img/portfolio/ckt_bal.jpg
+  section1_title:  Self Balancing Platform
+  section2_title:  Circuit Diagram
+  paper:  # Add paper link here
+  video:  https://www.youtube.com/watch?v=1D1ZQ6mKg0k
+  github:  https://github.com/take2rohit/self-balancing-platform
+  aim:  # Add aim here
+  
+  
+- image: img/portfolio/word_emb.webp
+  title: Word Embedding Generation using NLP
+  modal: wordemb
+  abstract: >
+    Word embedding is the collective name for a set of language modeling and feature learning techniques 
+    in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors 
+    of real numbers.  Conceptually it involves a mathematical embedding from a space with many dimensions 
+    per word to a continuous vector space with a much lower dimension. Word2vec is a group of related models 
+    that are used to produce word embeddings. These models are shallow, two-layer neural networks that are 
+    trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large corpus of text 
+    and produces a vector space, typically of several hundred dimensions, with each unique word in the corpus 
+    being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such 
+    that words that share common contexts in the corpus are located close to one another in the space.
+  diagram: img/portfolio/word2vec.jpg
+  section1_title: Word2vec SkipGram and N-Gram model
+  section2_title: Conclusion
+  paper: https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf 
+  video:  # No video link found
+  github: https://github.com/take2rohit/NLP_word_embedding
+  aim: >
+    * Aimed at reimplementation of famous Word2Vec research paper [Paper 1](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf) 
+      and [Paper 2](https://arxiv.org/abs/1301.3781)
+
+    * Aimed to study indepth mathematics and linguistic models.
+
+    * This is a stepping stone project into to world of Natural Language Processing
+  
+- image: img/portfolio/digit_rec.webp
+  title: Real Time Handwritten Digit recognition
+  modal: mnist
+  abstract: >
+    *This Summer Project was mentored by me at IvLabs, VNIT*  
+
+    The MNIST handwritten digit classification problem is a standard dataset used in computer vision 
+    and deep learning. Although the dataset is effectively solved, it can be used as the basis for 
+    learning and practicing how to develop, evaluate, and use convolutional deep learning neural networks 
+    for image classification from scratch. This includes how to develop a robust test harness for 
+    estimating the performance of the model, how to explore improvements to the model, and how to 
+    save the model and later load it to make predictions on new data. This was coded in scratch using 
+    Numpy. For more results and details about the algorithm visit the GitHub page. For full demo 
+    click the Video button.
+  diagram: img/portfolio/result_digit.jpg 
+  section1_title: Digit Recognizer from Scratch 
+  section2_title: Results
+  paper:  # No paper link found
+  video: https://www.youtube.com/watch?v=SCYhVTUIdoo
+  github: https://github.com/GlazeDonuts/Summer-Project-2019
+  aim:  # No aim explicitly mentioned
+  
+- image: img/portfolio/shm.webp
+  title: Harmonic Motion Analyser using MATLAB
+  modal: harmonicmotion
+  abstract: >
+    Simple harmonic motion can serve as a mathematical model for a variety of motions, such as the 
+    oscillation of a spring. With the aim of learning computer vision and MATLAB, I worked on analyzing 
+    the motion of a target-object undergoing a damped harmonic motion. The target-object was separated 
+    from the background using color thresholding and estimated as a point object. Coordinates of this 
+    point were recorded and used to estimate the parameters associated with the mathematical model of 
+    the system like maximum displacement, mean position, the velocity at different time instants. 
+    A mathematical model was estimated by fitting a curve to the recorded data using MATLAB Curve Fitting Toolbox.
+  diagram:  # Add diagram link here
+  section1_title:  Harmonic motion analyser
+  section2_title:  # Add section 2 title here
+  paper:  # Add paper link here
+  video:  # Add video link here
+  github:  https://github.com/take2rohit/shm-analyzer
+  aim:  >
+    * Aimed at estimation equation of motion of a target-object video is selected to analyze its motion.
+    
+    * Aimed at retrieving data associated with the motion of target-object using elementary mathematics.
+    
+    * *This project was made for TechnoSeason, 2017 and was awarded first prize.*
+ 
+- image: img/portfolio/hand_gest.webp
+  title: Hand Gesture controlled Robot
+  modal: handgest
+  abstract: >
+    The hand gesture controlled bot is a bot which receives it commands by giving pitch and roll to hand. 
+    This is helpful for people on wheelchair who can't even move their fingers or hands.These bots are 
+    very useful in many applications like remote surveillance, military etc. Hand gesture controlled robot 
+    can be used by physically challenged people for wheelchair control .Hand gesture controlled industrial 
+    grade robotic arms can be developed.
+  diagram:  img/portfolio/ckt_hand_gest.jpg
+  section1_title:  Hand Gesture Robot
+  section2_title:  Circuit Diagram
+  paper:  # Add paper link here
+  video:  https://www.youtube.com/watch?v=TX9Vsmo5vJg
+  github:  https://github.com/take2rohit/gesturebot
+  aim:  # Add aim here
+  
+- image: img/portfolio/classifier.webp
+  title: Classifier without High Level APIs
+  modal: flowerclassifier
+  abstract:  >
+    The code is written from scratch using PyTorch for data loading, matrix calculations, and GPU acceleration. This was my first introduction to DL where I wrote the code myself along with learning various mathematics and techniques required to optimize a network (PS. This also included learning ways to tune hyperparameters). 
+
+    Deep Learning Models Implemented are enlisted below:
+
+    * Logistic Regression (Not technically a deep learning model, but gives a base for Neural Networks)
+
+    * Deep Neural Network (Fully-connected layers only)  <br><br><br>
+
+    <center>Optimization Algorithms Implemented:</center>
+
+    * Batch Gradient Descent
+
+    * Mini-batch Gradient Descent
+
+    * Stochastic Gradient Descent (put batch_size = 1 in mini-batch to get this)
+
+    * Batch Gradient Descent with Momentum
+
+    * Batch RMSProp
+
+    * Batch Adam  <br><br><br>
+
+    *<center>The results and algorithms are available in the GitHub repository</center>*
+  diagram:  # Add diagram link here
+  section1_title:  Classifier from Scratch
+  section2_title:  # Add section 2 title here
+  paper:  # Add paper link here
+  video:  # Add video link here
+  github:  https://github.com/take2rohit/flower-classifier
+  aim:  # Add aim here
+  

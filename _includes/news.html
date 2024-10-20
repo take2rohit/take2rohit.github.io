@@ -1,0 +1,25 @@
+<section class="page-section text-secondary" id="recent-news">
+    <!-- ############################# News/achievement Section ##################################-->
+
+    <div class="container mb-5">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">RECENT NEWS</h2>
+            <!-- Icon Divider -->
+            <div class="divider-custom divider">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+            {% assign news_limit = site.data.news.k | default: 10 %}
+            {% include news-list.html news=site.data.news.news limit=news_limit offset=0 %}
+
+            <center><a href="#" data-toggle="modal" data-target="#newsModal">
+                    <button class="btn btn-primary mt-4" href="#" data-dismiss="modal">
+                        See More
+                    </button></a></center>
+        </div>
+    </div>
+</section>

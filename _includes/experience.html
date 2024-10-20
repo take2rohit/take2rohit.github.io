@@ -1,0 +1,58 @@
+<section id="experiences" class="page-section portfolio bg-primary">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-white">Experiences</h2>
+
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        {% for exp in site.data.experience %}
+        <div class="row experience">
+            <div class="col-auto text-center flex-column d-none d-sm-flex">
+                <div class="row h-50">
+                    {% if forloop.first %}
+                    <div class="col">&nbsp;</div>
+                    {% else %}
+                    <div class="col border-right">&nbsp;</div>
+                    {% endif %}
+                    <div class="col">&nbsp;</div>
+                </div>
+                <div class="m-2">
+                    <span class="badge badge-pill border exp-fill">&nbsp;</span>
+                </div>
+                <div class="row h-50">
+                    {% if forloop.last %}
+                    <div class="col">&nbsp;</div>
+                    {% else %}
+                    <div class="col border-right">&nbsp;</div>
+                    {% endif %}
+                    <div class="col">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title exp-company text-muted my-0">
+                            <a href="{{ exp.url }}" target="_blank" rel="noopener">{{ exp.company }}</a>
+                        </h4>
+                        <h5 class="card-title exp-title text-muted mt-0 mb-1">{{ exp.title }}</h5>
+                        <div class="text-muted exp-meta">
+                            <i class="fab fa fa-calendar-alt"></i> {{ exp.date }}&emsp;
+                            <span class="middot-divider"></span>
+                            <span><i class="fab fa fa-map-marker-alt"></i> {{ exp.location }}</span>
+                        </div>
+                        <div class="card-text">
+                            {{ exp.description | markdownify }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

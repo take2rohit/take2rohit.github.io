@@ -1,0 +1,127 @@
+<section id="research" class="page-section bg-primary ">
+    <h2 class="page-section-heading text-center text-uppercase text-white mb-0">RESEARCH WORK</h2>
+    <!-- Icon Divider -->
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="container">
+
+
+        <div class="row experience">
+
+            <div class="col-auto text-center flex-column d-none d-sm-flex">
+                <div class="row h-50">
+                    <div class="col ">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+                <div class="m-2">
+                    <span class="badge badge-pill border ">&nbsp;</span>
+                </div>
+                <div class="row h-50">
+                    <div class="col border-right">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+            </div>
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title exp-title text-muted mb-3 text-center">
+                            <font color=#6c757d>PUBLICATIONS</font>
+                        </h4>
+                        <div class="card-text">
+                            <div class="container">
+                                <ul>
+                                    {% for publication in site.data.publications %}
+                                    <li>
+                                      <p>
+                                        <b>{{ publication.paper }}</b>. 
+                                        {% assign authors = publication.author | split: ', ' %}
+                                        {% for author in authors %}
+                                        {% if author contains site.data.aboutme.Name | string %}
+                                            <u>{{ author }}</u>
+                                          {% else %}
+                                            {{ author }}
+                                          {% endif %}
+                                          {% unless forloop.last %}, {% endunless %}
+                                        {% endfor %}
+                                        . In. <i>{{ publication.pub }}</i>
+                                        {% if publication.project_page %}
+                                          <a href="{{ publication.project_page }}" target="_blank">[Project Page]</a>
+                                        {% endif %}
+                                        {% if publication.paper_link %}
+                                          <a href="{{ publication.paper_link }}" target="_blank">[Paper]</a>
+                                        {% endif %}
+                                        {% if publication.code_link %}
+                                          <a href="{{ publication.code_link }}" target="_blank">[Code]</a>
+                                        {% endif %}
+                                        {% if publication.bibtex %}
+                                          <a href="{{ publication.bibtex }}" target="_blank">[BibTex]</a>
+                                        {% endif %}
+                                        {% if publication.video %}
+                                          <a href="{{ publication.video }}" target="_blank">[Video]</a>
+                                        {% endif %}
+                                      </p>
+                                    </li>
+                                    {% endfor %}
+                                    <p><i> * authors claim equal contribution</i></p>
+                                  </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Patent 1 -->
+        <div class="row experience">
+
+            <div class="col-auto text-center flex-column d-none d-sm-flex">
+                <div class="row h-50">
+                    <div class="col border-right">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+                <div class="m-2">
+                    <span class="badge badge-pill border ">&nbsp;</span>
+                </div>
+                <div class="row h-50">
+                    <div class="col ">&nbsp;</div>
+                    <div class="col">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="col py-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title exp-title text-muted mb-3 text-center">
+                            <font color=#6c757d>PATENTS</font>
+                        </h4>
+                        <div class="card-text">
+                            <div class="container">
+
+                                <ul>
+                                    {% for patent in site.data.patents %}
+                                    <li>
+                                      <p>
+                                        <b>{{ patent.patent }}</b>. {{ patent.author }}, <i>Issued {{ patent.issued }}, Patent no. {{ patent.number }}</i>
+                                        <a href="{{ patent.file }}" target="_blank">[Patent File]</a>
+                                        {% if patent.video %}
+                                          <a href="{{ patent.video }}" target="_blank">[Video]</a>
+                                        {% endif %}
+                                      </p>
+                                    </li>
+                                    {% endfor %}
+                                  </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
