@@ -4,7 +4,35 @@
 
 This project provides a customizable personal portfolio built with Jekyll. Users can personalize their portfolio by simply editing markdown files—no coding required. Update personal details, content, and sections easily to create a unique, professional portfolio that reflects your identity, all with minimal effort.
 
-Click here to visit the portfolio : [Portfolio](https://krsrijan.github.io/portfolio_rohit/)
+Click here to visit the portfolio : [Portfolio](https://rohitlal.net/)
+
+## Setting up Locally
+Clone the repository and follow the below instructions
+
+### For Mac Installation
+
+``` bash
+brew install ruby
+gem install bundler jekyll
+```
+
+### For Windows Install 
+- Download Ruby+Devkit [Link to Download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe)
+  
+### Run
+
+Install the dependencies:
+
+``` bash
+bundle install
+```
+
+Run the local webserver with:
+
+``` bash
+bundle exec jekyll serve
+```
+
 
 ## Edit Personal details
 
@@ -149,32 +177,8 @@ Sample Example
 ```yml
 - image: Link to an image/logo depicting the skill
   name: Name of the skill
-```## Run Locally
-
-### For Mac/Linux
-
-``` bash
-brew install ruby
-gem install bundler jekyll
 ```
 
-### For windows Install 
-- Download Ruby+Devkit [Link to Download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe)
-  
-Clone this repository, then install the dependencies:
-
-
-``` bash
-bundle install
-```
-
-## Run
-
-Run the local webserver with:
-
-``` bash
-bundle exec jekyll serve
-```
 
 ## Tips & Troubleshoting
 
