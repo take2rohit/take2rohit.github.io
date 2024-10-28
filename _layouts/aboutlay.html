@@ -25,61 +25,68 @@ layout: home
 		<div class="col-lg-6 mb-5 mb-lg-0">
 			<br>
 			{% if site.data.aboutme.Github %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Github }}" target="_blank">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Github }}" target="_blank">
 				<i class="fab fa-fw fa-github"></i>
-			  </a>
+			</a>
 			{% endif %}
 			{% if site.data.aboutme.LinkedIn %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.LinkedIn }}" target="_blank">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.LinkedIn }}"
+				target="_blank">
 				<i class="fab fa-fw fa-linkedin-in"></i>
-			  </a>
+			</a>
 			{% endif %}
 			{% if site.data.aboutme.Email %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Email }}">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Email }}">
 				<i class="fab fa fa-envelope"></i>
-			  </a>
+			</a>
 			{% endif %}
 			{% if site.data.aboutme.Scholar %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Scholar }}" target="_blank">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Scholar }}"
+				target="_blank">
 				<i class="fab fa fa-user-graduate"></i>
-			  </a>
+			</a>
 			{% endif %}
 			{% if site.data.aboutme.Twitter %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Twitter }}">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Twitter }}">
 				<i class="fab fa-twitter"></i>
-			  </a>
+			</a>
 			{% endif %}
 			{% if site.data.aboutme.Instagram %}
-			  <a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Instagram }}" target="_blank">
+			<a class="btn btn-outline-light btn-social mx-1 my-1" href="{{ site.data.aboutme.Instagram }}"
+				target="_blank">
 				<i class="fab fa-fw fa-instagram"></i>
-			  </a>
+			</a>
 			{% endif %}
-		  </div>
+		</div>
 	</div>
-	<section class="container py-4 bg-light text-secondary mx-5" id="about">
-		<div class="container">
+	<section class="container text-secondary mx-5" id="about">
+		<div class="col py-2">
+			<div class="card">
+				<div class="card-body">
 
-			<!-- About Section Heading -->
-			<h2 class="page-section-heading text-center text-uppercase">About</h2>
+					<!-- About Section Heading -->
+					<h2 class="page-section-heading text-center text-uppercase">About</h2>
 
-			<!-- Icon Divider -->
-			<div class="divider-custom">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fa fa-user-circle"></i>
+					<!-- Icon Divider -->
+					<div class="divider-custom">
+						<div class="divider-custom-line"></div>
+						<div class="divider-custom-icon">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="divider-custom-line"></div>
+					</div>
+
+					<!-- About Section Content -->
+
+					<div class="lead text-justify text-black">
+
+						<!-- {{ content }} -->
+						{{ site.data.aboutme.About | markdownify }}
+
+					</div>
 				</div>
-				<div class="divider-custom-line"></div>
-			</div>
-
-			<!-- About Section Content -->
-
-			<div class="lead text-justify text-black">
-				
-				<!-- {{ content }} -->
-				{{ site.data.aboutme.About | markdownify }} 
 
 			</div>
-
 		</div>
 
 	</section>

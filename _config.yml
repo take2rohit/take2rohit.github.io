@@ -6,6 +6,11 @@
 
 # Site settings
 title: Rohit Lal | AI and CV
+email: your-email@domain.com
+description: > 
+  Write something here!
+baseurl: ""
+url: ""
 
 include:
   - .htaccess
