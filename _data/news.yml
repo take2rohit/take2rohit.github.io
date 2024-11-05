@@ -1,6 +1,10 @@
-k: 6     #limit the number of news to be displayed on the home page. default:10
+k: 10     #limit the number of news to be displayed on the home page. default:10
 
 news:
+  - date: Nov 2024
+    description: >
+      Serving as a reviewer for [ICLR 2024](https://iclr.cc/Conferences/2024) and [CVPR 2024](https://cvpr.thecvf.com/Conferences/2024).
+
   - date: Sept 2024
     description: >
       Our team released Prithvi WxC, a new general-purpose AI model for weather and climate. [[NASA Article]](https://science.nasa.gov/open-science/ai-model-weather-climate/) [[IBM Blog]](https://research.ibm.com/blog/foundation-model-weather-climate) [[HuggingFace CEO interview]](https://www.youtube.com/watch?v=N6d0CqTjBbo&t=28s)
