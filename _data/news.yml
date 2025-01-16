@@ -3,7 +3,7 @@ k: 10     #limit the number of news to be displayed on the home page. default:10
 news:
   - date: Nov 2024
     description: >
-      Serving as a reviewer for [ICLR 2025](https://iclr.cc/Conferences/2025) and [CVPR 2024](https://cvpr.thecvf.com/Conferences/2024).
+      Serving as a reviewer for [ICLR 2025](https://iclr.cc/Conferences/2025) and [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025).
 
   - date: Sept 2024
     description: >
