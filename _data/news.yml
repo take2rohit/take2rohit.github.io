@@ -1,9 +1,9 @@
 k: 10     #limit the number of news to be displayed on the home page. default:10
 
 news:
-  - date: Nov 2024
+  - date: Apr 2025
     description: >
-      Serving as a reviewer for [ICLR 2025](https://iclr.cc/Conferences/2025) and [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025).
+      Serving as a reviewer for [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025), [ICLR 2025](https://iclr.cc/Conferences/2025) and [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
 
   - date: Sept 2024
     description: >
@@ -15,7 +15,7 @@ news:
 
   - date: Jan 2024
     description: >
-      Started working as a Teaching Assistant for a fantastic course on 
+      Started working as a Teaching Assistant for a course on 
       [Trustworthy AI](https://sites.google.com/ucr.edu/ee260b-w24/home) by 
       [Prof. Jiachen Li](https://jiachenli94.github.io/).
 
@@ -28,10 +28,6 @@ news:
     description: >
       One paper on Source free Pose Adaptation got accepted at 
       [ICCV-2023](https://iccv2023.thecvf.com/) conference!
-
-  - date: Apr 2023
-    description: >
-      Serving as a reviewer for [ICCV-2023](https://iccv2023.thecvf.com/) conference.
 
   - date: Mar 2023
     description: >
