@@ -5,6 +5,10 @@ news:
     description: >
       Serving as a reviewer for [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025), [ICLR 2025](https://iclr.cc/Conferences/2025) and [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
 
+  - date: Feb 2025
+    description: >
+      Delivered an oral presentation of my Master’s thesis [STRIDE: Single-video based Temporally Continuous Occlusion-Robust 3D Pose Estimations](https://sites.google.com/ucr.edu/stride/home) at [WACV 2025](https://sites.google.com/ucr.edu/stride/home).
+
   - date: Sept 2024
     description: >
       Our team released Prithvi WxC, a new general-purpose AI model for weather and climate. [[NASA Article]](https://science.nasa.gov/open-science/ai-model-weather-climate/) [[IBM Blog]](https://research.ibm.com/blog/foundation-model-weather-climate) [[HuggingFace CEO interview]](https://www.youtube.com/watch?v=N6d0CqTjBbo&t=28s)
