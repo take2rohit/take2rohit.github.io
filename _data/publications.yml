@@ -11,7 +11,7 @@
   video:  # Add video link here if available
 
 
-- paper: STRIDE: Single-Video Based Temporally Continuous Occlusion-Robust 3D Pose Estimation
+- paper: STRIDE - Single-Video Based Temporally Continuous Occlusion-Robust 3D Pose Estimation
   author: Rohit Lal, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, Hannah D. Cruz
   pub: Winter Conference on Applications of Computer Vision (WACV), 2025 
   type: Conference
