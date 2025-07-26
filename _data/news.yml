@@ -1,6 +1,15 @@
 k: 10     #limit the number of news to be displayed on the home page. default:10
 
 news:
+
+  - date: Jul 2025
+    description: >
+      One paper [Layer-wise Alignment](https://arxiv.org/abs/2411.04291) has been accepted as a SPOTLIGHT at [ICML 2025](https://icml.cc/Conferences/2025) (Top 2.6%).
+
+  - date: Jun 2025
+    description: >
+      One paper VOccl3D: A Video Benchmark Dataset for 3D Human Pose and Shape Estimation under real Occlusions has been accepted at [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
+
   - date: Apr 2025
     description: >
       Serving as a reviewer for [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025), [ICLR 2025](https://iclr.cc/Conferences/2025) and [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
@@ -9,7 +18,7 @@ news:
     description: >
       Delivered an oral presentation of my Master’s thesis [STRIDE: Single-video based Temporally Continuous Occlusion-Robust 3D Pose Estimations](https://sites.google.com/ucr.edu/stride/home) at [WACV 2025](https://sites.google.com/ucr.edu/stride/home).
 
-  - date: Sept 2024
+  - date: Sep 2024
     description: >
       Our team released Prithvi WxC, a new general-purpose AI model for weather and climate. [[NASA Article]](https://science.nasa.gov/open-science/ai-model-weather-climate/) [[IBM Blog]](https://research.ibm.com/blog/foundation-model-weather-climate) [[HuggingFace CEO interview]](https://www.youtube.com/watch?v=N6d0CqTjBbo&t=28s)
 
