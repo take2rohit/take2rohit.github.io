@@ -2,6 +2,10 @@ k: 10     #limit the number of news to be displayed on the home page. default:10
 
 news:
 
+  - date: Aug 2025
+    description: >
+      Released [Surya](https://github.com/NASA-IMPACT/Surya) - Foundation model for HelioPhysics [NASA](https://science.data.nasa.gov/features-events/inside-surya-solar-ai-model) [IBM](https://www.youtube.com/watch?v=KWMoF97C1Ds) [ArXiv](https://arxiv.org/abs/2508.14112).
+
   - date: Jul 2025
     description: >
       One paper [Layer-wise Alignment](https://arxiv.org/abs/2411.04291) has been accepted as a SPOTLIGHT at [ICML 2025](https://icml.cc/Conferences/2025) (Top 2.6%).
