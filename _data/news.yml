@@ -1,7 +1,9 @@
 k: 10     #limit the number of news to be displayed on the home page. default:10
-
 news:
-
+  - date: Oct'25
+    description: >
+      Recognized as an Outstanding Reviewer at [ICCV'25](https://iccv.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer)
+  
   - date: Aug'25
     description: >
       Released [Surya](https://github.com/NASA-IMPACT/Surya) - Foundation model for HelioPhysics [[NASA](https://science.data.nasa.gov/features-events/inside-surya-solar-ai-model)] [[IBM](https://www.youtube.com/watch?v=KWMoF97C1Ds)] [[ArXiv](https://arxiv.org/abs/2508.14112)].
