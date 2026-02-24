@@ -1,5 +1,8 @@
 k: 10     #limit the number of news to be displayed on the home page. default:10
 news:
+  - date: Jan'26
+    description: >
+      Our AI Foundation Model team was honored with NASA's Group Achievement Award at an award ceremony held at NASA Marshall Space Flight Center. [LinkedIn Post](https://www.linkedin.com/posts/rramachandran05_nasa-aifoundationmodels-openscience-activity-7423369334095400960-ONQ2?utm_source=share&utm_medium=member_desktop&rcm=ACoAACTSE2EBtu9uiggBxIziWSeskj6z4VMn6Z0)  
   - date: Oct'25
     description: >
       Recognized as an Outstanding Reviewer at [ICCV'25](https://iccv.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer)
