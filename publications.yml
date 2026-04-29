@@ -1,0 +1,54 @@
+################### Coferences and Journals ###################
+
+- paper: Prithvi WxC - Foundation model for weather and climate
+  author: J Schmude, S Roy,...,Rohit Lal,..., 
+  pub: International Journal of Computer Vision (IJCV)
+  type: arXiv preprint
+  paper_link: https://arxiv.org/abs/2409.13598 # Add paper link here if available
+  project_page:  # Add project page link here if available
+  code_link: https://github.com/NASA-IMPACT/Prithvi-WxC  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+
+- paper: STRIDE - Single-Video Based Temporally Continuous Occlusion-Robust 3D Pose Estimation
+  author: Rohit Lal, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, Hannah D. Cruz
+  pub: Winter Conference on Applications of Computer Vision (WACV), 2025 
+  type: Conference
+  project_page: https://sites.google.com/view/sample-adv-trustworthy/
+  paper_link:  # Add paper link here if available
+  code_link: https://github.com/take2rohit/STRIDE # Add code link here if available
+  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:1qHf02jQ-hMJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyO5kY:AFWwaeYAAAAAZ_6I_kZCW4yLGm_EZsKjjUP3tjs&scisig=AFWwaeYAAAAAZ_6I_jEIQlNnJmF1OhDbt01gbuM&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1 # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: Prior-guided source-free domain adaptation for human pose estimation
+  author: DS Raychaudhuri, CK Ta, A Dutta, Rohit Lal, AK Roy-Chowdhury
+  pub: International Conference on Computer Vision (ICCV), 2023 
+  type: Conference
+  project_page:
+  paper_link: https://openaccess.thecvf.com/content/ICCV2023/papers/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.pdf # Add paper link here if available
+  code_link: https://github.com/driptaRC/POST # Add code link here if available
+  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:qdXH3DQ1PKYJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyP99A:AFWwaeYAAAAAZ_6J79BRwy29ev7kCvjsXVOe0cM&scisig=AFWwaeYAAAAAZ_6J7xnaTNV67zd1CWpgTLzHo7Y&scisf=4&ct=citation&cd=-1&hl=en # Add bibtex here if available
+  video:  # Add video link here if available
+
+
+- paper: CoNMix for Source-free Single and Multi-target Domain Adaptation
+  author: Vikash Kumar*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
+  pub: Winter Conference on Applications of Computer Vision (WACV), 2023
+  type: Conference
+  project_page: https://sites.google.com/view/conmix-vcl
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+
+- paper: Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems
+  author: Gaurav Kumar Nayak*, Ruchit Rawal*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
+  pub: HCIS, Conference on Computer Vision and Pattern Recognition (CVPR)-2022
+  type: Workshop
+  project_page: https://sites.google.com/view/sample-adv-trustworthy/
+  paper_link:  # Add paper link here if available
+  code_link:  # Add code link here if available
+  bibtex:  # Add bibtex here if available
+  video:  # Add video link here if available
+

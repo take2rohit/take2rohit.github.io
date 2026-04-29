@@ -1,0 +1,1170 @@
+/* === Classic Jupyter Notebook theme === */
+:root {
+  --bg: #ffffff;
+  --header-bg: #ffffff;
+  --toolbar-bg: #f7f7f7;
+  --code-bg: #f7f7f7;
+  --code-border: #cfcfcf;
+  --rule: #e0e0e0;
+  --rule-soft: #ededed;
+  --ink: #000000;
+  --ink-soft: #404040;
+  --ink-mute: #828282;
+  --link: #167cb6;
+  --prompt-in: #303f9f;     /* In[] blue */
+  --prompt-out: #d84315;    /* Out[] red-orange */
+  --green: #00aa00;
+  --run-green: #4caf50;
+  --selected: #66bb6a;      /* edit-mode green border */
+  --selected-cmd: #42a5f5;  /* command-mode blue border */
+
+  /* CodeMirror ipython colors */
+  --cm-keyword: #008000;
+  --cm-builtin: #008000;
+  --cm-string:  #ba2121;
+  --cm-number:  #080;
+  --cm-comment: #408080;
+  --cm-def:     #00f;
+  --cm-operator:#a2f;
+  --cm-variable:#000;
+  --cm-property:#05a;
+
+  /* === Typography system (Jupyter-faithful) ===
+     Notebook UI/markdown/output text: Lato (sans, like JupyterLab)
+     Cell input + code: Source Code Pro (monospace) */
+  --mono: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Liberation Mono", Consolas, "Courier New", monospace;
+  --sans: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --md:   "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+  /* Type scale */
+  --fs-h1: 32px;
+  --fs-h2: 24px;
+  --fs-h3: 18px;
+  --fs-body: 16px;
+  --fs-out: 15px;
+  --fs-code: 14px;
+  --fs-mono-sm: 13px;
+  --fs-meta: 12.5px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* === Header === */
+.nb-header {
+  display: flex;
+  align-items: center;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 6px 16px;
+  height: 38px;
+  position: sticky; top: 0; z-index: 20;
+  gap: 12px;
+}
+.nb-logo {
+  height: 24px;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.nb-logo svg { height: 24px; width: auto; }
+.nb-title {
+  font-size: 18px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.nb-title-input {
+  font-size: 18px;
+  border: none;
+  background: transparent;
+  font-family: var(--sans);
+  outline: none;
+  padding: 2px 4px;
+  color: var(--ink);
+}
+.nb-title-input:hover { background: #f5f5f5; }
+.nb-saved {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+  font-style: italic;
+}
+.nb-header-right {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.kernel-pill {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.kernel-pill .ring {
+  width: 12px; height: 12px;
+  border: 2px solid var(--ink-mute);
+  border-radius: 50%;
+}
+.kernel-pill.busy .ring {
+  border-color: var(--prompt-in);
+  border-top-color: transparent;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* === Menubar === */
+.nb-menubar {
+  display: flex;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 16px;
+  height: 26px;
+  font-size: 13px;
+  align-items: center;
+  gap: 0;
+}
+.nb-menubar .menu-item {
+  padding: 4px 9px;
+  cursor: default;
+  color: var(--ink);
+  border-radius: 2px;
+  user-select: none;
+}
+.nb-menubar .menu-item:hover { background: #eaeaea; }
+
+/* === Toolbar === */
+.nb-toolbar {
+  display: flex;
+  align-items: center;
+  background: var(--toolbar-bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 4px 12px;
+  gap: 1px;
+  height: 32px;
+  position: sticky; top: 38px; z-index: 19;
+}
+.tb-btn {
+  background: white;
+  border: 1px solid var(--rule);
+  height: 24px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.tb-btn:not(:first-child) { border-left: none; border-radius: 0; }
+.tb-group {
+  display: flex;
+  margin-right: 6px;
+}
+.tb-group .tb-btn:first-child { border-top-left-radius: 2px; border-bottom-left-radius: 2px; }
+.tb-group .tb-btn:last-child  { border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
+.tb-btn:hover { background: #f0f0f0; }
+.tb-btn.run {
+  color: #fff;
+  background: var(--run-green);
+  border-color: #43a047;
+  font-weight: 500;
+}
+.tb-btn.run:hover { background: #43a047; }
+.tb-btn svg { width: 14px; height: 14px; }
+.tb-select {
+  height: 24px;
+  border: 1px solid var(--rule);
+  background: white;
+  font-size: 12px;
+  font-family: var(--sans);
+  padding: 0 6px;
+  border-radius: 2px;
+  margin: 0 6px;
+  cursor: pointer;
+  color: var(--ink);
+}
+.tb-spacer { flex: 1; }
+.tb-status {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+
+/* === Notebook page: gray gutters + centered white canvas === */
+.nb-page {
+  background: #f0f0f0;
+  min-height: calc(100vh - 96px);
+  padding: 0 0 80px;
+}
+.nb-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 0 60px;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  min-height: calc(100vh - 96px);
+}
+/* Non-cell content (titles, intros) — generous side padding */
+.nb-inner > *:not(.cell) {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+/* Cells handle their own padding via .cell-row */
+.nb-inner > .cell { padding-left: 0; padding-right: 0; }
+
+/* === Cell ===
+   Block-level cell with internal rows. Each row is a flex strip:
+   [sel-bar | prompt | content]. JupyterLab style: single blue selection
+   bar runs the full cell height; markdown cells are flush. */
+.cell {
+  display: block;
+  margin: 4px 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  position: relative;
+}
+.cell:hover { background: transparent; }
+
+/* SELECTION STRIPE — applied per cell-row so input and output get
+   separate blue stripes with the natural row gap between them. */
+.cell.selected .cell-row::before {
+  content: "";
+  position: absolute;
+  left: 36px;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--selected-cmd);
+  pointer-events: none;
+  z-index: 3;
+}
+.cell.code-cell.edit-mode .cell-row.in-row::before { background: var(--selected); }
+.cell-row { position: relative; }
+/* Disable the old whole-cell stripe */
+.cell::before { display: none; }
+.cell.selected::before { background: var(--selected-cmd); }
+.cell.code-cell.edit-mode::before { background: var(--selected); }
+
+/* a row inside a cell — input row OR output row */
+.cell-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 2px 0;
+}
+/* Visible breathing room between input row and output row */
+.cell-row.in-row { padding-bottom: 4px; }
+.cell-row.out-row { padding-top: 18px; }
+
+/* Prompt block: classic In[N]: blue / Out[N]: red, monospace */
+.prompt {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--prompt-in);
+  text-align: right;
+  padding: 8px 12px 0 4px;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 78px;
+  margin-left: 36px;
+  flex-shrink: 0;
+}
+.prompt.in { color: var(--prompt-in); }
+.prompt.out { color: var(--prompt-out); }
+.prompt.empty { color: transparent; }
+
+/* Re-enable sel-bar as interactive collapsers; selection ::before still shows the blue stripe */
+.sel-bar {
+  flex-shrink: 0;
+  align-self: stretch;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  transition: background 0.12s, width 0.12s;
+}
+
+/* INPUT collapser: invisible band overlaying the prompt's left margin.
+   Click it to collapse the input. */
+.cell.code-cell .sel-bar.in {
+  width: 39px;            /* 36px gutter + 3px stripe */
+  margin-left: 0;
+  margin-right: -39px;    /* overlay on top of prompt's margin-left */
+  z-index: 2;
+}
+.cell.code-cell:hover .sel-bar.in:hover {
+  background: rgba(66, 165, 245, 0.08);
+}
+
+/* OUTPUT collapser: gray rail with breathing room around it.
+   Sized so In[N]: and Out[N]: prompts align at the right edge (colons line up). */
+.cell.code-cell .sel-bar.out {
+  width: 12px;
+  margin-left: 36px;   /* aligned with blue stripe column */
+  margin-right: 8px;
+  border-right: 1px solid transparent;
+  background: transparent;
+  border-radius: 2px;
+}
+.cell.code-cell:hover .sel-bar.out {
+  background: #ededed;
+}
+.cell.code-cell .sel-bar.out:hover {
+  background: #d8d8d8;
+}
+
+/* Out[N]: prompt — right-edge aligned with In [N]: (both end at the same x) */
+.cell-row.out-row .prompt {
+  margin-left: 0;
+  width: 58px;          /* 78px (In width) - 12px rail - 8px right margin = 58px */
+  padding-left: 4px;
+  padding-right: 12px;  /* match In prompt's padding-right so colons align */
+}
+.cell-row.out-row > .output-wrap { padding-left: 0; }
+
+/* Markdown cells: no bar */
+.cell.md-cell-row .sel-bar { display: none; }
+
+/* Content area inside a cell-row */
+.cell-row > .input-wrap,
+.cell-row > .output-wrap,
+.cell-row > .md-cell {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 60px;
+}
+
+/* MARKDOWN: full width, prompt hidden, content runs from the gutter */
+.cell.md-cell-row .cell-row { padding: 2px 0; }
+.cell.md-cell-row .prompt { display: none; }
+.cell.md-cell-row .md-cell {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-right: 0;
+}
+
+/* code input — classic Jupyter: subtle gray fill, thin border */
+.input-area {
+  background: #f7f7f7;
+  border: 1px solid #cfcfcf;
+  font-family: var(--mono);
+  font-size: var(--fs-code);
+  line-height: 1.5;
+  padding: 8px 12px;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--ink);
+  min-height: 28px;
+  border-radius: 2px;
+  position: relative;
+}
+.cell.code-cell.selected .input-area {
+  border-color: #1565c0;
+  box-shadow: 0 0 0 1px #1565c0 inset;
+}
+.input-area pre {
+  margin: 0;
+  font-family: inherit;
+  white-space: pre;
+  font-size: inherit;
+}
+
+/* output — Jupyter renders text outputs in sans (markdown-like) */
+.output-area {
+  padding: 8px 0 6px;
+  font-family: var(--sans);
+  font-size: var(--fs-out);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: auto;
+}
+.output-text {
+  font-family: var(--mono);
+  font-size: var(--fs-out);
+  white-space: pre-wrap;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* markdown cell */
+.md-cell {
+  padding: 6px 8px 6px 0;
+  font-family: var(--md);
+}
+.md-cell h1 {
+  font-family: var(--md);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  margin: 10px 0 8px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.md-cell h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin: 18px 0 6px;
+  color: var(--ink);
+}
+.md-cell h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin: 14px 0 6px;
+}
+.md-cell p { margin: 8px 0; color: var(--ink); font-size: var(--fs-body); line-height: 1.55; }
+.md-cell code {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  background: var(--code-bg);
+  padding: 1px 5px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: #c7254e;
+}
+.md-cell strong { color: var(--ink); font-weight: 700; }
+
+/* CodeMirror-like syntax */
+.cm-kw  { color: var(--cm-keyword); font-weight: 700; }
+.cm-bi  { color: var(--cm-builtin); }
+.cm-fn  { color: var(--cm-def); }
+.cm-str { color: var(--cm-string); }
+.cm-num { color: var(--cm-number); }
+.cm-com { color: var(--cm-comment); font-style: italic; }
+.cm-op  { color: var(--cm-operator); }
+.cm-prop { color: var(--cm-property); }
+
+/* === Hero === */
+.hero {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 28px;
+  padding: 10px 0 14px;
+  align-items: start;
+}
+.hero-photo {
+  width: 200px; height: 200px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--code-bg);
+  display: block;
+}
+.hero-name {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--prompt-in);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.hero-bio { font-size: 16px; color: var(--ink); line-height: 1.55; }
+.hero-bio p { margin: 8px 0; }
+.hero-bio strong { color: var(--ink); font-weight: 800; background: #fff7c4; padding: 0 3px; border-radius: 2px; }
+.hero-meta {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.hero-meta div { display: flex; gap: 8px; }
+.hero-meta .k { color: var(--cm-property); width: 100px; flex-shrink: 0; font-weight: 700; }
+.hero-meta .v { color: var(--cm-string); }
+.hero-meta .v a { color: var(--cm-string); font-weight: 600; }
+
+/* === Pandas DataFrame (Jupyter classic style) ===
+   No outer border, horizontal rules only, sans-serif body,
+   zebra-striped rows, bold sans header. */
+.df-out {
+  font-family: var(--sans);
+}
+.df {
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 14px;
+  margin: 0;
+  background: white;
+  border: none;
+}
+.df th, .df td {
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+}
+.df thead th {
+  background: #ffffff;
+  font-weight: 700;
+  text-align: right;
+  padding: 8px 14px;
+  vertical-align: bottom;
+  color: var(--ink);
+  font-size: 14px;
+  border-bottom: 1px solid #b0b0b0;
+  font-family: var(--sans);
+}
+.df tbody td {
+  padding: 8px 14px;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: var(--sans);
+}
+/* description column left-aligned */
+.df tbody td.text-col,
+.df thead th.text-col { text-align: left; }
+/* zebra stripes */
+.df tbody tr:nth-child(even) td { background: #f5f5f5; }
+.df tbody tr:nth-child(odd) td  { background: #ffffff; }
+.df tbody tr:hover td { background: #fffbea !important; }
+.df td.idx-col {
+  background: transparent;
+  font-weight: 700;
+  text-align: right;
+  border-right: none;
+  color: var(--ink);
+  width: 40px;
+}
+.df td .desc {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.55;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.df td .desc a { color: var(--link); font-weight: 500; }
+.df td .desc strong { font-weight: 700; color: var(--ink); }
+.df-meta {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+.df-meta button {
+  background: none;
+  border: none;
+  color: var(--link);
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+.df-meta button:hover { text-decoration: underline; }
+
+/* === Experience: structured-like print === */
+.exp-rows {
+  font-family: var(--sans);
+  font-size: var(--fs-out);
+  line-height: 1.55;
+}
+.exp-rows .item {
+  border-left: 3px solid var(--prompt-in);
+  padding: 10px 0 12px 16px;
+  margin: 12px 0;
+  background: #fafafa;
+}
+.exp-rows .head {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.exp-rows .sub {
+  color: var(--prompt-in);
+  font-family: var(--sans);
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.exp-rows .sub a { color: var(--prompt-in); font-weight: 600; }
+.exp-rows .desc {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+/* === Projects: matplotlib-style figure === */
+.fig {
+  border: 1px solid var(--rule);
+  background: white;
+  padding: 10px 12px;
+}
+.fig-caption {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  font-style: italic;
+}
+.fig-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.fig-card {
+  border: 1px solid var(--rule);
+  padding: 8px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+}
+.fig-card:hover { border-color: var(--prompt-in); }
+.fig-card:hover .fig-title { color: var(--prompt-in); text-decoration: underline; }
+.fig-thumb {
+  aspect-ratio: 16/9;
+  position: relative;
+  display: grid; place-items: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+.fig-thumb::before {
+  content: attr(data-axis);
+  position: absolute; top: 4px; left: 6px;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 9px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.04em;
+}
+.fig-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  margin-bottom: 3px;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.fig-abstract {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.fig-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+.fig-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 0 5px;
+  border: 1px solid var(--rule);
+  color: var(--ink-mute);
+  border-radius: 0;
+}
+.fig-tag.linked { color: var(--link); border-color: #b6dcef; }
+
+/* === Publications === */
+.pub-list { font-family: var(--sans); }
+.pub-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule-soft);
+  align-items: start;
+}
+.pub-item:first-child { border-top: none; }
+.pub-bibkey {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cm-comment);
+  padding-top: 4px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+.pub-title { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.4; font-family: var(--sans); }
+.pub-authors { font-size: 14px; color: var(--ink-soft); margin-top: 5px; font-style: italic; font-family: var(--sans); line-height: 1.55; }
+.pub-venue {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cm-string);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.pub-links { margin-top: 6px; display: flex; gap: 5px; flex-wrap: wrap; }
+.pub-links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  border: 1px solid var(--rule);
+  color: var(--link);
+  padding: 1px 8px;
+}
+
+/* === Skills with logos === */
+.skills-out { font-family: var(--mono); }
+.skill-row {
+  display: grid;
+  grid-template-columns: 28px 100px 1fr 32px;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.skill-row img {
+  width: 22px; height: 22px;
+  object-fit: contain;
+  display: block;
+}
+.skill-row .name { color: var(--ink); }
+.skill-row .bar-track {
+  height: 12px;
+  background: white;
+  border: 1px solid #b0b0b0;
+  position: relative;
+}
+.skill-row .bar {
+  height: 100%;
+  background: var(--prompt-in);
+  transition: width 0.7s cubic-bezier(.2,.8,.2,1);
+}
+.skill-row .pct { font-size: 11px; color: var(--ink-soft); text-align: right; }
+
+/* === Contact dict repr === */
+.contact-out {
+  font-family: var(--mono);
+  font-size: var(--fs-out);
+  color: var(--ink);
+  line-height: 1.7;
+}
+.contact-out .k { color: var(--cm-property); }
+.contact-out .s { color: var(--cm-string); }
+.contact-out .s a { color: var(--cm-string); text-decoration: none; font-weight: 500; }
+.contact-out .s a:hover { text-decoration: underline; }
+.contact-out .br { color: var(--ink-mute); }
+
+/* === Mobile === */
+@media (max-width: 760px) {
+  .nb-header { padding: 4px 10px; height: auto; flex-wrap: wrap; gap: 6px; }
+  .nb-title, .nb-title-input { font-size: 16px; }
+  .nb-saved { display: none; }
+  .nb-header-right { font-size: 11.5px; gap: 8px; }
+  .nb-menubar { display: none; }
+  .nb-toolbar { overflow-x: auto; padding: 4px 6px; top: 38px; height: auto; }
+  .nb-toolbar::-webkit-scrollbar { display: none; }
+  .tb-status { display: none; }
+  .tb-select { display: none; }
+  .nb-inner { padding: 8px 0 40px; border-left: none; border-right: none; }
+  .nb-inner > * { padding-left: 8px; padding-right: 8px; }
+  .nb-inner > .cell { padding-left: 0; padding-right: 6px; }
+  .cell { grid-template-columns: 22px 44px 1fr; }
+  .prompt { font-size: 11px; padding: 4px 4px 4px 0; }
+  .input-area { font-size: 12px; padding: 4px 6px; }
+  .cell-actions { top: 2px; right: 2px; }
+  .cell-action { width: 26px; height: 26px; }
+  .cell-action svg { width: 14px; height: 14px; }
+  .hero { grid-template-columns: 90px 1fr; gap: 12px; }
+  .hero-photo { width: 90px; height: 90px; }
+  .hero-name { font-size: 19px; }
+  .hero-meta { font-size: 11.5px; }
+  .hero-meta .k { width: 70px; }
+  .skill-row { grid-template-columns: 22px 80px 1fr 26px; gap: 6px; font-size: 11px; }
+  .pub-item { grid-template-columns: 50px 1fr; }
+  .df th, .df td { padding: 3px 5px; font-size: 11px; }
+  .shortcuts-bar { display: none; }
+  .mobile-run-fab { display: grid; place-items: center; }
+  .nb-page { padding-bottom: 110px; }
+  .pub-controls { flex-wrap: wrap; }
+  .cmd-palette { width: 95vw; top: 8vh; }
+  .sel-bar { width: 4px; }
+  .cell.selected .sel-bar:hover { width: 6px; }
+}
+
+/* container scrolling reset */
+.cm-tab { display: inline-block; width: 4ch; }
+
+/* === Cell action buttons (appear on hover, top-right of input area) ===
+   Positioned at the right edge of the input box (which sits 60px inside
+   the cell's right edge — so the toolbar must offset 60px + a bit more). */
+.cell-actions {
+  position: absolute;
+  top: 8px;
+  right: 70px;
+  display: none;
+  gap: 0;
+  z-index: 5;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.cell:hover .cell-actions,
+.cell.selected .cell-actions { display: flex; }
+.cell-action {
+  background: #fafafa;
+  border: none;
+  border-right: 1px solid #e6e6e6;
+  width: 26px;
+  height: 24px;
+  cursor: pointer;
+  color: #555555;
+  display: grid; place-items: center;
+  padding: 0;
+  transition: background 0.1s, color 0.1s;
+}
+.cell-action:last-child { border-right: none; }
+.cell-action:hover { color: #111111; background: #f0f0f0; }
+.cell-action.danger:hover { color: #d32f2f; background: #ffebee; }
+.cell-action.copied { color: #2e7d32; background: #e8f5e9; }
+.cell-action svg { width: 12px; height: 12px; }
+
+/* deleted-cell ghost (undo zone) */
+.cell-ghost {
+  margin: 4px 0;
+  padding: 8px 12px 8px 80px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-mute);
+  background: #fff8e1;
+  border: 1px dashed #ffd54f;
+  display: flex; align-items: center; gap: 12px;
+}
+.cell-ghost button {
+  font-family: var(--mono); font-size: 11.5px;
+  background: white; border: 1px solid #ffd54f;
+  padding: 2px 8px; cursor: pointer; border-radius: 2px;
+  color: var(--prompt-in);
+}
+.cell-ghost button:hover { background: #fff3cf; }
+
+/* mobile FAB run button */
+.mobile-run-fab {
+  display: none;
+  position: fixed;
+  bottom: 36px; right: 16px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--run-green);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  z-index: 50;
+  cursor: pointer;
+}
+.mobile-run-fab svg { width: 22px; height: 22px; }
+
+/* === Editable code === */
+.input-area[contenteditable="true"] {
+  outline: none;
+  caret-color: var(--prompt-in);
+}
+.input-area[contenteditable="true"]:focus {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--selected);
+  border-color: var(--selected);
+}
+.cell.edit-mode::before {
+  background: var(--selected) !important;
+}
+.cell.edit-mode { outline: none; }
+
+/* === Output collapse === */
+.output-wrap { position: relative; }
+.output-wrap.collapsed .output-area { display: none; }
+.output-wrap.collapsed .collapse-stub { display: block; }
+.input-wrap.collapsed .input-area { display: none; }
+.input-wrap.collapsed .collapse-stub-in { display: block; }
+.collapse-stub, .collapse-stub-in {
+  display: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: #555;
+  padding: 6px 14px;
+  cursor: pointer;
+  user-select: none;
+  background: #f0f4f8;
+  border: 1px solid #c8d4e0;
+  border-radius: 3px;
+  margin: 2px 0;
+  font-weight: 500;
+  width: fit-content;
+  display: none;
+}
+.output-wrap.collapsed .collapse-stub,
+.input-wrap.collapsed .collapse-stub-in { display: inline-flex; align-items: center; gap: 6px; }
+.collapse-stub::before, .collapse-stub-in::before {
+  content: "▸";
+  font-size: 10px;
+  color: var(--prompt-in);
+}
+.collapse-stub:hover, .collapse-stub-in:hover {
+  background: #e3edf7;
+  border-color: var(--prompt-in);
+  color: var(--prompt-in);
+}
+
+/* scrollable output cap */
+.output-scroll {
+  max-height: 360px;
+  overflow-y: auto;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 2px 4px 2px 0;
+  resize: vertical;
+}
+.output-scroll::-webkit-scrollbar { width: 8px; }
+.output-scroll::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 4px; }
+.output-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+
+/* highlight Rohit name */
+.author-me {
+  background: #fff7c4;
+  font-weight: 800;
+  color: var(--ink);
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-style: normal;
+  box-shadow: 0 0 0 1px #ffd54f;
+}
+.pub-authors { line-height: 1.55; }
+
+/* Radar/spider chart for skills */
+.radar-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 16px 0 6px;
+}
+.radar-wrap svg { max-width: 100%; height: auto; display: block; }
+.radar-grid { fill: none; stroke: #d0d0d0; stroke-width: 1; }
+.radar-axis { stroke: #cccccc; stroke-width: 1; }
+.radar-poly {
+  fill: rgba(48, 63, 159, 0.18);
+  stroke: var(--prompt-in);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.radar-dot { fill: var(--prompt-in); stroke: white; stroke-width: 1.5; }
+.radar-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  fill: var(--ink);
+  font-weight: 600;
+}
+.radar-pct {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--ink-mute);
+}
+.radar-tick {
+  font-family: var(--mono);
+  font-size: 9px;
+  fill: var(--ink-mute);
+}
+
+/* sort/filter chip */
+.pub-controls {
+  display: flex; gap: 8px; align-items: center;
+  font-family: var(--mono); font-size: 11.5px;
+  margin-bottom: 6px;
+  color: var(--ink-mute);
+}
+.pub-controls button {
+  font-family: var(--mono); font-size: 11.5px;
+  background: white; border: 1px solid var(--rule);
+  padding: 2px 8px; cursor: pointer; border-radius: 2px;
+  color: var(--ink-soft);
+}
+.pub-controls button.active { background: var(--prompt-in); color: white; border-color: var(--prompt-in); }
+.pub-controls button:hover:not(.active) { background: #f0f0f0; }
+
+/* easter egg cell */
+.egg-cell {
+  border: 1px dashed transparent;
+  transition: border-color 0.3s;
+}
+.egg-cell.activated { border-color: var(--prompt-in); }
+.repl-input {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  width: 100%;
+  padding: 4px 8px;
+  outline: none;
+}
+.repl-input:focus { border-color: var(--selected); background: white; }
+.repl-out {
+  font-family: var(--mono);
+  font-size: 13px;
+  white-space: pre-wrap;
+  margin-top: 4px;
+}
+.repl-out .ok { color: var(--green); }
+.repl-out .err { color: var(--cm-string); }
+
+/* confetti */
+.confetti {
+  position: fixed; pointer-events: none;
+  width: 100vw; height: 100vh; left: 0; top: 0;
+  z-index: 9999;
+}
+.confetti span {
+  position: absolute;
+  width: 8px; height: 12px;
+  animation: fall 2.4s linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* tooltip on shortcuts */
+.kbd {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  background: #f0f0f0;
+  border: 1px solid #c0c0c0;
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0 4px;
+  color: var(--ink-soft);
+}
+
+/* shortcut help bar */
+.shortcuts-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #f7f7f7;
+  border-top: 1px solid var(--rule);
+  padding: 4px 12px;
+  font-size: 11px;
+  color: var(--ink-mute);
+  display: flex; gap: 14px; align-items: center;
+  z-index: 30;
+  font-family: var(--sans);
+}
+.shortcuts-bar .grow { flex: 1; }
+.shortcuts-bar .help-toggle {
+  background: none; border: none; font-size: 11px; color: var(--link);
+  cursor: pointer; padding: 0;
+}
+.shortcuts-bar .help-toggle:hover { text-decoration: underline; }
+
+/* secret hint */
+.secret-hint {
+  position: fixed;
+  bottom: 32px; right: 16px;
+  background: var(--ink);
+  color: white;
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  border-radius: 3px;
+  z-index: 40;
+  animation: slidein 0.3s ease-out;
+  max-width: 280px;
+}
+@keyframes slidein {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* term-mode (matrix easter egg) */
+body.matrix {
+  background: #000;
+  transition: background 1s;
+}
+body.matrix .nb-page,
+body.matrix .nb-header,
+body.matrix .nb-toolbar,
+body.matrix .nb-menubar,
+body.matrix .input-area,
+body.matrix .fig,
+body.matrix .fig-card { background: #000; color: #00ff66; border-color: #003311; }
+body.matrix .md-cell h1,
+body.matrix .md-cell h2,
+body.matrix .md-cell h3,
+body.matrix .md-cell p,
+body.matrix .hero-name,
+body.matrix .hero-bio,
+body.matrix .pub-title,
+body.matrix .fig-title { color: #00ff66 !important; }
+body.matrix .prompt { color: #00ff66; }
+body.matrix .prompt.out { color: #ff5500; }
+body.matrix .cm-kw, body.matrix .cm-bi, body.matrix .cm-num { color: #00ff66; }
+body.matrix .cm-str { color: #ff8866; }
+body.matrix .cm-com { color: #008833; }
+body.matrix .df, body.matrix .df th, body.matrix .df td { border-color: #00ff66; color: #00ff66; background: #000; }
+
+/* run pulse */
+@keyframes runpulse {
+  0%, 100% { box-shadow: inset 0 0 0 0 transparent; }
+  50% { box-shadow: inset 3px 0 0 0 var(--selected); }
+}
+.cell.running .input-area { animation: runpulse 0.8s ease-in-out infinite; }
+
+/* hero photo zoom on click */
+.hero-photo { cursor: zoom-in; transition: transform 0.4s; }
+.hero-photo.zoomed {
+  position: fixed; inset: 0; margin: auto; width: 80vh; height: 80vh; max-width: 90vw; max-height: 90vh;
+  z-index: 100; cursor: zoom-out;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.photo-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 99;
+  cursor: zoom-out;
+}
+
+/* news row hover */
+.df tbody tr:hover td { background: #fffbea; }
+
+/* table sort indicators */
+.df th.sortable { cursor: pointer; user-select: none; }
+.df th.sortable:hover { color: var(--prompt-in); }
+.df th .arr { font-size: 9px; margin-left: 3px; color: var(--ink-mute); }
+
+/* command palette */
+.cmd-palette {
+  position: fixed;
+  top: 12vh; left: 50%; transform: translateX(-50%);
+  width: 520px; max-width: 90vw;
+  background: white;
+  border: 1px solid var(--ink-mute);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  z-index: 200;
+  font-family: var(--sans);
+}
+.cmd-palette input {
+  width: 100%; border: none; padding: 12px 14px;
+  font-family: var(--mono); font-size: 14px;
+  border-bottom: 1px solid var(--rule); outline: none;
+}
+.cmd-palette ul { list-style: none; margin: 0; padding: 0; max-height: 320px; overflow-y: auto; }
+.cmd-palette li {
+  padding: 8px 14px; cursor: pointer; font-size: 13px;
+  display: flex; justify-content: space-between; gap: 10px;
+}
+.cmd-palette li.sel { background: var(--prompt-in); color: white; }
+.cmd-palette li .desc { color: var(--ink-mute); font-size: 11.5px; }
+.cmd-palette li.sel .desc { color: rgba(255,255,255,0.8); }
+.cmd-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.2); z-index: 199; }

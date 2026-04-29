@@ -1,0 +1,112 @@
+k: 10     #limit the number of news to be displayed on the home page. default:10
+news:
+  - date: Apr'26
+    description: >
+      Our Surya Foundation Model Team has received the [Research Impact Award](https://www.uah.edu/news/news/first-uah-sapphire-excellence-awards-gala-highlights-outstanding-alumni-partners-supporters)  
+  - date: Mar'26
+    description: >
+      Delivered a lightning talk on an AI foundation model and was on the Deep Partnership (with NVIDIA) panel at the [NAIRR Pilot'26](https://events.internet2.edu/website/89730/home) Annual Meeting.
+  - date: Jan'26
+    description: >
+      Our AI Foundation Model team was honored with NASA's Group Achievement Award at an award ceremony held at NASA Marshall Space Flight Center. [LinkedIn Post](https://www.linkedin.com/posts/rramachandran05_nasa-aifoundationmodels-openscience-activity-7423369334095400960-ONQ2?utm_source=share&utm_medium=member_desktop&rcm=ACoAACTSE2EBtu9uiggBxIziWSeskj6z4VMn6Z0)  
+  - date: Oct'25
+    description: >
+      Recognized as an Outstanding Reviewer at [ICCV'25](https://iccv.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer)
+  
+  - date: Aug'25
+    description: >
+      Released [Surya](https://github.com/NASA-IMPACT/Surya) - Foundation model for HelioPhysics [[NASA](https://science.data.nasa.gov/features-events/inside-surya-solar-ai-model)] [[IBM](https://www.youtube.com/watch?v=KWMoF97C1Ds)] [[ArXiv](https://arxiv.org/abs/2508.14112)].
+
+  - date: Jul'25
+    description: >
+      One paper [Layer-wise Alignment](https://arxiv.org/abs/2411.04291) has been accepted as a SPOTLIGHT at [ICML 2025](https://icml.cc/Conferences/2025) (Top 2.6%).
+
+  - date: Jun'25
+    description: >
+      One paper VOccl3D: A Video Benchmark Dataset for 3D Human Pose and Shape Estimation under real Occlusions has been accepted at [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
+
+  - date: Apr'25
+    description: >
+      Serving as a reviewer for [CVPR 2025](https://cvpr.thecvf.com/Conferences/2025), [ICLR 2025](https://iclr.cc/Conferences/2025) and [ICCV 2025](https://iccv.thecvf.com/Conferences/2025).
+
+  - date: Feb'25
+    description: >
+      Delivered an oral presentation of my Master’s thesis [STRIDE: Single-video based Temporally Continuous Occlusion-Robust 3D Pose Estimations](https://sites.google.com/ucr.edu/stride/home) at [WACV 2025](https://sites.google.com/ucr.edu/stride/home).
+
+  - date: Sep'24
+    description: >
+      Our team released Prithvi WxC, a new general-purpose AI model for weather and climate. [[NASA Article]](https://science.nasa.gov/open-science/ai-model-weather-climate/) [[IBM Blog]](https://research.ibm.com/blog/foundation-model-weather-climate) [[HuggingFace CEO interview]](https://www.youtube.com/watch?v=N6d0CqTjBbo&t=28s)
+
+  - date: May'24
+    description: >
+      Joined [NASA IMPACT](https://www.earthdata.nasa.gov/esds/impact) as a Computer Scientist II.
+
+  - date: Jan'24
+    description: >
+      Started working as a Teaching Assistant for a course on 
+      [Trustworthy AI](https://sites.google.com/ucr.edu/ee260b-w24/home) by 
+      [Prof. Jiachen Li](https://jiachenli94.github.io/).
+
+  - date: Nov'23
+    description: >
+      One paper on Self-Supervised Human Silhouette Extraction under Occlusion got accepted at 
+      WACV-2024 conference [[LinkedIn Post]](https://www.linkedin.com/posts/rohit-lal_ai-machinelearning-computervision-activity-7150061004364615680-M9pw?utm_source=share&utm_medium=member_desktop).
+
+  - date: July'23
+    description: >
+      One paper on Source free Pose Adaptation got accepted at 
+      [ICCV-2023](https://iccv2023.thecvf.com/) conference!
+
+  - date: Mar'23
+    description: >
+      Our work at IISc on *Improving Domain Adaptation through Class Aware Frequency Transformation* 
+      got accepted to the [International Journal of Computer Vision (IJCV)](https://www.springer.com/journal/11263).
+
+  - date: Oct'22
+    description: >
+      Our paper on *CoNMix for Source-free Single and Multi-target Domain Adaptation* 
+      got accepted at the [Winter Conference on Applications of Computer Vision (WACV) 2023](https://wacv2023.thecvf.com/home).
+
+  - date: Apr'22
+    description: >
+      Paper on [Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems](https://sites.google.com/view/sample-adv-trustworthy/) 
+      got accepted at [HCIS Workshop, CVPR'22](https://sites.google.com/nycu.edu.tw/hcis/home).
+
+  - date: Oct'21
+    description: >
+      Our paper [Open-Set Multi-Source Multi-Target Domain Adaptation](https://ivlabs.github.io/os-nsmt/)
+      got accepted at [Pre-registration Workshop, NeurIPS'21](https://preregister.science/).
+
+  - date: Aug'21
+    description: >
+      Our work at IISc on [CAFT- Class Aware Frequency Transform for Reducing Domain Gap](https://vclab-dev.github.io/CAFT/) 
+      got accepted at [TradiCV Workshop, ICCV'21](https://sites.google.com/view/tradicv).
+
+  - date: Jul'21
+    description: >
+      Joining as a Project Assistant at [Visual Computing Lab, IISc Bangalore](http://visual-computing.in/home/).
+
+  - date: Nov'20
+    description: >
+      Completed my intern work at [NUS - National University of Singapore](http://www.nus.edu.sg/) 
+      on 6DOF origami pose estimation. Check out the [Video Here](https://youtu.be/59ahQ5n6Snk) 
+
+  - date: Aug'20
+    description: >
+      First position holder of [Smart India Hackathon 2020](https://www.sih.gov.in/) 
+      conducted by MHRD winning cash prize of Rs. 1,00,000 [[Video Link]](https://youtu.be/Y-EuzsubixI).
+
+  - date: Aug'20
+    description: >
+      Collaborated with a senior scientist at [CAIR Lab, DRDO](https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair) 
+      on drone image tracking, detection and pose estimation.
+
+  - date: Jun'20
+    description: >
+      Made two GitHub repository [IvLabs/resources](https://github.com/IvLabs/resources) 
+      and [IvLabs/ResearchPaperNotes](https://github.com/IvLabs/ResearchPaperNotes) which started to gain popularity!
+
+  - date: Feb'20
+    description: >
+      Bagged two first position in two different competitions named 'Techno.Docx' and 
+      'Electroblitz' at [AXIS'20, VNIT &#124; Central India's Largest Techfest](https://www.instagram.com/axis_vnit/?hl=en).
