@@ -22,27 +22,27 @@ window.PORTFOLIO = {
   experience: [
     {
       company: "NASA IMPACT",
-      url: "https://www.earthdata.nasa.gov/esds/impact",
+      url: "https://impact.earthdata.nasa.gov",
       title: "Computer Scientist II",
       date: "May 2024 — Present",
       location: "Huntsville, AL",
-      desc: "Building AI Foundation Models for Science (Surya, Prithvi WxC). Cross-team collaboration with NASA, IBM Research, and the open-science community."
+      desc: "Lead training of Surya, a heliophysics foundation model on 300 TB+ of 4K satellite observations using spectral–spatial Transformers with VAE + quantized latents (collab. w/ IBM, NVIDIA, Microsoft); scaled to 128× GH200 with TP/PP/FSDP and hybrid precision for 3.2× memory savings, plus TransformerEngine-based fused LN+MLP/attention enabling FP8/FP4 long-context training (10M+ tokens). Co-developed PrithviWxC — NASA's first 2.3B-param climate foundation model with a novel local–global attention objective combining masked-token reconstruction and autoregressive rollout; cut hurricane path error 68–76%, landfall error 4×, and temperature downscaling RMSE by >75%. Outperformed GraphCast and FourCastNet on benchmarks adopted by NOAA/NASA."
     },
     {
-      company: "UC Riverside — Video Computing Group",
+      company: "UC Riverside — Visual Computing Group",
       url: "https://vcg.ece.ucr.edu/amit",
-      title: "Graduate Researcher (MS by Research)",
-      date: "Jan 2022 — May 2024",
+      title: "Graduate Student Researcher",
+      date: "Jan 2023 — Dec 2023",
       location: "Riverside, CA",
-      desc: "Thesis on occlusion-robust 3D human pose estimation under Prof. Amit K. Roy-Chowdhury for the IARPA BRIAR program."
+      desc: "VLM/LLM Safety: identified a vision-encoder early-exit vulnerability in VLMs and applied Layer-wise PPO, reducing harmful responses 48% and toxicity 33% (ICML'25 Spotlight). Pose Estimation & Biometric Recognition: state-of-the-art occlusion-robust 3D pose under the IARPA BRIAR program, applied to motion correction, prediction, and infilling — then extended to biometric recognition by extracting 3D/2D pose, body-part segmentation, and silhouette without ground-truth supervision."
     },
     {
-      company: "Indian Institute of Science (IISc)",
+      company: "Indian Institute of Science (IISc), Bangalore",
       url: "https://iisc.ac.in/",
-      title: "Project Assistant, Visual Computing Lab",
-      date: "Jul 2021 — Dec 2021",
+      title: "Research Assistant, Visual Computing Lab",
+      date: "Jul 2021 — Jul 2022",
       location: "Bengaluru, India",
-      desc: "Research on unsupervised domain adaptation under Dr. Anirban Chakraborty at the Department of Computational and Data Sciences."
+      desc: "Source-free Domain Adaptation: addressed source-free single- and multi-target DA, achieving state-of-the-art accuracy across popular benchmarks (WACV). Adversarial Vulnerability: developed a holistic sample-level vulnerability metric and applied it to data-efficient knowledge distillation (CVPR-W)."
     },
     {
       company: "DRDO — CAIR Lab",
