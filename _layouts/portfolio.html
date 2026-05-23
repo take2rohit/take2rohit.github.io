@@ -1347,7 +1347,9 @@
                     /\[([^\]]+)\]\(([^)]+)\)/g,
                     '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
                 )
-                // *emphasis* — light italic, used in some news items
+                // **bold** — used to highlight Rohit's name in author lists
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                // *italic* — used in some news items
                 .replace(/\*([^*]+)\*/g, '<em>$1</em>');
         };
 
@@ -1563,7 +1565,7 @@
                                             {pub.video && <a href={pub.video} target="_blank" rel="noopener noreferrer" className="publication-link">Video</a>}
                                         </div>
                                     </div>
-                                    <p className="publication-authors">{pub.author}</p>
+                                    <p className="publication-authors" dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(pub.author) }} />
                                     <p className="publication-venue">{pub.pub}{pub.type ? ` — ${pub.type}` : ''}</p>
                                     {pub.abstract && (
                                         <div className="publication-abstract">
