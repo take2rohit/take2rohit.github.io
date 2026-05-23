@@ -54,9 +54,9 @@
             --text-secondary: #5a524c;
             --text-tertiary: #8a7f76;
             --border-color: #e8dfd5;
-            --accent: #8b4513;
-            --accent-hover: #6d3410;
-            --accent-light: rgba(139, 69, 19, 0.08);
+            --accent: #1e3a5f;
+            --accent-hover: #15294a;
+            --accent-light: rgba(30, 58, 95, 0.08);
             --shadow: rgba(0, 0, 0, 0.04);
             --shadow-md: rgba(0, 0, 0, 0.08);
         }
@@ -298,32 +298,32 @@
         }
 
         /* concentric rings */
-        #publications .section-title::after { border-radius: 50%; box-shadow: 0 0 0 8px rgba(139, 69, 19, 0.15), 0 0 0 16px rgba(139, 69, 19, 0.10); }
-        #publications.visible .section-title::after { box-shadow: 0 0 0 12px rgba(139, 69, 19, 0.20), 0 0 0 24px rgba(139, 69, 19, 0.12); }
+        #publications .section-title::after { border-radius: 50%; box-shadow: 0 0 0 8px rgba(30, 58, 95, 0.15), 0 0 0 16px rgba(30, 58, 95, 0.10); }
+        #publications.visible .section-title::after { box-shadow: 0 0 0 12px rgba(30, 58, 95, 0.20), 0 0 0 24px rgba(30, 58, 95, 0.12); }
 
         /* overlapping circles */
-        #experience .section-title::after { border-radius: 50%; box-shadow: 15px 0 0 0 rgba(139, 69, 19, 0.20), -15px 0 0 0 rgba(139, 69, 19, 0.20); }
-        #experience.visible .section-title::after { box-shadow: 10px 0 0 0 rgba(139, 69, 19, 0.25), -10px 0 0 0 rgba(139, 69, 19, 0.25); }
+        #experience .section-title::after { border-radius: 50%; box-shadow: 15px 0 0 0 rgba(30, 58, 95, 0.20), -15px 0 0 0 rgba(30, 58, 95, 0.20); }
+        #experience.visible .section-title::after { box-shadow: 10px 0 0 0 rgba(30, 58, 95, 0.25), -10px 0 0 0 rgba(30, 58, 95, 0.25); }
 
         /* square morphing to diamond */
-        #projects .section-title::after { border-radius: 0; box-shadow: inset 0 0 0 10px rgba(139, 69, 19, 0.15); }
-        #projects.visible .section-title::after { transform: translateY(-50%) rotate(45deg); box-shadow: inset 0 0 0 8px rgba(139, 69, 19, 0.20); }
+        #projects .section-title::after { border-radius: 0; box-shadow: inset 0 0 0 10px rgba(30, 58, 95, 0.15); }
+        #projects.visible .section-title::after { transform: translateY(-50%) rotate(45deg); box-shadow: inset 0 0 0 8px rgba(30, 58, 95, 0.20); }
 
         /* diamond */
-        #skills .section-title::after { transform: translateY(-50%) rotate(45deg); border-radius: 0; box-shadow: 0 0 0 8px rgba(139, 69, 19, 0.12), 0 0 0 16px rgba(139, 69, 19, 0.08); }
-        #skills.visible .section-title::after { transform: translateY(-50%) rotate(90deg); box-shadow: 0 0 0 10px rgba(139, 69, 19, 0.15), 0 0 0 20px rgba(139, 69, 19, 0.10); }
+        #skills .section-title::after { transform: translateY(-50%) rotate(45deg); border-radius: 0; box-shadow: 0 0 0 8px rgba(30, 58, 95, 0.12), 0 0 0 16px rgba(30, 58, 95, 0.08); }
+        #skills.visible .section-title::after { transform: translateY(-50%) rotate(90deg); box-shadow: 0 0 0 10px rgba(30, 58, 95, 0.15), 0 0 0 20px rgba(30, 58, 95, 0.10); }
 
         /* pentagon */
-        #gallery .section-title::after { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); border: none; background: rgba(139, 69, 19, 0.25); box-shadow: inset 0 0 0 8px rgba(139, 69, 19, 0.15); }
-        #gallery.visible .section-title::after { clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%); box-shadow: inset 0 0 0 10px rgba(139, 69, 19, 0.20); }
+        #gallery .section-title::after { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); border: none; background: rgba(30, 58, 95, 0.25); box-shadow: inset 0 0 0 8px rgba(30, 58, 95, 0.15); }
+        #gallery.visible .section-title::after { clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%); box-shadow: inset 0 0 0 10px rgba(30, 58, 95, 0.20); }
 
         /* interlocking circles */
-        #travel .section-title::after { border-radius: 50%; opacity: 0.3; box-shadow: 20px 0 0 -5px rgba(139, 69, 19, 0.20), -20px 0 0 -5px rgba(139, 69, 19, 0.20); }
-        #travel.visible .section-title::after { box-shadow: 15px 0 0 -5px rgba(139, 69, 19, 0.25), -15px 0 0 -5px rgba(139, 69, 19, 0.25), 0 15px 0 -5px rgba(139, 69, 19, 0.20); }
+        #travel .section-title::after { border-radius: 50%; opacity: 0.3; box-shadow: 20px 0 0 -5px rgba(30, 58, 95, 0.20), -20px 0 0 -5px rgba(30, 58, 95, 0.20); }
+        #travel.visible .section-title::after { box-shadow: 15px 0 0 -5px rgba(30, 58, 95, 0.25), -15px 0 0 -5px rgba(30, 58, 95, 0.25), 0 15px 0 -5px rgba(30, 58, 95, 0.20); }
 
         /* triangle */
-        #contact .section-title::after { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); border: none; background: rgba(139, 69, 19, 0.25); box-shadow: inset 0 -15px 0 0 rgba(139, 69, 19, 0.15); }
-        #contact.visible .section-title::after { transform: translateY(-50%) rotate(180deg); box-shadow: inset 0 -20px 0 0 rgba(139, 69, 19, 0.20); }
+        #contact .section-title::after { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); border: none; background: rgba(30, 58, 95, 0.25); box-shadow: inset 0 -15px 0 0 rgba(30, 58, 95, 0.15); }
+        #contact.visible .section-title::after { transform: translateY(-50%) rotate(180deg); box-shadow: inset 0 -20px 0 0 rgba(30, 58, 95, 0.20); }
 
         .news-header .section-title { margin-bottom: 0; }
         .news-header .section-title::after { display: none; }
@@ -549,7 +549,7 @@
         }
 
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
             line-height: 1;
@@ -559,7 +559,11 @@
         .stat-label {
             color: var(--text-secondary);
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-card {
+            padding: 0.6rem 1rem;
         }
 
         /* Publications */
@@ -1331,10 +1335,19 @@
         // ---- Helpers ----
         const renderMarkdownLinks = (text) => {
             if (!text) return '';
-            return String(text).replace(
-                /\[([^\]]+)\]\(([^)]+)\)/g,
-                '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-            );
+            return String(text)
+                // [[text]](url) — common in news YAML; render as [<a>text</a>] with brackets visible
+                .replace(
+                    /\[\[([^\]]+)\]\]\(([^)]+)\)/g,
+                    '[<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>]'
+                )
+                // [text](url) — standard markdown link
+                .replace(
+                    /\[([^\]]+)\]\(([^)]+)\)/g,
+                    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+                )
+                // *emphasis* — light italic, used in some news items
+                .replace(/\*([^*]+)\*/g, '<em>$1</em>');
         };
 
         const useInView = (threshold = 0.1) => {
@@ -1639,6 +1652,7 @@
             const [ref, visible] = useInView();
             const [filter, setFilter] = useState('All');
             const scrollRef = useRef(null);
+            const autoRef = useRef(null);
 
             const allTags = ['All', ...Array.from(new Set(projectsData.flatMap(p => p.tags || [])))];
             const filtered = filter === 'All' ? projectsData : projectsData.filter(p => (p.tags || []).includes(filter));
@@ -1648,6 +1662,30 @@
                     scrollRef.current.scrollBy({ left: dir * 340, behavior: 'smooth' });
                 }
             };
+
+            const stopAuto = () => {
+                if (autoRef.current) { clearInterval(autoRef.current); autoRef.current = null; }
+            };
+
+            const startAuto = () => {
+                stopAuto();
+                autoRef.current = setInterval(() => {
+                    const el = scrollRef.current;
+                    if (!el) return;
+                    const { scrollLeft, scrollWidth, clientWidth } = el;
+                    if (scrollLeft >= scrollWidth - clientWidth - 10) {
+                        el.scrollLeft = 0;
+                    } else {
+                        el.scrollLeft += 1;
+                    }
+                }, 30);
+            };
+
+            // Auto-scroll when section is in view; pause when out of view
+            useEffect(() => {
+                if (visible) startAuto(); else stopAuto();
+                return stopAuto;
+            }, [visible, filter]);
 
             return (
                 <section id="projects" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
@@ -1664,14 +1702,14 @@
                                 ))}
                             </div>
                         )}
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative' }} onMouseEnter={stopAuto} onMouseLeave={startAuto}>
                             <button
-                                onClick={() => scrollBy(-1)}
+                                onClick={() => { stopAuto(); scrollBy(-1); }}
                                 aria-label="Scroll left"
                                 style={{ position: 'absolute', left: '-20px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: 40, height: 40, borderRadius: '50%', background: 'var(--bg-secondary)', border: '2px solid var(--accent)', color: 'var(--accent)', fontSize: 20, cursor: 'pointer', boxShadow: '0 4px 12px var(--shadow)' }}
                             >←</button>
                             <button
-                                onClick={() => scrollBy(1)}
+                                onClick={() => { stopAuto(); scrollBy(1); }}
                                 aria-label="Scroll right"
                                 style={{ position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: 40, height: 40, borderRadius: '50%', background: 'var(--bg-secondary)', border: '2px solid var(--accent)', color: 'var(--accent)', fontSize: 20, cursor: 'pointer', boxShadow: '0 4px 12px var(--shadow)' }}
                             >→</button>

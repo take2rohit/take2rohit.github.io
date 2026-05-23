@@ -1,54 +1,80 @@
-################### Coferences and Journals ###################
+################### Conferences and Journals ###################
+# Optional fields (used by the new portfolio layout):
+#   image    - thumbnail shown on the left of the card (180x180); falls back to a
+#              placeholder picsum image seeded by the paper title if missing
+#   abstract - one-line TL;DR shown in a tinted box at the bottom of the card
 
 - paper: Prithvi WxC - Foundation model for weather and climate
-  author: J Schmude, S Roy,...,Rohit Lal,..., 
+  author: J Schmude, S Roy,...,Rohit Lal,...,
   pub: International Journal of Computer Vision (IJCV)
   type: arXiv preprint
-  paper_link: https://arxiv.org/abs/2409.13598 # Add paper link here if available
-  project_page:  # Add project page link here if available
-  code_link: https://github.com/NASA-IMPACT/Prithvi-WxC  # Add code link here if available
-  bibtex:  # Add bibtex here if available
-  video:  # Add video link here if available
-
+  paper_link: https://arxiv.org/abs/2409.13598
+  project_page:
+  code_link: https://github.com/NASA-IMPACT/Prithvi-WxC
+  bibtex:
+  video:
+  image: img/portfolio/word_emb.webp
+  abstract: >
+    A 2.3B-parameter foundation model for atmospheric science trained on MERRA-2
+    reanalysis data — generalizes across forecasting, downscaling, and gravity-wave
+    parameterization tasks.
 
 - paper: STRIDE - Single-Video Based Temporally Continuous Occlusion-Robust 3D Pose Estimation
   author: Rohit Lal, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, Hannah D. Cruz
-  pub: Winter Conference on Applications of Computer Vision (WACV), 2025 
+  pub: Winter Conference on Applications of Computer Vision (WACV), 2025
   type: Conference
-  project_page: https://sites.google.com/view/sample-adv-trustworthy/
-  paper_link:  # Add paper link here if available
-  code_link: https://github.com/take2rohit/STRIDE # Add code link here if available
-  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:1qHf02jQ-hMJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyO5kY:AFWwaeYAAAAAZ_6I_kZCW4yLGm_EZsKjjUP3tjs&scisig=AFWwaeYAAAAAZ_6I_jEIQlNnJmF1OhDbt01gbuM&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1 # Add bibtex here if available
-  video:  # Add video link here if available
+  project_page: https://sites.google.com/ucr.edu/stride/home
+  paper_link:
+  code_link: https://github.com/take2rohit/STRIDE
+  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:1qHf02jQ-hMJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyO5kY:AFWwaeYAAAAAZ_6I_kZCW4yLGm_EZsKjjUP3tjs&scisig=AFWwaeYAAAAAZ_6I_jEIQlNnJmF1OhDbt01gbuM&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+  video:
+  image: img/portfolio/person.webp
+  abstract: >
+    STRIDE recovers temporally continuous 3D human pose from a single occluded
+    video by jointly fitting an SMPL body model and a per-instance optical-flow
+    prior — robust to heavy occlusions on the IARPA BRIAR benchmark.
 
 - paper: Prior-guided source-free domain adaptation for human pose estimation
   author: DS Raychaudhuri, CK Ta, A Dutta, Rohit Lal, AK Roy-Chowdhury
-  pub: International Conference on Computer Vision (ICCV), 2023 
+  pub: International Conference on Computer Vision (ICCV), 2023
   type: Conference
   project_page:
-  paper_link: https://openaccess.thecvf.com/content/ICCV2023/papers/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.pdf # Add paper link here if available
-  code_link: https://github.com/driptaRC/POST # Add code link here if available
-  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:qdXH3DQ1PKYJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyP99A:AFWwaeYAAAAAZ_6J79BRwy29ev7kCvjsXVOe0cM&scisig=AFWwaeYAAAAAZ_6J7xnaTNV67zd1CWpgTLzHo7Y&scisf=4&ct=citation&cd=-1&hl=en # Add bibtex here if available
-  video:  # Add video link here if available
-
+  paper_link: https://openaccess.thecvf.com/content/ICCV2023/papers/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.pdf
+  code_link: https://github.com/driptaRC/POST
+  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:qdXH3DQ1PKYJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyP99A:AFWwaeYAAAAAZ_6J79BRwy29ev7kCvjsXVOe0cM&scisig=AFWwaeYAAAAAZ_6J7xnaTNV67zd1CWpgTLzHo7Y&scisf=4&ct=citation&cd=-1&hl=en
+  video:
+  image: img/portfolio/balance.webp
+  abstract: >
+    POST adapts a 2D-pose network to new domains without access to source data,
+    using a learned anatomical prior as a self-supervisory signal during target
+    fine-tuning.
 
 - paper: CoNMix for Source-free Single and Multi-target Domain Adaptation
   author: Vikash Kumar*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
   pub: Winter Conference on Applications of Computer Vision (WACV), 2023
   type: Conference
   project_page: https://sites.google.com/view/conmix-vcl
-  paper_link:  # Add paper link here if available
-  code_link:  # Add code link here if available
-  bibtex:  # Add bibtex here if available
-  video:  # Add video link here if available
+  paper_link:
+  code_link:
+  bibtex:
+  video:
+  image: img/portfolio/classifier.webp
+  abstract: >
+    CoNMix combines consistency-based pseudo-labels with mixup augmentation to
+    adapt a classifier to single or multiple unseen target domains without ever
+    revisiting source data.
 
 - paper: Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems
   author: Gaurav Kumar Nayak*, Ruchit Rawal*, Rohit Lal*, Himanshu Patil, Anirban Chakraborty
   pub: HCIS, Conference on Computer Vision and Pattern Recognition (CVPR)-2022
   type: Workshop
   project_page: https://sites.google.com/view/sample-adv-trustworthy/
-  paper_link:  # Add paper link here if available
-  code_link:  # Add code link here if available
-  bibtex:  # Add bibtex here if available
-  video:  # Add video link here if available
-
+  paper_link:
+  code_link:
+  bibtex:
+  video:
+  image: img/portfolio/digit_rec.webp
+  abstract: >
+    A per-sample vulnerability score combining loss landscape, decision-boundary
+    distance, and saliency stability — gives a calibrated read on which inputs an
+    adversary is likely to flip.
