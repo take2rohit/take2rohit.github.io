@@ -1,0 +1,43 @@
+# Awards & Achievements rendered in the Netflix-style carousel on the home page.
+# Each entry should have:
+#   title       - short award/achievement name
+#   description - one-sentence context (shown on hover overlay)
+#   date        - human-friendly date string
+#   icon        - emoji shown as the badge in the top-right of the card
+#   image       - relative path to a representative image (under img/)
+
+- title: NASA Group Achievement Award
+  description: Honored with NASA's Group Achievement Award for pioneering work on AI Foundation Models at NASA Marshall Space Flight Center.
+  date: January 2026
+  icon: 🏆
+  image: img/portfolio/person.webp
+
+- title: Research Impact Award
+  description: Surya Foundation Model Team recognized with Research Impact Award at the UAH Sapphire Excellence Awards Gala.
+  date: April 2026
+  icon: 🌟
+  image: img/portfolio/word_emb.webp
+
+- title: Outstanding Reviewer - ICCV'25
+  description: Recognized as Outstanding Reviewer at the International Conference on Computer Vision for exceptional peer review contributions.
+  date: October 2025
+  icon: 📝
+  image: img/portfolio/classifier.webp
+
+- title: ICML Spotlight Paper
+  description: Layer-wise Alignment paper accepted as SPOTLIGHT presentation at ICML 2025, ranking in the top 2.6% of all submissions.
+  date: July 2025
+  icon: ✨
+  image: img/portfolio/digit_rec.webp
+
+- title: Smart India Hackathon Winner
+  description: First position at Smart India Hackathon 2020 conducted by MHRD, winning cash prize of ₹1,00,000.
+  date: August 2020
+  icon: 💡
+  image: img/portfolio/number.webp
+
+- title: TechnoSeason First Prize
+  description: Awarded first prize at TechnoSeason 2017 for the harmonic motion analyzer project using computer vision and MATLAB.
+  date: '2017'
+  icon: 🎯
+  image: img/portfolio/shm.webp

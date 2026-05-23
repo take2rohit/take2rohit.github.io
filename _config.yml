@@ -5,12 +5,14 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Rohit Lal | AI and CV
-email: your-email@domain.com
-description: > 
-  Write something here!
+title: Rohit Lal | AI Researcher
+email: take2rohit@gmail.com
+description: >
+  Rohit Lal — Research Scientist at NASA IMPACT. AI foundation models,
+  computer vision, generative AI, and domain adaptation. Publications at
+  ICML, ICCV, CVPR, WACV.
 baseurl: ""
-url: ""
+url: "https://rohitlal.com"
 
 include:
   - .htaccess

@@ -1,9 +1,9 @@
 ---
 title: "Home"
-layout: aboutlay
+layout: portfolio
 sitemap: false
 permalink: /
-redirect_from: 
+redirect_from:
   - /home/
   - /about/
 ---

@@ -14,6 +14,23 @@ Work_Location : >
  Huntsville, AL-35805 <br> 
  United States of America
 # Resume_Link : Add link and uncomment this line to show Resume
+
+# Short bio shown under the hero name (1-3 sentences). Plain text only.
+Bio_Short : >
+ Research Scientist at NASA IMPACT specializing in AI foundation models and
+ computer vision. Published researcher with work at top-tier conferences including
+ ICML, ICCV, and CVPR. Passionate about advancing machine learning methodologies
+ for real-world scientific applications.
+
+# Stats strip rendered above the Publications cards. Edit freely.
+Stats:
+  - number: '150+'
+    label: Citations
+  - number: '8'
+    label: h-index
+  - number: ICML, ICCV, CVPR, NeurIPS, WACV
+    label: Top Conferences
+
 About : >
  I am currently a Computer Scientist at [NASA IMPACT](https://www.earthdata.nasa.gov/esds/impact), where my 
  research focuses on building and scaling AI Foundation Models for Science. I completed my MS by Research 

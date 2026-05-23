@@ -1,35 +1,46 @@
-- image: img/software/py.png
-  name: Python
+categories:
+  - title: ML & AI Frameworks
+    color: '#0d9488'
+    skills:
+      - Python
+      - PyTorch
+      - TensorFlow
+      - HuggingFace
+      - OpenCV
+      - scikit-learn
+      - Pandas
 
-- image: img/software/pytorch.png
-  name: PyTorch
+  - title: Distributed Training
+    color: '#8b5cf6'
+    skills:
+      - FSDP
+      - DDP
+      - ZeRO
+      - Pipeline Parallel
+      - LoRA
+      - RLHF
+      - FlashAttention
+      - Megatron-LM
 
-- image: img/software/tf.png
-  name: TensorFlow
+  - title: HPC & Infrastructure
+    color: '#f59e0b'
+    skills:
+      - SLURM
+      - PBS
+      - NASA ASC
+      - Nvidia DGX
+      - Jülich SC
+      - AWS
+      - Docker
 
-- image: img/software/cv.png
-  name: OpenCV
-
-- image: img/software/c.png
-  name: C/C++
-
-- image: img/software/matlab.png
-  name: MATLAB
-
-- image: img/software/ps.png
-  name: Photoshop
-
-- image: img/software/ai.png
-  name: Illustrator
-
-- image: img/software/git.png
-  name: GitHub
-
-- image: img/software/tex.png
-  name: LaTeX
-
-- image: img/software/gcp.png
-  name: GCP
-
-- image: img/software/ard.png
-  name: Arduino
+  - title: Development Tools
+    color: '#3b82f6'
+    skills:
+      - Git
+      - Wandb
+      - Matplotlib
+      - Jupyter
+      - VS Code
+      - Linux
+      - LaTeX
+      - MATLAB
