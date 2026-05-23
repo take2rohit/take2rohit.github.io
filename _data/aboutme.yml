@@ -23,13 +23,16 @@ Bio_Short : >
  for real-world scientific applications.
 
 # Stats strip rendered above the Publications cards. Edit freely.
+# Numbers below are from Google Scholar (q2nc3QoAAAAJ) — refresh periodically.
 Stats:
-  - number: '150+'
+  - number: '269'
     label: Citations
   - number: '8'
     label: h-index
-  - number: ICML, ICCV, CVPR, NeurIPS, WACV
-    label: Top Conferences
+  - number: '8'
+    label: i10-index
+  - number: ICML, ICCV, CVPR, WACV, IJCV
+    label: Top Venues
 
 About : >
  I am currently a Computer Scientist at [NASA IMPACT](https://www.earthdata.nasa.gov/esds/impact), where my 
