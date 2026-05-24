@@ -34,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1 # follow latest minor — older pin didn't know about Ruby 3.3 stable
+        uses: ruby/setup-ruby@v1 # follow latest minor - older pin didn't know about Ruby 3.3 stable
         with:
           ruby-version: '3.2' # sass-embedded >= 1.79 needs >= 3.2 (was 3.1)
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically

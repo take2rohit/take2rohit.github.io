@@ -4,7 +4,7 @@
 #   abstract - one-line TL;DR rendered in a tinted box at the bottom of the card
 
 - paper: "Surya: A Foundation Model for Heliophysics"
-  author: "Sujit Roy, Johannes Schmude, **Rohit Lal**, Vishal Gaur, Marcus Freitag, Julian Kuehnert, Theodore van Kessel, Dinesha V. Hegde, Andrés Muñoz-Jaramillo, Johannes Jakubik, Etienne Vos, Kshitiz Mandal, et al."
+  author: "Sujit Roy, Johannes Schmude, **Rohit Lal**, Vishal Gaur, Marcus Freitag, Julian Kuehnert, ... , Juan Bernabe-Moreno, Rahul Ramachandran ."
   pub: "arXiv preprint (NASA × IBM open release), 2025"
   type: "Preprint"
   paper_link: https://arxiv.org/abs/2508.14112
@@ -12,15 +12,15 @@
   code_link: https://github.com/NASA-IMPACT/Surya
   bibtex:
   video: https://www.youtube.com/watch?v=KWMoF97C1Ds
-  image: img/papers/surya.png
+  image: img/papers/surya.gif
   abstract: >
     A 366M-parameter open foundation model trained on 9 years of NASA's Solar
-    Dynamics Observatory data — learns general-purpose solar representations
+    Dynamics Observatory data - learns general-purpose solar representations
     that transfer to flare forecasting, solar-wind prediction, and active-region
     segmentation.
 
 - paper: "Prithvi WxC: Foundation Model for Weather and Climate"
-  author: "Johannes Schmude, Sujit Roy, Will Trojak, Johannes Jakubik, ..., **Rohit Lal**, ..., Rahul Ramachandran"
+  author: "Johannes Schmude, Sujit Roy, Will Trojak, Johannes Jakubik, ..., **Rohit Lal**, ... , Manil Maskey,  Tsengdar J Lee, Rahul Ramachandran"
   pub: "arXiv preprint (NASA × IBM open release), 2024"
   type: "Preprint"
   paper_link: https://arxiv.org/abs/2409.13598
@@ -28,30 +28,30 @@
   code_link: https://github.com/NASA-IMPACT/Prithvi-WxC
   bibtex:
   video: https://www.youtube.com/watch?v=N6d0CqTjBbo
-  image: img/papers/prithvi.png
+  image: img/papers/prithvi_downstream_gwflux.gif
   abstract: >
     A 2.3B-parameter atmospheric foundation model trained on MERRA-2 reanalysis
     that generalizes across forecasting, downscaling, gravity-wave
-    parameterization, and hurricane-track prediction — released openly on
+    parameterization, and hurricane-track prediction - released openly on
     Hugging Face.
 
 - paper: "Layer-wise Alignment: Examining Safety Alignment Across Image Encoder Layers in Vision Language Models"
-  author: "Saketh Bachu, Erfan Shayegani, **Rohit Lal**, Trishna Chakraborty, Arindam Dutta, Chengyu Song, Yue Dong, Nael Abu-Ghazaleh, Amit K. Roy-Chowdhury"
-  pub: "ICML 2025 (Spotlight — top 2.6%)"
+  author: "Saketh Bachu, Erfan Shayegani, **Rohit Lal**, Trishna Chakraborty, Arindam Dutta, ... Nael Abu-Ghazaleh, Amit K. Roy-Chowdhury"
+  pub: "ICML 2025 (Spotlight - top 2.6%)"
   type: "Conference"
   paper_link: https://arxiv.org/abs/2411.04291
   project_page:
   code_link:
   bibtex:
   video:
-  image: img/papers/voccl3d.png
+  image: img/papers/layer_wise.png
   abstract: >
     Shows that harmful information in vision-language models is unevenly
-    distributed across image-encoder layers — exposing a layer-dependent
+    distributed across image-encoder layers - exposing a layer-dependent
     safety-alignment weakness exploitable by jailbreak attacks.
 
 - paper: "STRIDE: Single-Video based Temporally Continuous Occlusion-Robust 3D Pose Estimation"
-  author: "**Rohit Lal**, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, Dripta S. Raychaudhuri, Hannah Dela Cruz, M. Salman Asif, Amit K. Roy-Chowdhury"
+  author: "**Rohit Lal**, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, D. S. Raychaudhuri, Hannah D. Cruz, M. Salman Asif, Amit K. Roy-Chowdhury"
   pub: "WACV 2025 (Oral)"
   type: "Conference"
   paper_link: https://arxiv.org/abs/2312.16221
@@ -59,10 +59,10 @@
   code_link: https://github.com/take2rohit/STRIDE
   bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:1qHf02jQ-hMJ:scholar.google.com/&output=citation&scisdr=ClF_9LdCEIet2UyO5kY:AFWwaeYAAAAAZ_6I_kZCW4yLGm_EZsKjjUP3tjs&scisig=AFWwaeYAAAAAZ_6I_jEIQlNnJmF1OhDbt01gbuM&scisf=4&ct=citation&cd=-1&hl=en
   video:
-  image: img/portfolio/person.webp
+  image: img/papers/stride.gif
   abstract: >
     Test-time optimization that fits a per-instance optical-flow prior and an
-    SMPL body model to a single occluded in-the-wild video — temporally smooth,
+    SMPL body model to a single occluded in-the-wild video - temporally smooth,
     occlusion-robust 3D human pose on the IARPA BRIAR benchmark.
 
 - paper: "VOccl3D: A Video Benchmark Dataset for 3D Human Pose and Shape Estimation under Real Occlusions"
@@ -77,109 +77,109 @@
   image: img/papers/voccl3d.png
   abstract: >
     250K+ frames of realistic (not patch-overlay) occlusions with body shape,
-    pose, segmentation, and silhouette ground truth — used to fine-tune
+    pose, segmentation, and silhouette ground truth - used to fine-tune
     CLIFF/BEDLAM-CLIFF for substantial gains under heavy occlusion.
 
-- paper: "POISE: Pose Guided Human Silhouette Extraction under Occlusions"
-  author: "Arindam Dutta, **Rohit Lal**, Dripta S. Raychaudhuri, Calvin-Khang Ta, Amit K. Roy-Chowdhury"
-  pub: "WACV 2024"
-  type: "Conference"
-  paper_link: https://arxiv.org/abs/2311.05077
-  project_page: https://openaccess.thecvf.com/content/WACV2024/html/Dutta_POISE_Pose_Guided_Human_Silhouette_Extraction_Under_Occlusions_WACV_2024_paper.html
-  code_link: https://github.com/take2rohit/poise
-  bibtex:
-  video:
-  image: img/portfolio/balance.webp
-  abstract: >
-    A self-supervised fusion framework that combines an initial silhouette mask
-    with predicted 2D-pose joints to recover complete human silhouettes when
-    the subject is heavily occluded.
+# - paper: "POISE: Pose Guided Human Silhouette Extraction under Occlusions"
+#   author: "Arindam Dutta, **Rohit Lal**, Dripta S. Raychaudhuri, Calvin-Khang Ta, Amit K. Roy-Chowdhury"
+#   pub: "WACV 2024"
+#   type: "Conference"
+#   paper_link: https://arxiv.org/abs/2311.05077
+#   project_page: https://openaccess.thecvf.com/content/WACV2024/html/Dutta_POISE_Pose_Guided_Human_Silhouette_Extraction_Under_Occlusions_WACV_2024_paper.html
+#   code_link: https://github.com/take2rohit/poise
+#   bibtex:
+#   video:
+#   image: img/portfolio/balance.webp
+#   abstract: >
+#     A self-supervised fusion framework that combines an initial silhouette mask
+#     with predicted 2D-pose joints to recover complete human silhouettes when
+#     the subject is heavily occluded.
 
-- paper: "Prior-guided Source-free Domain Adaptation for Human Pose Estimation"
-  author: "Dripta S. Raychaudhuri, Calvin-Khang Ta, Arindam Dutta, **Rohit Lal**, Amit K. Roy-Chowdhury"
-  pub: "ICCV 2023"
-  type: "Conference"
-  paper_link: https://openaccess.thecvf.com/content/ICCV2023/papers/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.pdf
-  project_page: https://openaccess.thecvf.com/content/ICCV2023/html/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.html
-  code_link: https://github.com/driptaRC/POST
-  bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:qdXH3DQ1PKYJ:scholar.google.com/&output=citation
-  video:
-  image: img/portfolio/classifier.webp
-  abstract: >
-    POST adapts a 2D-pose network to new domains without revisiting source
-    data, using a learned anatomical prior as a self-supervisory signal during
-    target-only fine-tuning.
+# - paper: "Prior-guided Source-free Domain Adaptation for Human Pose Estimation"
+#   author: "Dripta S. Raychaudhuri, Calvin-Khang Ta, Arindam Dutta, **Rohit Lal**, Amit K. Roy-Chowdhury"
+#   pub: "ICCV 2023"
+#   type: "Conference"
+#   paper_link: https://openaccess.thecvf.com/content/ICCV2023/papers/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.pdf
+#   project_page: https://openaccess.thecvf.com/content/ICCV2023/html/Raychaudhuri_Prior-guided_Source-free_Domain_Adaptation_for_Human_Pose_Estimation_ICCV_2023_paper.html
+#   code_link: https://github.com/driptaRC/POST
+#   bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:qdXH3DQ1PKYJ:scholar.google.com/&output=citation
+#   video:
+#   image: img/portfolio/classifier.webp
+#   abstract: >
+#     POST adapts a 2D-pose network to new domains without revisiting source
+#     data, using a learned anatomical prior as a self-supervisory signal during
+#     target-only fine-tuning.
 
-- paper: "Improving Domain Adaptation Through Class Aware Frequency Transformation"
-  author: "Vikash Kumar, Himanshu Patil, **Rohit Lal**, Anirban Chakraborty"
-  pub: "International Journal of Computer Vision (IJCV), 131(11), 2023"
-  type: "Journal"
-  paper_link: https://arxiv.org/abs/2407.19551
-  project_page: https://vclab-dev.github.io/CAFT/
-  code_link: https://github.com/vclab-dev/CAFT
-  bibtex:
-  video:
-  image: img/portfolio/word_emb.webp
-  abstract: >
-    Class-consistent low-frequency Fourier swapping (guided by pseudo-labels)
-    that plugs into existing unsupervised domain adaptation methods and
-    consistently lifts target-domain accuracy.
+# - paper: "Improving Domain Adaptation Through Class Aware Frequency Transformation"
+#   author: "Vikash Kumar, Himanshu Patil, **Rohit Lal**, Anirban Chakraborty"
+#   pub: "International Journal of Computer Vision (IJCV), 131(11), 2023"
+#   type: "Journal"
+#   paper_link: https://arxiv.org/abs/2407.19551
+#   project_page: https://vclab-dev.github.io/CAFT/
+#   code_link: https://github.com/vclab-dev/CAFT
+#   bibtex:
+#   video:
+#   image: img/portfolio/word_emb.webp
+#   abstract: >
+#     Class-consistent low-frequency Fourier swapping (guided by pseudo-labels)
+#     that plugs into existing unsupervised domain adaptation methods and
+#     consistently lifts target-domain accuracy.
 
-- paper: "CoNMix for Source-free Single and Multi-target Domain Adaptation"
-  author: "Vikash Kumar*, **Rohit Lal***, Himanshu Patil, Anirban Chakraborty"
-  pub: "WACV 2023"
-  type: "Conference"
-  paper_link: https://arxiv.org/abs/2211.03876
-  project_page: https://sites.google.com/view/conmix-vcl
-  code_link: https://github.com/vcl-iisc/CoNMix
-  bibtex:
-  video:
-  image: img/papers/conmix.jpg
-  abstract: >
-    Source-free single- and multi-target domain adaptation via consistency
-    regularization + nuclear-norm maximization + MixUp knowledge distillation,
-    with no access to source data at adaptation time.
+# - paper: "CoNMix for Source-free Single and Multi-target Domain Adaptation"
+#   author: "Vikash Kumar*, **Rohit Lal***, Himanshu Patil, Anirban Chakraborty"
+#   pub: "WACV 2023"
+#   type: "Conference"
+#   paper_link: https://arxiv.org/abs/2211.03876
+#   project_page: https://sites.google.com/view/conmix-vcl
+#   code_link: https://github.com/vcl-iisc/CoNMix
+#   bibtex:
+#   video:
+#   image: img/papers/conmix.jpg
+#   abstract: >
+#     Source-free single- and multi-target domain adaptation via consistency
+#     regularization + nuclear-norm maximization + MixUp knowledge distillation,
+#     with no access to source data at adaptation time.
 
-- paper: "Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems"
-  author: "Gaurav Kumar Nayak*, Ruchit Rawal*, **Rohit Lal***, Himanshu Patil, Anirban Chakraborty"
-  pub: "CVPR 2022 Workshop (HCIS)"
-  type: "Workshop"
-  paper_link: https://arxiv.org/abs/2205.02604
-  project_page: https://sites.google.com/view/sample-adv-trustworthy/
-  code_link:
-  bibtex:
-  video:
-  image: img/portfolio/digit_rec.webp
-  abstract: >
-    Per-sample adversarial vulnerability score combining decision-boundary
-    distance with reliance on high-frequency features — a calibrated read on
-    which inputs an adversary is likely to flip.
+# - paper: "Holistic Approach to Measure Sample-level Adversarial Vulnerability and its Utility in Building Trustworthy Systems"
+#   author: "Gaurav Kumar Nayak*, Ruchit Rawal*, **Rohit Lal***, Himanshu Patil, Anirban Chakraborty"
+#   pub: "CVPR 2022 Workshop (HCIS)"
+#   type: "Workshop"
+#   paper_link: https://arxiv.org/abs/2205.02604
+#   project_page: https://sites.google.com/view/sample-adv-trustworthy/
+#   code_link:
+#   bibtex:
+#   video:
+#   image: img/portfolio/digit_rec.webp
+#   abstract: >
+#     Per-sample adversarial vulnerability score combining decision-boundary
+#     distance with reliance on high-frequency features - a calibrated read on
+#     which inputs an adversary is likely to flip.
 
-- paper: "Open-Set Multi-Source Multi-Target Domain Adaptation"
-  author: "**Rohit Lal**, Arihant Gaur, Aadhithya Iyer, Muhammed Abdullah Shaikh, Ritik Agrawal"
-  pub: "NeurIPS 2021 Workshop on Pre-registration"
-  type: "Workshop"
-  paper_link: https://arxiv.org/abs/2302.00995
-  project_page: https://ivlabs.github.io/os-nsmt/
-  code_link:
-  bibtex:
-  video:
-  image: img/portfolio/number.webp
-  abstract: >
-    First-author study extending domain adaptation to settings with multiple
-    labelled sources, multiple unlabelled targets, and open-set (unknown-class)
-    target samples.
+# - paper: "Open-Set Multi-Source Multi-Target Domain Adaptation"
+#   author: "**Rohit Lal**, Arihant Gaur, Aadhithya Iyer, Muhammed Abdullah Shaikh, Ritik Agrawal"
+#   pub: "NeurIPS 2021 Workshop on Pre-registration"
+#   type: "Workshop"
+#   paper_link: https://arxiv.org/abs/2302.00995
+#   project_page: https://ivlabs.github.io/os-nsmt/
+#   code_link:
+#   bibtex:
+#   video:
+#   image: img/portfolio/number.webp
+#   abstract: >
+#     First-author study extending domain adaptation to settings with multiple
+#     labelled sources, multiple unlabelled targets, and open-set (unknown-class)
+#     target samples.
 
-- paper: "CAFT: Class Aware Frequency Transform for Reducing Domain Gap"
-  author: "Vikash Kumar, Sarthak Srivastava, **Rohit Lal**, Anirban Chakraborty"
-  pub: "ICCV 2021 Workshop (TradiCV)"
-  type: "Workshop"
-  paper_link: https://openaccess.thecvf.com/content/ICCV2021W/TradiCV/papers/Kumar_CAFT_Class_Aware_Frequency_Transform_for_Reducing_Domain_Gap_ICCVW_2021_paper.pdf
-  project_page: https://vclab-dev.github.io/CAFT/
-  code_link: https://github.com/vclab-dev/CAFT
-  bibtex:
-  video:
-  image: img/portfolio/shm.webp
-  abstract: >
-    Workshop precursor to the IJCV paper above — introduces class-aware
-    frequency-domain alignment for unsupervised domain adaptation.
+# - paper: "CAFT: Class Aware Frequency Transform for Reducing Domain Gap"
+#   author: "Vikash Kumar, Sarthak Srivastava, **Rohit Lal**, Anirban Chakraborty"
+#   pub: "ICCV 2021 Workshop (TradiCV)"
+#   type: "Workshop"
+#   paper_link: https://openaccess.thecvf.com/content/ICCV2021W/TradiCV/papers/Kumar_CAFT_Class_Aware_Frequency_Transform_for_Reducing_Domain_Gap_ICCVW_2021_paper.pdf
+#   project_page: https://vclab-dev.github.io/CAFT/
+#   code_link: https://github.com/vclab-dev/CAFT
+#   bibtex:
+#   video:
+#   image: img/portfolio/shm.webp
+#   abstract: >
+#     Workshop precursor to the IJCV paper above, introduces class-aware
+#     frequency-domain alignment for unsupervised domain adaptation.

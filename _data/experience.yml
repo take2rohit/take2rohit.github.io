@@ -1,23 +1,71 @@
+- company: NASA - ODSI (Office of Data Science) / UAH
+  url: https://impact.earthdata.nasa.gov/
+  title: Computer Scientist II
+  date: May 2024 - Present
+  location: Huntsville, AL, USA
+  description: >
+    Building and scaling AI Foundation Models for Science.
+  bullets:
+    - "**Weather Foundation Model:** Contributed to training [Prithvi WxC](https://research.ibm.com/blog/foundation-model-weather-climate),
+      a 2.3B-parameter open-source weather and climate model on NASA MERRA-2 data; designed
+      fine-tuning for autoregressive rollout forecasting, downscaling, and gravity-wave
+      flux parameterization. [[NASA report]](https://science.nasa.gov/open-science/ai-model-weather-climate/)"
+    - "**Helio Foundation Model:** Built [Surya](https://arxiv.org/abs/2508.14112), the
+      first heliospheric foundation model on 300TB of Solar Dynamics Observatory data —
+      explored Swin, Hiera, MaxViT, and multi-modal architectures. Close collaboration
+      with IBM, Microsoft, and NVIDIA."
+    - "**Scaling:** Trained these foundation models across 200+ A100 GPU clusters (Jülich
+      supercomputing, DGX) with SLURM, PyTorch FSDP, Lightning, and Hugging Face
+      Accelerate."
+
+- company: University of California, Riverside
+  url: https://vcg.ece.ucr.edu/
+  title: Graduate Student Researcher, Visual Computing Group
+  date: Jan 2023 - Dec 2023
+  location: Riverside, CA, USA
+  description: >
+    MS by Research with [Prof. Amit K. Roy-Chowdhury](https://vcg.ece.ucr.edu/amit).
+  bullets:
+    - "**Pose Estimation:** State-of-the-art results on occluded human pose estimation for
+      the [STRIDE](https://sites.google.com/ucr.edu/stride/home) project, supporting
+      downstream motion correction, prediction, and infilling."
+    - "**Biometric Recognition:** Built unsupervised pipelines for 3D/2D human pose,
+      body-part segmentation, and silhouette extraction under occlusion for the
+      [IARPA BRIAR](https://www.iarpa.gov/research-programs/briar) program — joint work
+      with USC, Northwestern, and EPFL."
+    - "**Trustworthy AI:** TA for EE260B covering reinforcement learning,
+      out-of-distribution generalization, explainability, uncertainty estimation, safety,
+      and robustness."
+
 - company: Indian Institute of Science (IISc), Bangalore
   url: https://iisc.ac.in/
-  title: Project Assistant, Visual Computing Lab
-  date: Jul 2021 - Current
+  title: Research Assistant, Visual Computing Lab
+  date: Jul 2021 - Jul 2022
   location: Bengaluru, India
   description: >
-    Currently working at [Visual Computing Lab, Department of Computational and Data Sciences (CDS), IISc](http://visual-computing.in/home/) 
-    and conducting research in unsupervised learning methodologies and its applications in domain adaptation (DA) 
-    under the guidance of [Dr. Anirban Chakraborty](https://scholar.google.co.in/citations?user=NtAsZK-2HjcC&hl=en).
+    At the [Visual Computing Lab](https://visual-computing.in/) with
+    [Dr. Anirban Chakraborty](https://scholar.google.co.in/citations?user=NtAsZK-2HjcC&hl=en).
+  bullets:
+    - "**Source-free Domain Adaptation:** Proposed [CoNMix](https://sites.google.com/view/conmix-vcl),
+      achieving state-of-the-art source-free single- and multi-target DA across standard
+      benchmarks."
+    - "**Domain Gap Reduction:** Introduced an unsupervised
+      [domain-gap reduction](https://link.springer.com/article/10.1007/s11263-023-01810-0)
+      method that mitigates pseudo-label noise. *(IJCV)*"
+    - "**Adversarial Vulnerability:** Developed a holistic
+      [adversarial-vulnerability score](https://sites.google.com/view/sample-adv-trustworthy/)
+      enabling data-efficient knowledge distillation. *(CVPR-W)*"
 
-- company: Defence Research Development Organisation (DRDO)
-  url: https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair
-  title: Computer Vision Research Intern
-  date: Jul 2020 - Sept 2020
-  location: Bengaluru, India
-  description: >
-    Collaborated with senior scientist at Centre for Artificial Intelligence & Robotics 
-    [CAIR Lab, DRDO](https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair) 
-    on building object detection and tracking pipeline using drone cameras which is at an altitude of 100 meters 
-    above ground. Also worked on drone imaging for pixel-wise pose-estimation and GPS coordinates extraction.
+# - company: Defence Research Development Organisation (DRDO)
+#   url: https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair
+#   title: Computer Vision Research Intern
+#   date: Jul 2020 - Sept 2020
+#   location: Bengaluru, India
+#   description: >
+#     Collaborated with senior scientist at Centre for Artificial Intelligence & Robotics 
+#     [CAIR Lab, DRDO](https://drdo.gov.in/labs-establishment/about-us/centre-artificial-intelligence-robotics-cair) 
+#     on building object detection and tracking pipeline using drone cameras which is at an altitude of 100 meters 
+#     above ground. Also worked on drone imaging for pixel-wise pose-estimation and GPS coordinates extraction.
 
 - company: NUS - National University of Singapore
   url: http://www.nus.edu.sg/
@@ -43,15 +91,15 @@
       # file US patent for the product. 
       # [[certificate]](https://drive.google.com/file/d/19WJJ_82SiuNpmAw9EODa-83iPBLwNmPa/view)
 
-- company: IEEE VNIT Student Branch
-  url: https://www.ieee.org/
-  title: Chairman
-  date: Jul 2019 - Jul 2020
-  location: VNIT, Nagpur
-  description: >
-    IEEE VNIT Student Branch is a technical Society run by the students of VNIT. 
-    I head the council responsible for managing the Society and will be involved 
-    in the decision-making process of several initiatives in the tenure of the council.
+# - company: IEEE VNIT Student Branch
+#   url: https://www.ieee.org/
+#   title: Chairman
+#   date: Jul 2019 - Jul 2020
+#   location: VNIT, Nagpur
+#   description: >
+#     IEEE VNIT Student Branch is a technical Society run by the students of VNIT. 
+#     I head the council responsible for managing the Society and will be involved 
+#     in the decision-making process of several initiatives in the tenure of the council.
 
 # - company: Electronics and Communication Engg. Dept.
 #   url: http://ece.vnit.ac.in/
@@ -63,13 +111,13 @@
       # My job during my tenure was to ensure smooth functioning of technical facilities 
       # required for teaching and overall development
 
-- company: IvLabs
-  url: http://www.ivlabs.in
-  title: Core Member
-  date: May 2018 - May 2021
-  location: VNIT, Nagpur
-  description: >
-    IvLabs is the Robotics and Innovation Society run by the students of VNIT. 
-    I taught at various IEEE workshops related to image processing, MATLAB, 
-    basic electronics, CAD, etc to a strength of more than 100 students at 
-    every workshop which promoted technical culture.
+# - company: IvLabs
+#   url: http://www.ivlabs.in
+#   title: Core Member
+#   date: May 2018 - May 2021
+#   location: VNIT, Nagpur
+#   description: >
+#     IvLabs is the Robotics and Innovation Society run by the students of VNIT. 
+#     I taught at various IEEE workshops related to image processing, MATLAB, 
+#     basic electronics, CAD, etc to a strength of more than 100 students at 
+#     every workshop which promoted technical culture.

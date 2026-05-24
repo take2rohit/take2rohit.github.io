@@ -5,18 +5,22 @@
 #   date        - human-friendly date string
 #   icon        - emoji shown as the badge in the top-right of the card
 #   image       - relative path to a representative image (under img/)
+#   link        - optional URL; when set, the card becomes a clickable link
+#                 that opens in a new tab (e.g. LinkedIn post, news article)
 
 - title: NASA Group Achievement Award
   description: Honored with NASA's Group Achievement Award for pioneering work on AI Foundation Models at NASA Marshall Space Flight Center.
   date: January 2026
   icon: 🏆
-  image: img/portfolio/person.webp
+  image: img/achievements/NASA_group_achievement.jpeg
+  link: https://www.linkedin.com/feed/update/urn:li:activity:7427053282780577792/
 
 - title: Research Impact Award
   description: Surya Foundation Model Team recognized with Research Impact Award at the UAH Sapphire Excellence Awards Gala.
   date: April 2026
   icon: 🌟
-  image: img/portfolio/word_emb.webp
+  image: img/achievements/Research_impact_award.jpg
+  link: https://www.uah.edu/news/news/first-uah-sapphire-excellence-awards-gala-highlights-outstanding-alumni-partners-supporters
 
 - title: Outstanding Reviewer - ICCV'25
   description: Recognized as Outstanding Reviewer at the International Conference on Computer Vision for exceptional peer review contributions.

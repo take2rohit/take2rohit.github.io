@@ -1,6 +1,6 @@
-# Rohit Lal — AI Researcher Portfolio
+# Rohit Lal - AI Researcher Portfolio
 
-Personal portfolio at **[rohitlal.com](https://rohitlal.com/)**, built with [Jekyll](https://jekyllrb.com/) and a single-page React layout. All content is editable through YAML files under `_data/` — no coding required.
+Personal portfolio at **[rohitlal.com](https://rohitlal.com/)**, built with [Jekyll](https://jekyllrb.com/) and a single-page React layout. All content is editable through YAML files under `_data/`. No coding required.
 
 **Preview of the redesign:** https://rohitlal.com/portfolio-preview/ (this is the staging copy in [`take2rohit/portfolio-preview`](https://github.com/take2rohit/portfolio-preview); the production site at `rohitlal.com/` is unchanged).
 
@@ -77,7 +77,7 @@ Stats:
   - number: ICML, ICCV, CVPR, WACV, IJCV
     label: Top Venues
 About: >
-  Longer biography — currently not displayed but kept for reference.
+  Longer biography, currently not displayed but kept for reference.
 ```
 
 ### `news.yml`
@@ -104,7 +104,7 @@ news:
   code_link:    https://github.com/...
   bibtex:       https://scholar.googleusercontent.com/scholar.bib?...
   video:        https://youtu.be/...
-  image:        img/papers/your-teaser.png               # optional — 180×180 thumbnail
+  image:        img/papers/your-teaser.png               # optional, 180x180 thumbnail
   abstract: >
     Optional one-line TL;DR shown in a tinted box.
 ```
@@ -131,7 +131,7 @@ news:
   paper:  https://...     # optional
   video:  https://...     # optional
   github: https://...     # optional
-  tags: [Computer Vision, Robotics]   # optional — drives the filter pills
+  tags: [Computer Vision, Robotics]   # optional, drives the filter pills
 ```
 
 ### `skills.yml` (categorized for the new design)
@@ -171,11 +171,11 @@ cities:
   - name: Huntsville
     lat: 34.7304
     lng: -86.5861
-    description: NASA IMPACT — Research Scientist
+    description: NASA IMPACT, Research Scientist
     year: 2024-Present
     image: img/portfolio/...
     type: city          # 'city' (concentric-circle marker) or 'park' (triangle marker)
-    textAnchor: end     # 'start' | 'middle' | 'end' — controls label alignment
+    textAnchor: end     # 'start' | 'middle' | 'end' - controls label alignment
     offsetX: -15
     offsetY: 5
 ```
@@ -206,10 +206,10 @@ cities:
 
 ## Theme & design notes
 
-* **Palette:** cream background (`#faf8f5`) with deep-navy accent (`#1e3a5f`) — defined as CSS variables at the top of `_layouts/portfolio.html`. Edit those to retheme globally.
+* **Palette:** cream background (`#faf8f5`) with deep-navy accent (`#1e3a5f`), defined as CSS variables at the top of `_layouts/portfolio.html`. Edit those to retheme globally.
 * **Typography:** Libre Baskerville (display) + Source Sans 3 (body), loaded from Google Fonts.
 * **Animations:** scroll-triggered fade-in for each section via IntersectionObserver. Section titles get a `//` prefix and a small geometric shape on the right (different shape per section).
-* **No dark mode** — light theme only by design.
+* **No dark mode.** Light theme only by design.
 * **D3 + topojson** are loaded from CDNs at runtime; the US states GeoJSON is fetched from `cdn.jsdelivr.net/npm/us-atlas@3`. If you're offline, the travel map shows a "Loading map…" placeholder.
 
 ---
@@ -227,7 +227,7 @@ Preview/staging (`take2rohit/portfolio-preview` repo) deploys to **https://rohit
 * **`bundle install` fails with platform errors** → run `bundle lock --add-platform arm64-darwin` (or your platform) before re-running.
 * **`logger`/`csv`/`base64` not found on Ruby ≥ 4.0** → these are now explicit dependencies in the `Gemfile`; if you removed them, add them back.
 * **Port 4000 already in use** → `bundle exec jekyll serve --port 4002`.
-* **DO NOT** rename folders — Jekyll relies on `_data/`, `_layouts/`, `_includes/`, `_config.yml` being where they are.
+* **DO NOT** rename folders. Jekyll relies on `_data/`, `_layouts/`, `_includes/`, `_config.yml` being where they are.
 
 ---
 

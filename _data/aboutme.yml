@@ -17,34 +17,25 @@ Work_Location : >
 
 # Short bio shown under the hero name (1-3 sentences). Plain text only.
 Bio_Short : >
- Research Scientist at NASA IMPACT specializing in AI foundation models and
- computer vision. Published researcher with work at top-tier conferences including
- ICML, ICCV, and CVPR. Passionate about advancing machine learning methodologies
- for real-world scientific applications.
-
-# Stats strip rendered above the Publications cards. Edit freely.
-# Numbers below are from Google Scholar (q2nc3QoAAAAJ) — refresh periodically.
-Stats:
-  - number: '269'
-    label: Citations
-  - number: '8'
-    label: h-index
-  - number: '8'
-    label: i10-index
-  - number: ICML, ICCV, CVPR, WACV, IJCV
-    label: Top Venues
-
-About : >
  I am currently a Computer Scientist at [NASA IMPACT](https://www.earthdata.nasa.gov/esds/impact), where my 
  research focuses on building and scaling AI Foundation Models for Science. I completed my MS by Research 
  under the supervision of [Dr. Amit K. Roy Chowdhury](https://vcg.ece.ucr.edu/amit)  
  at University of California-Riverside, where my thesis explored 3D human pose estimation for the 
  [IARPA BRIAR](https://www.iarpa.gov/research-programs/briar) project. 
   
- Prior this, I worked at IISc Bangalore’s [Visual Computing Lab](https://visual-computing.in/), focusing on 
+ Prior this, I worked at IISc Bangalore's [Visual Computing Lab](https://visual-computing.in/), focusing on 
  Unsupervised Domain Adaptation and Adversarial Vulnerability in Computer Vision algorithms. 
    
- Outside of my research, I’m passionate about traveling, hiking, photography, and video editing—and I’m always up for a 
- game of table tennis! I enjoy connecting with new people and learning their stories, so don’t hesitate to reach out. 
+ Outside of research, I enjoy traveling, photography, and table tennis. Feel free to connect!
  
- If you’d like a copy of my CV, feel free to email me at take2rohit@gmail.com 
+ If you'd like a copy of my CV, email me  take2rohit [at] gmail.com 
+
+# Stats strip rendered above the Publications cards. Edit freely.
+# Numbers below are from Google Scholar (q2nc3QoAAAAJ); refresh periodically.
+Stats:
+  - number: '250+'
+    label: Citations
+  - number: '8'
+    label: h-index
+  - number: NeurIPS, ICML, ICCV, CVPR, WACV, IJCV
+    label: Top Venues
