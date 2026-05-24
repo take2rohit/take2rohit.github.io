@@ -2603,7 +2603,7 @@
             // Separate observer on the news-list itself. Drift is only allowed
             // while the list is almost entirely in the viewport; ratio >= 0.85
             // means the reader is genuinely parked at News.
-            const START_DELAY_MS = 800;
+            const START_DELAY_MS = 100;
             useEffect(() => {
                 const node = listRef.current;
                 if (!node) return;
