@@ -939,6 +939,7 @@
             border-radius: 0.5rem;
             overflow: hidden;
             background: var(--bg-tertiary);
+            cursor: zoom-in;
         }
 
         .publication-image img {
@@ -947,6 +948,146 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform var(--transition-base);
+        }
+
+        .publication-image:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Big centered "+" affordance over the thumbnail on hover - hints
+           that the image can be expanded further. Dims the underlying image
+           so the plus reads clearly. */
+        .publication-image::before {
+            content: '+';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1;
+            background: rgba(0, 0, 0, 0.42);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .publication-image:hover::before,
+        .publication-image:focus-visible::before {
+            opacity: 1;
+        }
+
+        /* Lightbox modal for full-size image. Fully covers the viewport
+           (including the navbar) - z-index sits above the nav (100) and the
+           shutter overlay (9999). */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(8, 8, 8, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: lightboxFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            cursor: zoom-out;
+            overscroll-behavior: contain;
+            touch-action: none;
+        }
+
+        .lightbox-overlay.closing {
+            animation: lightboxFadeOut 0.22s cubic-bezier(0.4, 0, 1, 1) forwards;
+        }
+
+        .lightbox-frame {
+            position: relative;
+            display: inline-block;
+            max-width: 92vw;
+            max-height: 92vh;
+            cursor: default;
+            opacity: 0;
+            transform: scale(0.94);
+            animation: lightboxZoomIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards;
+            line-height: 0;
+        }
+
+        .lightbox-overlay.closing .lightbox-frame {
+            animation: lightboxZoomOut 0.22s cubic-bezier(0.4, 0, 1, 1) forwards;
+        }
+
+        .lightbox-image {
+            display: block;
+            max-width: 92vw;
+            max-height: 92vh;
+            width: auto;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            color: #111;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transition-fast), background var(--transition-fast);
+            z-index: 2;
+        }
+
+        .lightbox-close:hover {
+            background: #f0f0f0;
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-close {
+                top: 8px;
+                right: 8px;
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+        }
+
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes lightboxFadeOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+
+        @keyframes lightboxZoomIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes lightboxZoomOut {
+            from { opacity: 1; transform: scale(1); }
+            to   { opacity: 0; transform: scale(0.96); }
         }
 
         .publication-details {
@@ -1512,6 +1653,48 @@
             display: block;
         }
 
+        .journey-map-container svg:active { cursor: grabbing !important; }
+
+        .map-zoom-controls {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 5;
+        }
+
+        .map-zoom-controls button {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: var(--accent);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+        }
+
+        .map-zoom-controls button:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .map-zoom-controls button:active {
+            transform: translateY(0);
+        }
+
         /* Skills - color-coded pills */
         .skills-categories {
             display: flex;
@@ -1884,6 +2067,36 @@
         }
 
         .map-tooltip-credit a:hover { color: var(--accent); }
+
+        /* Close × sits on the top-right corner of the snapshot popup. The
+           parent has pointer-events: none so hover-snapshots don't block the
+           map underneath; the button explicitly re-enables them for itself. */
+        .map-tooltip-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: background var(--transition-fast), transform var(--transition-fast);
+            z-index: 2;
+        }
+
+        .map-tooltip-close:hover {
+            background: rgba(0, 0, 0, 0.85);
+            transform: scale(1.06);
+        }
     </style>
 </head>
 <body>
@@ -1960,13 +2173,13 @@
 
         // ---- Navigation ----
         const NAV_SECTIONS = [
-            { id: 'news',         label: 'News'         },
-            { id: 'publications', label: 'Publications' },
-            { id: 'experience',   label: 'Experience'   },
-            { id: 'projects',     label: 'Projects'     },
-            { id: 'skills',       label: 'Skills'       },
-            { id: 'gallery',      label: 'Recognition'  },
-            { id: 'travel',       label: 'Journey'      },
+            { id: 'news',         label: 'News'              },
+            { id: 'publications', label: 'Publications'      },
+            { id: 'experience',   label: 'Experience'        },
+            { id: 'gallery',      label: 'Recognition'       },
+            { id: 'skills',       label: 'Skills'            },
+            { id: 'projects',     label: 'UG Projects'},
+            { id: 'travel',       label: 'Travel'            },
         ];
 
         const Navigation = ({ active, onNavigate }) => {
@@ -2009,6 +2222,28 @@
             useEffect(() => {
                 if (!useHamburger) setMenuOpen(false);
             }, [useHamburger]);
+
+            // Close hamburger when clicking/tapping anywhere outside the nav,
+            // or pressing Escape. Only wired up while the menu is actually open.
+            useEffect(() => {
+                if (!menuOpen || !useHamburger) return;
+                const onOutside = (e) => {
+                    if (navInnerRef.current && !navInnerRef.current.contains(e.target)) {
+                        setMenuOpen(false);
+                    }
+                };
+                const onKey = (e) => {
+                    if (e.key === 'Escape') setMenuOpen(false);
+                };
+                document.addEventListener('mousedown', onOutside);
+                document.addEventListener('touchstart', onOutside, { passive: true });
+                document.addEventListener('keydown', onKey);
+                return () => {
+                    document.removeEventListener('mousedown', onOutside);
+                    document.removeEventListener('touchstart', onOutside);
+                    document.removeEventListener('keydown', onKey);
+                };
+            }, [menuOpen, useHamburger]);
 
             // Jump to the top instantly, then play the iris animation over
             // the now-scrolled page so the shutter opens onto the hero.
@@ -2336,10 +2571,9 @@
             );
         };
 
-        // Types a "Hello, World!" greeting, replaces it with "I'm <Name>.",
-        // then performs a Word-style gesture: caret nudges left, drag-selects
-        // the name across to the start, applies an underline to the selected
-        // range, deselects, and parks the caret at the end.
+        // Types "<Name>", then performs a Word-style gesture: caret nudges
+        // left, drag-selects the full name back to the start, applies an
+        // underline to the selected range, deselects, parks caret at the end.
         const TypedName = ({ name }) => {
             const [text, setText] = useState('');
             const [caret, setCaret] = useState(0);
@@ -2386,11 +2620,13 @@
                         await wait(rand(100, 160));
                     }
                 };
-                const moveToEnd = async () => {
-                    if (cancelled) return;
-                    await wait(rand(180, 260));
-                    pos = buffer.length;
-                    sync();
+                const moveRight = async (n) => {
+                    for (let i = 0; i < n; i++) {
+                        if (cancelled || pos >= buffer.length) return;
+                        pos += 1;
+                        sync();
+                        await wait(rand(100, 160));
+                    }
                 };
                 // Word-style drag-select: anchor at the current caret, head
                 // sweeps left one character at a time leaving a highlight.
@@ -2409,22 +2645,16 @@
 
                 (async () => {
                     await wait(600);              // brief beat before typing starts
-                    await typeStr('Hello, World!', 55);  // fast: ~55ms per char, classic dev greeting
-                    if (cancelled) return;
-                    await wait(1500);             // let the greeting sit visible
-                    await backspace('Hello, World!'.length);
-                    await wait(320);              // pause - "let me actually introduce myself"
-                    await typeStr(`I'm ${subject}.`);    // normal cadence, full name with full stop
+                    await typeStr(`${subject}. `);   // "Rohit Lal. " - name, period, trailing space
 
                     if (cancelled) return;
-                    // "Rohit Lal" range inside "I'm Rohit Lal." starts after
-                    // the "I'm " prefix and ends right before the period.
-                    const prefix = `I'm `;
-                    const nameStart = prefix.length;
-                    const nameEnd = nameStart + subject.length;
+                    // Underline range covers just "Rohit Lal" inside the
+                    // longer buffer "Rohit Lal. ".
+                    const nameStart = 0;
+                    const nameEnd = subject.length;
 
                     await wait(650);              // admire the line for a beat
-                    await moveLeft(1);            // caret nudges off the period, lands after l
+                    await moveLeft(2);            // step back over the trailing space, then the period
                     await wait(380);
                     await dragSelectLeft(subject.length);  // drag-select "Rohit Lal" right-to-left
                     await wait(550);              // selection sits visible
@@ -2432,8 +2662,7 @@
                     await wait(900);              // admire the underlined name
                     clearSelection();             // click-away, deselect
                     await wait(220);
-                    await moveToEnd();            // caret back to the end of "Lal."
-                    await typeStr(' ');           // trailing whitespace so the caret rests away
+                    await moveRight(2);           // step forward over the period, then the trailing space
                 })();
 
                 return () => { cancelled = true; };
@@ -2663,15 +2892,31 @@
 
         const Publications = () => {
             const [ref, visible] = useInView();
+            const [lightbox, setLightbox] = useState(null);
+            const openLightbox = (src, alt, caption) => setLightbox({ src, alt, caption });
             return (
                 <section id="publications" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
                         <h2 className="section-title">Recent Publications</h2>
                         <Stats />
-                        {publicationsData.map((pub, i) => (
+                        {publicationsData.map((pub, i) => {
+                            const src = pub.image || fallbackPubImage;
+                            return (
                             <div key={i} className="publication-card-enhanced">
-                                <div className="publication-image">
-                                    <img src={pub.image || fallbackPubImage} alt={pub.paper} loading="lazy" />
+                                <div
+                                    className="publication-image"
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label={`Open full-size image for ${pub.paper}`}
+                                    onClick={() => openLightbox(src, pub.paper, pub.paper)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            openLightbox(src, pub.paper, pub.paper);
+                                        }
+                                    }}
+                                >
+                                    <img src={src} alt={pub.paper} loading="lazy" />
                                 </div>
                                 <div className="publication-details">
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -2693,9 +2938,95 @@
                                     )}
                                 </div>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
+                    <Lightbox data={lightbox} onClose={() => setLightbox(null)} />
                 </section>
+            );
+        };
+
+        // ---- Lightbox (image popup with smooth animation) ----
+        const Lightbox = ({ data, onClose }) => {
+            const [closing, setClosing] = useState(false);
+
+            useEffect(() => {
+                if (!data) return;
+                setClosing(false);
+
+                // Freeze the page via position: fixed on body (only reliable
+                // scroll lock on iOS Safari; overflow: hidden alone isn't enough).
+                const scrollY = window.scrollY;
+                const body = document.body;
+                const prev = {
+                    position: body.style.position,
+                    top: body.style.top,
+                    left: body.style.left,
+                    right: body.style.right,
+                    width: body.style.width,
+                };
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollY}px`;
+                body.style.left = '0';
+                body.style.right = '0';
+                body.style.width = '100%';
+
+                const onKey = (e) => { if (e.key === 'Escape') triggerClose(); };
+                document.addEventListener('keydown', onKey);
+
+                return () => {
+                    document.removeEventListener('keydown', onKey);
+                    body.style.position = prev.position;
+                    body.style.top = prev.top;
+                    body.style.left = prev.left;
+                    body.style.right = prev.right;
+                    body.style.width = prev.width;
+                    // `html { scroll-behavior: smooth }` would otherwise animate
+                    // the restoration scroll from 0 back down to scrollY (the
+                    // "weird scroll from up to down" on close). Temporarily
+                    // pin it to auto so the jump is instant.
+                    const html = document.documentElement;
+                    const prevBehavior = html.style.scrollBehavior;
+                    html.style.scrollBehavior = 'auto';
+                    window.scrollTo(0, scrollY);
+                    requestAnimationFrame(() => {
+                        html.style.scrollBehavior = prevBehavior;
+                    });
+                };
+            }, [data]);
+
+            const triggerClose = () => {
+                setClosing(true);
+                window.setTimeout(() => { setClosing(false); onClose(); }, 200);
+            };
+
+            if (!data) return null;
+            // Portal to <body> so the modal escapes any ancestor stacking
+                // context (the .section wrapper applies `transform`, which would
+                // otherwise trap the modal below the fixed navbar).
+            return ReactDOM.createPortal(
+                <div
+                    className={`lightbox-overlay ${closing ? 'closing' : ''}`}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={data.alt || 'Image preview'}
+                    onClick={triggerClose}
+                >
+                    <div className="lightbox-frame" onClick={(e) => e.stopPropagation()}>
+                        <img
+                            className="lightbox-image"
+                            src={data.src}
+                            alt={data.alt || ''}
+                        />
+                        <button
+                            type="button"
+                            className="lightbox-close"
+                            aria-label="Close image preview"
+                            onClick={(e) => { e.stopPropagation(); triggerClose(); }}
+                        >×</button>
+                    </div>
+                </div>,
+                document.body
             );
         };
 
@@ -2789,6 +3120,11 @@
                 const SPEED = 35; // px/sec, marquee drift speed
                 let last = performance.now();
                 let rollingBack = false;
+                // Track sub-pixel position locally; iOS Safari rounds scrollLeft
+                // to integers, so small per-frame increments would otherwise
+                // get dropped and the marquee would never move on mobile.
+                let pos = scrollRef.current ? scrollRef.current.scrollLeft : 0;
+                let prevScrollLeft = pos;
 
                 const step = (now) => {
                     const el = scrollRef.current;
@@ -2796,20 +3132,42 @@
                     const dt = Math.min((now - last) / 1000, 0.05); // clamp on tab refocus
                     last = now;
 
+                    // If the user (or a button) scrolled the strip, resync our
+                    // local position so we don't yank them back.
+                    if (Math.abs(el.scrollLeft - prevScrollLeft) > 2) {
+                        pos = el.scrollLeft;
+                    }
+
                     if (!rollingBack) {
                         const maxScroll = el.scrollWidth - el.clientWidth;
-                        if (el.scrollLeft >= maxScroll - 1) {
-                            // Smooth animated rollback to start, then resume drifting
+                        if (pos >= maxScroll - 1) {
                             rollingBack = true;
                             el.scrollTo({ left: 0, behavior: 'smooth' });
-                            setTimeout(() => { rollingBack = false; last = performance.now(); }, 1200);
+                            setTimeout(() => {
+                                rollingBack = false;
+                                pos = 0;
+                                prevScrollLeft = 0;
+                                last = performance.now();
+                            }, 1200);
                         } else {
-                            el.scrollLeft += SPEED * dt;
+                            pos += SPEED * dt;
+                            el.scrollLeft = pos;
+                            prevScrollLeft = el.scrollLeft;
                         }
                     }
                     autoRef.current = requestAnimationFrame(step);
                 };
                 autoRef.current = requestAnimationFrame(step);
+            };
+
+            // Pause auto-scroll only for real mouse hover. Touch taps emit
+            // pointerenter/mouseenter without a matching leave, so without
+            // this filter the marquee would freeze on the first tap on phones.
+            const handlePointerEnter = (e) => {
+                if (!e.pointerType || e.pointerType === 'mouse') stopAuto();
+            };
+            const handlePointerLeave = (e) => {
+                if (!e.pointerType || e.pointerType === 'mouse') startAuto();
             };
 
             // Auto-scroll when section is in view; pause when out of view
@@ -2821,9 +3179,9 @@
             return (
                 <section id="projects" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
-                        <h2 className="section-title">Projects</h2>
+                        <h2 className="section-title">Undergrad Projects</h2>
                         <p className="projects-caption">
-                            <em>B.C. - Before Claude.</em> Undergrad projects where I built AI, not the other way around.
+                            <em>B.C. - Before Claude.</em> Projects where I built AI, not the other way around.
                         </p>
                         {allTags.length > 1 && (
                             <div className="project-filters">
@@ -2836,7 +3194,7 @@
                                 ))}
                             </div>
                         )}
-                        <div style={{ position: 'relative' }} onMouseEnter={stopAuto} onMouseLeave={startAuto}>
+                        <div style={{ position: 'relative' }} onPointerEnter={handlePointerEnter} onPointerLeave={handlePointerLeave}>
                             <button
                                 onClick={() => { stopAuto(); scrollBy(-1); }}
                                 aria-label="Scroll left"
@@ -2886,6 +3244,9 @@
                 <section id="skills" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
                         <h2 className="section-title">Technical Skills</h2>
+                        <p className="projects-caption">
+                            <em>Accurate as of this morning.</em> Half this stack will get a rebrand, a new logo, and a Series B by next quarter - and I'll quietly add the next one.
+                        </p>
                         <div className="skills-categories">
                             {cats.map((cat, i) => {
                                 const color = cat.color || 'var(--accent)';
@@ -3025,12 +3386,44 @@
             return c ? { x: c[0], y: c[1] } : null;
         };
 
+        // Zoom/pan constants for the travel map.
+        const MAP_VB_W = 960, MAP_VB_H = 600;
+        const MAP_MIN_K = 1, MAP_MAX_K = 8;
+
+        const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+        // Constrain pan so we never see beyond the map viewBox.
+        const clampTransform = (k, x, y) => {
+            const kk = clamp(k, MAP_MIN_K, MAP_MAX_K);
+            const maxX = 0, minX = MAP_VB_W * (1 - kk);
+            const maxY = 0, minY = MAP_VB_H * (1 - kk);
+            return { k: kk, x: clamp(x, minX, maxX), y: clamp(y, minY, maxY) };
+        };
+
         const TravelMap = () => {
             const [ref, visible] = useInView();
             const [mapData, setMapData] = useState(null);
             const [pathFn, setPathFn] = useState(null);
-            const [hover, setHover] = useState(null);
+            // `hovered` is mouse-cursor-only; `pinned` is a click/tap latch.
+            // The snapshot tooltip shows whichever is set (pinned wins). This
+            // split prevents the mobile bug where a tap fires both onMouseEnter
+            // and onClick, racing each other so the snapshot flashes and then
+            // gets toggled back off.
+            const [hovered, setHovered] = useState(null);
+            const [pinned, setPinned] = useState(null);
+            const hover = pinned || hovered;
+            // Clear both layers when a pan / zoom interaction starts - the
+            // markers move under the user, so any open tooltip should go away.
+            const dismissTooltip = () => { setHovered(null); setPinned(null); };
             const containerRef = useRef(null);
+            const svgRef = useRef(null);
+            // Transform lives in a ref so wheel/pointer/touch handlers can mutate
+            // it cheaply (no React re-render per event), and we just push a new
+            // transform attribute on the SVG group via a direct DOM write.
+            const transformRef = useRef({ k: 1, x: 0, y: 0 });
+            const groupRef = useRef(null);
+            const panStateRef = useRef(null);   // { lastX, lastY } during drag
+            const pinchStateRef = useRef(null); // { initialDist, initialK, midSvg }
 
             useEffect(() => {
                 if (typeof fetch !== 'function' || typeof d3 === 'undefined' || typeof topojson === 'undefined') {
@@ -3047,25 +3440,205 @@
                     .catch(err => console.error('Failed to load map', err));
             }, []);
 
-            const cities = travelData.cities || [];
+            // Apply the current transform to the SVG group via direct DOM write.
+            const applyTransform = () => {
+                const { k, x, y } = transformRef.current;
+                if (groupRef.current) {
+                    groupRef.current.setAttribute('transform', `translate(${x}, ${y}) scale(${k})`);
+                }
+            };
 
-            // Tooltip is centred in the map container by CSS, so the marker
-            // enter handler only needs to know which city to show.
-            const handleMarkerEnter = (city) => setHover(city);
+            const setTransform = (k, x, y) => {
+                transformRef.current = clampTransform(k, x, y);
+                applyTransform();
+            };
+
+            // Convert a client-space point (e.g. mouse position) into the
+            // SVG viewBox coordinate space, accounting for current zoom.
+            const clientToViewbox = (clientX, clientY) => {
+                const svg = svgRef.current;
+                if (!svg) return { x: 0, y: 0 };
+                const rect = svg.getBoundingClientRect();
+                // Map viewBox is 960x600 stretched to fit the rect.
+                const vx = (clientX - rect.left) * (MAP_VB_W / rect.width);
+                const vy = (clientY - rect.top) * (MAP_VB_H / rect.height);
+                return { x: vx, y: vy };
+            };
+
+            // Zoom toward a focal point in viewBox space, keeping that point
+            // visually anchored under the cursor / pinch midpoint.
+            const zoomAt = (focalVx, focalVy, newK) => {
+                const t = transformRef.current;
+                const k0 = t.k;
+                const k1 = clamp(newK, MAP_MIN_K, MAP_MAX_K);
+                if (k1 === k0) return;
+                // (focal - x) / k stays constant before and after the zoom.
+                const x1 = focalVx - (focalVx - t.x) * (k1 / k0);
+                const y1 = focalVy - (focalVy - t.y) * (k1 / k0);
+                setTransform(k1, x1, y1);
+            };
+
+            // Wheel handler: smooth multiplicative zoom toward cursor.
+            const onWheel = (e) => {
+                e.preventDefault();
+                const { x: vx, y: vy } = clientToViewbox(e.clientX, e.clientY);
+                const factor = Math.exp(-e.deltaY * 0.0015);
+                zoomAt(vx, vy, transformRef.current.k * factor);
+                dismissTooltip();
+            };
+
+            // Drag-pan, but only when the gesture started on empty map space.
+            // Pointer events on markers don't trigger panning - they bubble to
+            // React's onClick/onMouseEnter handlers normally.
+            const onPointerDown = (e) => {
+                if (e.button !== 0 && e.pointerType === 'mouse') return;
+                if (e.target && e.target.closest && e.target.closest('.travel-marker')) return;
+                panStateRef.current = { lastX: e.clientX, lastY: e.clientY, pointerId: e.pointerId };
+                if (svgRef.current && svgRef.current.setPointerCapture) {
+                    try { svgRef.current.setPointerCapture(e.pointerId); } catch (_) {}
+                }
+                if (svgRef.current) svgRef.current.style.cursor = 'grabbing';
+            };
+
+            const onPointerMove = (e) => {
+                const ps = panStateRef.current;
+                if (!ps || ps.pointerId !== e.pointerId) return;
+                const svg = svgRef.current;
+                if (!svg) return;
+                const rect = svg.getBoundingClientRect();
+                const dxv = (e.clientX - ps.lastX) * (MAP_VB_W / rect.width);
+                const dyv = (e.clientY - ps.lastY) * (MAP_VB_H / rect.height);
+                ps.lastX = e.clientX;
+                ps.lastY = e.clientY;
+                const t = transformRef.current;
+                setTransform(t.k, t.x + dxv, t.y + dyv);
+                dismissTooltip();
+            };
+
+            const onPointerUp = (e) => {
+                const ps = panStateRef.current;
+                if (!ps) return;
+                if (ps.pointerId === e.pointerId) {
+                    panStateRef.current = null;
+                    if (svgRef.current && svgRef.current.releasePointerCapture) {
+                        try { svgRef.current.releasePointerCapture(e.pointerId); } catch (_) {}
+                    }
+                    if (svgRef.current) svgRef.current.style.cursor = 'grab';
+                }
+            };
+
+            // Two-finger pinch zoom on touch.
+            const touchDist = (touches) => {
+                const dx = touches[0].clientX - touches[1].clientX;
+                const dy = touches[0].clientY - touches[1].clientY;
+                return Math.hypot(dx, dy);
+            };
+
+            const onTouchStart = (e) => {
+                if (e.touches.length === 2) {
+                    const midClientX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    const midClientY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                    const midSvg = clientToViewbox(midClientX, midClientY);
+                    pinchStateRef.current = {
+                        initialDist: touchDist(e.touches),
+                        initialK: transformRef.current.k,
+                        midSvg,
+                    };
+                    panStateRef.current = null;
+                }
+            };
+
+            const onTouchMove = (e) => {
+                if (e.touches.length === 2 && pinchStateRef.current) {
+                    e.preventDefault();
+                    const dist = touchDist(e.touches);
+                    const ratio = dist / pinchStateRef.current.initialDist;
+                    const newK = pinchStateRef.current.initialK * ratio;
+                    const { x: vx, y: vy } = pinchStateRef.current.midSvg;
+                    zoomAt(vx, vy, newK);
+                    dismissTooltip();
+                }
+            };
+
+            const onTouchEnd = (e) => {
+                if (e.touches.length < 2) pinchStateRef.current = null;
+            };
+
+            // Double-click resets the view.
+            const onDoubleClick = (e) => {
+                e.preventDefault();
+                setTransform(1, 0, 0);
+            };
+
+            // Tap on empty map space clears any pinned snapshot.
+            const onSvgClick = (e) => {
+                if (e.target && e.target.closest && e.target.closest('.travel-marker')) return;
+                setPinned(null);
+            };
+
+            // Re-apply transform whenever the group ref attaches (after re-render).
+            useEffect(() => {
+                if (mapData && pathFn) applyTransform();
+            }, [mapData, pathFn]);
+
+            // React's synthetic onWheel / onTouchMove handlers are passive by
+            // default, which means e.preventDefault() is silently dropped.
+            // Attach native non-passive listeners instead so wheel zoom and
+            // pinch zoom actually consume the gesture (no page scroll behind).
+            useEffect(() => {
+                if (!mapData || !pathFn) return;
+                const svg = svgRef.current;
+                if (!svg) return;
+                const wheelOpts = { passive: false };
+                const touchOpts = { passive: false };
+                svg.addEventListener('wheel', onWheel, wheelOpts);
+                svg.addEventListener('touchmove', onTouchMove, touchOpts);
+                return () => {
+                    svg.removeEventListener('wheel', onWheel, wheelOpts);
+                    svg.removeEventListener('touchmove', onTouchMove, touchOpts);
+                };
+            }, [mapData, pathFn]);
+
+            const zoomIn  = () => {
+                const t = transformRef.current;
+                zoomAt(MAP_VB_W / 2, MAP_VB_H / 2, t.k * 1.5);
+            };
+            const zoomOut = () => {
+                const t = transformRef.current;
+                zoomAt(MAP_VB_W / 2, MAP_VB_H / 2, t.k / 1.5);
+            };
+            const zoomReset = () => setTransform(1, 0, 0);
+
+            const cities = travelData.cities || [];
 
             return (
                 <section id="travel" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
                         <h2 className="section-title">Travel Chronicles</h2>
-                        <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: 'var(--space-lg)', maxWidth: 820, textWrap: 'balance' }}>
-                            Beyond the research lab, I love exploring new cities and capturing moments along the way.{' '}
-                            <strong style={{ color: 'var(--accent)' }}>Hover over the map</strong> to see snapshots from my travels.
+                        <p className="projects-caption">
+                            <em>Off the clock.</em> I love exploring new cities, hanging out with friends, getting lost in nature, and meeting new people along the way - the map below traces where those adventures have landed.{' '} .<br />
+                            <strong style={{ color: 'var(--accent)' }}>Hover</strong> for snapshots,{' '}
+                            <strong style={{ color: 'var(--accent)' }}>scroll or pinch</strong> to zoom,{' '}
+                            <strong style={{ color: 'var(--accent)' }}>drag</strong> to pan. Double-click to reset.
                         </p>
                         <div className="journey-map-container" ref={containerRef}>
                             {(!mapData || !pathFn) ? (
                                 <div style={{ textAlign: 'center', padding: 100, color: 'var(--text-secondary)' }}>Loading map…</div>
                             ) : (
-                                <svg viewBox="0 0 960 600" style={{ width: '100%', height: '100%' }}>
+                                <svg
+                                    ref={svgRef}
+                                    viewBox="0 0 960 600"
+                                    style={{ width: '100%', height: '100%', cursor: 'grab', touchAction: 'none' }}
+                                    onPointerDown={onPointerDown}
+                                    onPointerMove={onPointerMove}
+                                    onPointerUp={onPointerUp}
+                                    onPointerCancel={onPointerUp}
+                                    onTouchStart={onTouchStart}
+                                    onTouchEnd={onTouchEnd}
+                                    onDoubleClick={onDoubleClick}
+                                    onClick={onSvgClick}
+                                >
+                                    <g ref={groupRef}>
                                     <g>
                                         {topojson.feature(mapData, mapData.objects.states).features.map((state, i) => (
                                             <path
@@ -3082,8 +3655,18 @@
                                         if (!proj) return null;
                                         const { x, y } = proj;
                                         const isPark = c.type === 'park';
-                                        const onEnter = () => handleMarkerEnter(c);
-                                        const onLeave = () => setHover(null);
+                                        const onEnter = () => setHovered(c);
+                                        const onLeave = () => setHovered(null);
+                                        // Click also clears the synthetic hover that touch
+                                        // browsers emit alongside a tap - otherwise hovered
+                                        // would race the pinned toggle and flash the tooltip
+                                        // before the second tap. With hovered cleared, the
+                                        // tooltip is driven purely by `pinned` on touch.
+                                        const onClick = (e) => {
+                                            e.stopPropagation();
+                                            setHovered(null);
+                                            setPinned(prev => (prev && prev.name === c.name ? null : c));
+                                        };
                                         // Home city (where Rohit lives) gets a red marker + label.
                                         const markerColor = c.home ? '#d62828' : 'var(--accent)';
                                         const labelColor = c.home ? '#d62828' : 'var(--text-primary)';
@@ -3091,7 +3674,7 @@
 
                                         if (isPark) {
                                             return (
-                                                <g key={i} style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                                                <g key={i} className="travel-marker" style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}>
                                                     <circle cx={x} cy={y} r="14" fill={markerColor} opacity="0.06" />
                                                     <g transform={`translate(${x}, ${y})`}>
                                                         <path d="M 0,-9 L 7,6 L -7,6 Z" fill="none" stroke={markerColor} strokeWidth="2" opacity="0.6" />
@@ -3103,7 +3686,7 @@
                                         }
 
                                         return (
-                                            <g key={i} style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                                            <g key={i} className="travel-marker" style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}>
                                                 <circle cx={x} cy={y} r="16" fill={markerColor} opacity="0.08" />
                                                 {c.home && <circle className="home-pulse" cx={x} cy={y} r="5" />}
                                                 <g transform={`translate(${x}, ${y})`}>
@@ -3124,6 +3707,7 @@
                                             </g>
                                         );
                                     })}
+                                    </g>
                                     {/* Legend tucked into the empty Atlantic east of Florida */}
                                     <g transform="translate(825, 430)" style={{ pointerEvents: 'none' }}>
                                         <rect
@@ -3163,8 +3747,21 @@
                                     </g>
                                 </svg>
                             )}
+                            {mapData && pathFn && (
+                                <div className="map-zoom-controls" aria-label="Map zoom controls">
+                                    <button type="button" onClick={zoomIn} aria-label="Zoom in" title="Zoom in">+</button>
+                                    <button type="button" onClick={zoomOut} aria-label="Zoom out" title="Zoom out">−</button>
+                                    <button type="button" onClick={zoomReset} aria-label="Reset zoom" title="Reset">⟳</button>
+                                </div>
+                            )}
                             {hover && (
                                 <div className="map-tooltip">
+                                    <button
+                                        type="button"
+                                        className="map-tooltip-close"
+                                        aria-label="Close snapshot"
+                                        onClick={(e) => { e.stopPropagation(); dismissTooltip(); }}
+                                    >×</button>
                                     {hover.image && <img src={hover.image} alt={hover.name} loading="lazy" />}
                                     <div className="map-tooltip-body">
                                         <div className="map-tooltip-name">{hover.name}</div>
@@ -3190,7 +3787,7 @@
             const [active, setActive] = useState('hero');
 
             useEffect(() => {
-                const sectionIds = ['hero', 'news', 'publications', 'experience', 'projects', 'skills', 'gallery', 'travel'];
+                const sectionIds = ['hero', 'news', 'publications', 'experience', 'gallery', 'skills', 'projects', 'travel'];
                 const onScroll = () => {
                     const y = window.scrollY + 200;
                     for (const id of sectionIds) {
@@ -3222,9 +3819,9 @@
                         <NewsSection />
                         <Publications />
                         <Experience />
-                        <Projects />
-                        <Skills />
                         <Gallery />
+                        <Skills />
+                        <Projects />
                         <TravelMap />
                         <footer className="footer">
                             <div className="container">

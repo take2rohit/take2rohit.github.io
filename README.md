@@ -11,6 +11,10 @@ Jekyll site driven by a single layout, [`_layouts/portfolio.html`](_layouts/port
 - [ ] **Travel map hover photos.** [`_data/travel.yml`](_data/travel.yml) currently uses Wikipedia placeholder images for ~12 cities and parks. Replace each with a personal photo: drop a JPG/WebP into [`img/photos/`](img/photos/), point `image:` at the local path, set `image_credit: Rohit Lal`, and remove `image_credit_url:`. Tooltip is fixed at 320 x ~340 px with `object-fit: cover`, so any aspect ratio works.
 - [ ] **Clean up the dead-block publications.** [`_data/publications.yml`](_data/publications.yml) has commented-out entries from earlier template versions. Either re-enable or delete them.
 
+### Known bugs
+
+- [ ] **Travel map: hover and click do not work on laptop.** Tapping markers on phone works fine and the snapshot popup behaves correctly. On desktop / laptop with a mouse, neither `onMouseEnter` nor `onClick` on the marker `<g>` elements appears to fire. Suspect interaction between the React-based pan/zoom handlers attached to the parent SVG and the marker children; needs deeper inspection in DevTools (event listeners panel, check that `pointer-events` and hit-testing on `.travel-marker` actually reach React).
+
 ---
 
 ## Run locally
