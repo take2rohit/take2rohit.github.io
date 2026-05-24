@@ -2662,7 +2662,7 @@
                     await wait(900);              // admire the underlined name
                     clearSelection();             // click-away, deselect
                     await wait(220);
-                    await moveRight(2);           // step forward over the period, then the trailing space
+                    await moveRight(buffer.length);  // walk caret char-by-char all the way back to the end, past the period and trailing space
                 })();
 
                 return () => { cancelled = true; };
@@ -3487,17 +3487,14 @@
                 dismissTooltip();
             };
 
-            // Drag-pan, but only when the gesture started on empty map space.
-            // Pointer events on markers don't trigger panning - they bubble to
-            // React's onClick/onMouseEnter handlers normally.
+            // Drag-pan. The handler is attached to the transparent pan-surface
+            // rect that sits behind the markers, so events on markers never
+            // reach here - no filtering needed.
             const onPointerDown = (e) => {
                 if (e.button !== 0 && e.pointerType === 'mouse') return;
-                if (e.target && e.target.closest && e.target.closest('.travel-marker')) return;
                 panStateRef.current = { lastX: e.clientX, lastY: e.clientY, pointerId: e.pointerId };
-                if (svgRef.current && svgRef.current.setPointerCapture) {
-                    try { svgRef.current.setPointerCapture(e.pointerId); } catch (_) {}
-                }
-                if (svgRef.current) svgRef.current.style.cursor = 'grabbing';
+                try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {}
+                e.currentTarget.style.cursor = 'grabbing';
             };
 
             const onPointerMove = (e) => {
@@ -3520,10 +3517,8 @@
                 if (!ps) return;
                 if (ps.pointerId === e.pointerId) {
                     panStateRef.current = null;
-                    if (svgRef.current && svgRef.current.releasePointerCapture) {
-                        try { svgRef.current.releasePointerCapture(e.pointerId); } catch (_) {}
-                    }
-                    if (svgRef.current) svgRef.current.style.cursor = 'grab';
+                    try { e.currentTarget.releasePointerCapture(e.pointerId); } catch (_) {}
+                    e.currentTarget.style.cursor = 'grab';
                 }
             };
 
@@ -3570,11 +3565,10 @@
                 setTransform(1, 0, 0);
             };
 
-            // Tap on empty map space clears any pinned snapshot.
-            const onSvgClick = (e) => {
-                if (e.target && e.target.closest && e.target.closest('.travel-marker')) return;
-                setPinned(null);
-            };
+            // Any click on the pan-surface rect is by definition on empty
+            // map space (marker events never reach this handler), so just
+            // clear the pinned snapshot.
+            const onSvgClick = () => { setPinned(null); };
 
             // Re-apply transform whenever the group ref attaches (after re-render).
             useEffect(() => {
@@ -3628,18 +3622,28 @@
                                 <svg
                                     ref={svgRef}
                                     viewBox="0 0 960 600"
-                                    style={{ width: '100%', height: '100%', cursor: 'grab', touchAction: 'none' }}
-                                    onPointerDown={onPointerDown}
-                                    onPointerMove={onPointerMove}
-                                    onPointerUp={onPointerUp}
-                                    onPointerCancel={onPointerUp}
-                                    onTouchStart={onTouchStart}
-                                    onTouchEnd={onTouchEnd}
+                                    style={{ width: '100%', height: '100%', touchAction: 'none' }}
                                     onDoubleClick={onDoubleClick}
-                                    onClick={onSvgClick}
                                 >
                                     <g ref={groupRef}>
-                                    <g>
+                                    {/* Transparent pan / click surface. Lives inside the zoom group
+                                        so it scales with the map, covering the full viewBox at any
+                                        zoom level. Markers are siblings rendered later (= above) so
+                                        their events flow to React directly without ever hitting the
+                                        surface's pointer / click handlers. */}
+                                    <rect
+                                        x="0" y="0" width="960" height="600"
+                                        fill="transparent"
+                                        style={{ cursor: 'grab' }}
+                                        onPointerDown={onPointerDown}
+                                        onPointerMove={onPointerMove}
+                                        onPointerUp={onPointerUp}
+                                        onPointerCancel={onPointerUp}
+                                        onTouchStart={onTouchStart}
+                                        onTouchEnd={onTouchEnd}
+                                        onClick={onSvgClick}
+                                    />
+                                    <g style={{ pointerEvents: 'none' }}>
                                         {topojson.feature(mapData, mapData.objects.states).features.map((state, i) => (
                                             <path
                                                 key={i}
