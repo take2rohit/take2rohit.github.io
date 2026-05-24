@@ -1494,146 +1494,279 @@
 
         .timeline-bullets a:hover { border-bottom-color: var(--accent); }
 
-        /* Awards / Achievements - Netflix-style carousel */
-        .gallery-carousel-container {
+        /* Awards / Achievements - 3D Cover Flow carousel */
+        .coverflow-container {
             position: relative;
             width: 100%;
-            overflow: hidden;
-            padding: var(--space-md) 0;
-        }
-
-        .gallery-carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 440px;
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            gap: var(--space-md);
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+            padding: var(--space-md) 0;
+            user-select: none;
+            touch-action: pan-y;
         }
 
-        .carousel-item {
-            flex: 0 0 calc(33.333% - var(--space-md));
-            aspect-ratio: 4/3;
+        .coverflow-track {
             position: relative;
-            border-radius: 0.75rem;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .coverflow-item {
+            position: absolute;
+            width: 480px;
+            aspect-ratio: 4/3;
+            max-width: 90%;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--border-color);
             overflow: hidden;
             background: var(--bg-secondary);
-            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), 
+                        opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .carousel-item:hover {
-            transform: scale(1.05);
+        /* 3D cover flow layers based on relative diff (adjusted for 480px wide cards) */
+        .coverflow-item.active {
+            transform: translateX(0) scale(1.1) translateZ(50px);
+            opacity: 1;
+            z-index: 5;
+            pointer-events: auto;
             border-color: var(--accent);
-            box-shadow: 0 16px 48px rgba(0,0,0,0.25);
-            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.02);
         }
 
-        .carousel-image-container {
+        .coverflow-item.left-1 {
+            transform: translateX(-240px) scale(0.88) translateZ(-50px) rotateY(12deg);
+            opacity: 0.85;
+            z-index: 4;
+            pointer-events: auto;
+        }
+
+        .coverflow-item.right-1 {
+            transform: translateX(240px) scale(0.88) translateZ(-50px) rotateY(-12deg);
+            opacity: 0.85;
+            z-index: 4;
+            pointer-events: auto;
+        }
+
+        .coverflow-item.left-2 {
+            transform: translateX(-400px) scale(0.76) translateZ(-100px) rotateY(20deg);
+            opacity: 0.45;
+            z-index: 3;
+        }
+
+        .coverflow-item.right-2 {
+            transform: translateX(400px) scale(0.76) translateZ(-100px) rotateY(-20deg);
+            opacity: 0.45;
+            z-index: 3;
+        }
+
+        .coverflow-item.hidden {
+            transform: translateX(0) scale(0.6) translateZ(-200px);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Hover effects for flanking items */
+        .coverflow-item.left-1:hover {
+            transform: translateX(-250px) scale(0.9) translateZ(-30px) rotateY(8deg);
+        }
+        .coverflow-item.right-1:hover {
+            transform: translateX(250px) scale(0.9) translateZ(-30px) rotateY(-8deg);
+        }
+
+        /* Image background cover & dimmer */
+        .coverflow-image-wrapper {
             position: absolute;
             inset: 0;
             overflow: hidden;
         }
 
-        .carousel-image {
+        .coverflow-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .carousel-item:hover .carousel-image { transform: scale(1.1); }
-
-        .carousel-overlay {
+        .coverflow-dimmer {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            background: rgba(0, 0, 0, 0.45);
+            transition: opacity 0.45s ease;
+            opacity: 1;
+            z-index: 1;
+        }
+        .coverflow-item.active .coverflow-dimmer {
+            opacity: 0;
+        }
+
+        /* Permanent bottom text gradient overlay */
+        .coverflow-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0) 80%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: var(--space-lg);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            padding: var(--space-md);
             z-index: 2;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .carousel-item:hover .carousel-overlay { opacity: 1; }
-
-        /* Linked achievement cards: keep the card semantic <a>, drop default link styles. */
-        .carousel-item-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
+        .coverflow-item.active .coverflow-overlay {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .carousel-link-cue {
-            margin-top: 0.5rem;
+        .coverflow-overlay-content {
+            color: #ffffff;
+        }
+
+        .coverflow-badge {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .coverflow-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: var(--space-xs);
+            line-height: 1.35;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .coverflow-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.45;
+            margin-bottom: var(--space-sm);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .coverflow-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.25rem;
+        }
+
+        .coverflow-date {
+            font-size: 0.78125rem;
+            color: #f9c897;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .coverflow-action-btn {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 6px 12px;
             font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            color: #f9c897;
-            opacity: 0.95;
+            text-decoration: none;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        .carousel-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+        .coverflow-action-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
         }
 
-        .carousel-description {
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.95);
-            line-height: 1.5;
-            margin-bottom: 0.5rem;
-        }
-
-        .carousel-date {
-            font-size: 0.8125rem;
-            color: #f9c897;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
-        }
-
-        .carousel-nav {
+        /* Nav controls adapted for Coverflow */
+        .coverflow-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 48px;
             height: 48px;
-            background: rgba(255,255,255,0.95);
-            border: none;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 5;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 12px var(--shadow-md);
         }
 
-        .carousel-nav:hover {
-            background: white;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        .coverflow-nav:hover {
+            background: var(--bg-hover);
+            transform: translateY(-50%) scale(1.08);
+            border-color: var(--accent);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
-        .carousel-nav.prev { left: var(--space-md); }
-        .carousel-nav.next { right: var(--space-md); }
-        .carousel-nav svg { width: 24px; height: 24px; fill: var(--accent); }
+        .coverflow-nav.prev { left: var(--space-md); }
+        .coverflow-nav.next { right: var(--space-md); }
+        .coverflow-nav svg { width: 24px; height: 24px; fill: var(--accent); }
 
-        .carousel-indicators {
+        /* Animated Progress Line attached directly to the bottom of the card */
+        .coverflow-progress-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.15); /* very subtle backline */
+            z-index: 10;
+        }
+
+        .coverflow-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #faf8f5; /* Light cream color matching the theme */
+            animation: coverflow-progress-fill 10s linear forwards;
+            box-shadow: 0 0 8px rgba(250, 248, 245, 0.8);
+        }
+
+        @keyframes coverflow-progress-fill {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* Dots Indicators */
+        .coverflow-indicators {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
             margin-top: var(--space-md);
         }
 
-        .carousel-indicator {
+        .coverflow-indicator {
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -1642,18 +1775,56 @@
             transition: all 0.3s ease;
         }
 
-        .carousel-indicator.active {
+        .coverflow-indicator.active {
             background: var(--accent);
             width: 24px;
             border-radius: 4px;
         }
 
+        /* Responsive Cover Flow adjustments */
         @media (max-width: 1024px) {
-            .carousel-item { flex: 0 0 calc(50% - var(--space-md)); }
+            .coverflow-container {
+                height: 380px;
+            }
+            .coverflow-item {
+                width: 380px;
+            }
+            .coverflow-item.left-1 { transform: translateX(-180px) scale(0.88) translateZ(-50px) rotateY(12deg); }
+            .coverflow-item.right-1 { transform: translateX(180px) scale(0.88) translateZ(-50px) rotateY(-12deg); }
+            .coverflow-item.left-2 { transform: translateX(-300px) scale(0.76) translateZ(-100px) rotateY(20deg); }
+            .coverflow-item.right-2 { transform: translateX(300px) scale(0.76) translateZ(-100px) rotateY(-20deg); }
         }
 
         @media (max-width: 768px) {
-            .carousel-item { flex: 0 0 calc(100% - var(--space-md)); }
+            .coverflow-container {
+                height: 320px;
+            }
+            .coverflow-item {
+                width: 300px;
+            }
+            .coverflow-item.left-1 { transform: translateX(-130px) scale(0.88) translateZ(-40px) rotateY(12deg); }
+            .coverflow-item.right-1 { transform: translateX(130px) scale(0.88) translateZ(-40px) rotateY(-12deg); }
+            .coverflow-item.left-2 { transform: translateX(-220px) scale(0.75) translateZ(-80px) rotateY(20deg); }
+            .coverflow-item.right-2 { transform: translateX(220px) scale(0.75) translateZ(-80px) rotateY(-20deg); }
+        }
+
+        @media (max-width: 480px) {
+            .coverflow-container {
+                height: 280px;
+            }
+            .coverflow-item {
+                width: 240px;
+            }
+            .coverflow-item.left-1 { transform: translateX(-95px) scale(0.85) translateZ(-30px); }
+            .coverflow-item.right-1 { transform: translateX(95px) scale(0.85) translateZ(-30px); }
+            .coverflow-item.left-2 { transform: translateX(-160px) scale(0.7) translateZ(-60px); opacity: 0.2; }
+            .coverflow-item.right-2 { transform: translateX(160px) scale(0.7) translateZ(-60px); opacity: 0.2; }
+            .coverflow-nav {
+                width: 40px;
+                height: 40px;
+            }
+            .coverflow-nav.prev { left: var(--space-xs); }
+            .coverflow-nav.next { right: var(--space-xs); }
         }
 
         /* Travel Map */
@@ -3300,99 +3471,201 @@
             );
         };
 
-        // ---- Awards Carousel ----
+        // ---- Awards Carousel (3D Cover Flow) ----
         const Gallery = () => {
             const [ref, visible] = useInView();
             const [currentIndex, setCurrentIndex] = useState(0);
             const [auto, setAuto] = useState(true);
+            const [resetTrigger, setResetTrigger] = useState(0);
             const items = achievementsData;
 
-            const getPerView = () => {
-                if (typeof window === 'undefined') return 3;
-                if (window.innerWidth > 1024) return 3;
-                if (window.innerWidth > 768) return 2;
-                return 1;
+            // Gesture states
+            const startXRef = useRef(0);
+            const isSwipingRef = useRef(false);
+
+            // Infinite wrapping next/prev
+            const handlePrev = () => {
+                setCurrentIndex(prev => (prev - 1 + items.length) % items.length);
+                setResetTrigger(prev => prev + 1); // Reset the timer atomically
             };
 
-            const [perView, setPerView] = useState(getPerView());
-            useEffect(() => {
-                const onResize = () => setPerView(getPerView());
-                window.addEventListener('resize', onResize);
-                return () => window.removeEventListener('resize', onResize);
-            }, []);
+            const handleNext = () => {
+                setCurrentIndex(prev => (prev + 1) % items.length);
+                setResetTrigger(prev => prev + 1); // Reset the timer atomically
+            };
 
-            const maxIndex = Math.max(0, items.length - perView);
-
+            // Auto-scroll loop (10s cycle)
             useEffect(() => {
-                if (!auto || maxIndex === 0) return;
+                if (!auto || items.length <= 1) return;
                 const t = setInterval(() => {
-                    setCurrentIndex(prev => prev >= maxIndex ? 0 : prev + 1);
-                }, 4000);
+                    setCurrentIndex(prev => (prev + 1) % items.length);
+                }, 10000);
                 return () => clearInterval(t);
-            }, [auto, maxIndex]);
+            }, [auto, resetTrigger, items.length]);
 
-            const handlePrev = () => { setAuto(false); setCurrentIndex(p => Math.max(0, p - 1)); };
-            const handleNext = () => { setAuto(false); setCurrentIndex(p => Math.min(maxIndex, p + 1)); };
+            // Recalculate shortest distance diff for circular wrapping
+            const getDiff = (idx) => {
+                let d = idx - currentIndex;
+                const half = Math.floor(items.length / 2);
+                while (d > half) d -= items.length;
+                while (d < -half) d += items.length;
+                return d;
+            };
+
+            // Touch event handlers for swiping
+            const handleTouchStart = (e) => {
+                startXRef.current = e.touches[0].clientX;
+                isSwipingRef.current = true;
+                setAuto(false);
+            };
+
+            const handleTouchMove = (e) => {
+                if (!isSwipingRef.current) return;
+                const diffX = startXRef.current - e.touches[0].clientX;
+                if (Math.abs(diffX) > 40) { // threshold
+                    if (diffX > 0) handleNext();
+                    else handlePrev();
+                    isSwipingRef.current = false; // block further movements for this swipe
+                }
+            };
+
+            const handleTouchEnd = () => {
+                isSwipingRef.current = false;
+                setAuto(true);
+            };
+
+            // Mouse event handlers for swiping/dragging
+            const handleMouseDown = (e) => {
+                startXRef.current = e.clientX;
+                isSwipingRef.current = true;
+                setAuto(false);
+            };
+
+            const handleMouseMove = (e) => {
+                if (!isSwipingRef.current) return;
+                const diffX = startXRef.current - e.clientX;
+                if (Math.abs(diffX) > 40) { // threshold
+                    if (diffX > 0) handleNext();
+                    else handlePrev();
+                    isSwipingRef.current = false;
+                }
+            };
+
+            const handleMouseUp = () => {
+                isSwipingRef.current = false;
+            };
 
             return (
                 <section id="gallery" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
                         <h2 className="section-title">Recognition</h2>
                         <div
-                            className="gallery-carousel-container"
+                            className="coverflow-container"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                            onMouseDown={handleMouseDown}
+                            onMouseMove={handleMouseMove}
+                            onMouseUp={() => { handleMouseUp(); setAuto(true); }}
+                            onMouseLeave={() => { handleMouseUp(); setAuto(true); }}
                             onMouseEnter={() => setAuto(false)}
-                            onMouseLeave={() => setAuto(true)}
                         >
-                            {currentIndex > 0 && (
-                                <button className="carousel-nav prev" onClick={handlePrev} aria-label="Previous">
-                                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                                </button>
-                            )}
-                            <div
-                                className="gallery-carousel"
-                                style={{ transform: `translateX(calc(-${currentIndex * (100 / perView)}% - ${currentIndex * 16}px))` }}
-                            >
+                            <button className="coverflow-nav prev" onClick={handlePrev} aria-label="Previous">
+                                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                            </button>
+
+                            <div className="coverflow-track">
                                 {items.map((item, i) => {
+                                    const diff = getDiff(i);
+                                    const isActive = diff === 0;
+
+                                    let posClass = "hidden";
+                                    if (diff === 0) posClass = "active";
+                                    else if (diff === -1) posClass = "left-1";
+                                    else if (diff === -2) posClass = "left-2";
+                                    else if (diff === 1) posClass = "right-1";
+                                    else if (diff === 2) posClass = "right-2";
+
                                     const inner = (
                                         <React.Fragment>
-                                            <div className="carousel-image-container">
-                                                <img src={item.image} alt={item.title} className="carousel-image" loading="lazy" />
+                                            <div className="coverflow-image-wrapper">
+                                                <img src={item.image} alt={item.title} className="coverflow-image" loading="lazy" />
+                                                <div className="coverflow-dimmer" />
                                             </div>
-                                            <div className="carousel-overlay">
-                                                <h3 className="carousel-title">{item.title}</h3>
-                                                <p className="carousel-description">{item.description}</p>
-                                                <div className="carousel-date"><span>{item.date}</span></div>
-                                                {item.link && <div className="carousel-link-cue">View source ↗</div>}
+                                            <div className="coverflow-overlay">
+                                                <div className="coverflow-overlay-content">
+                                                    <h3 className="coverflow-title">{item.title}</h3>
+                                                    <p className="coverflow-description">{item.description}</p>
+                                                    <div className="coverflow-footer">
+                                                        <span className="coverflow-date">{item.date}</span>
+                                                        {item.link && (
+                                                            <span className="coverflow-action-btn">
+                                                                View source ↗
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
+                                            {isActive && (
+                                                <div className="coverflow-progress-line">
+                                                    <div
+                                                        key={`${currentIndex}-${resetTrigger}`}
+                                                        className="coverflow-progress-fill"
+                                                        style={{ animationPlayState: auto ? 'running' : 'paused' }}
+                                                    />
+                                                </div>
+                                            )}
                                         </React.Fragment>
                                     );
+
+                                    const itemProps = {
+                                        className: `coverflow-item ${posClass}`,
+                                        onClick: (e) => {
+                                            if (!isActive) {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setCurrentIndex(i);
+                                                setResetTrigger(prev => prev + 1);
+                                            }
+                                        }
+                                    };
+
                                     return item.link ? (
-                                        <a key={i}
-                                           href={item.link}
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           className="carousel-item carousel-item-link"
-                                           aria-label={`${item.title} - view source`}>
+                                        <a
+                                            key={i}
+                                            href={item.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`${item.title} - view source`}
+                                            {...itemProps}
+                                        >
                                             {inner}
                                         </a>
                                     ) : (
-                                        <div key={i} className="carousel-item">{inner}</div>
+                                        <div key={i} {...itemProps}>
+                                            {inner}
+                                        </div>
                                     );
                                 })}
                             </div>
-                            {currentIndex < maxIndex && (
-                                <button className="carousel-nav next" onClick={handleNext} aria-label="Next">
-                                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                                </button>
-                            )}
+
+                            <button className="coverflow-nav next" onClick={handleNext} aria-label="Next">
+                                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            </button>
                         </div>
-                        {maxIndex > 0 && (
-                            <div className="carousel-indicators">
-                                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+
+
+
+                        {items.length > 1 && (
+                            <div className="coverflow-indicators">
+                                {items.map((_, i) => (
                                     <div
                                         key={i}
-                                        className={`carousel-indicator ${i === currentIndex ? 'active' : ''}`}
-                                        onClick={() => { setAuto(false); setCurrentIndex(i); }}
+                                        className={`coverflow-indicator ${i === currentIndex ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setCurrentIndex(i);
+                                            setResetTrigger(prev => prev + 1);
+                                        }}
                                     />
                                 ))}
                             </div>
