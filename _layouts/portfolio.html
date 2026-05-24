@@ -3479,6 +3479,20 @@
             const [resetTrigger, setResetTrigger] = useState(0);
             const items = achievementsData;
 
+            // Viewport visibility state to ensure timer only runs when carousel is in view
+            const containerRef = useRef(null);
+            const [carouselFullyInView, setCarouselFullyInView] = useState(false);
+
+            useEffect(() => {
+                const node = containerRef.current;
+                if (!node) return;
+                const obs = new IntersectionObserver(([entry]) => {
+                    setCarouselFullyInView(entry.isIntersecting);
+                }, { threshold: 0.85 }); // 85% visibility means virtually the entire carousel is on screen
+                obs.observe(node);
+                return () => obs.disconnect();
+            }, []);
+
             // Gesture states
             const startXRef = useRef(0);
             const isSwipingRef = useRef(false);
@@ -3496,12 +3510,12 @@
 
             // Auto-scroll loop (10s cycle)
             useEffect(() => {
-                if (!auto || items.length <= 1) return;
+                if (!auto || !carouselFullyInView || items.length <= 1) return;
                 const t = setInterval(() => {
                     setCurrentIndex(prev => (prev + 1) % items.length);
                 }, 10000);
                 return () => clearInterval(t);
-            }, [auto, resetTrigger, items.length]);
+            }, [auto, carouselFullyInView, resetTrigger, items.length]);
 
             // Recalculate shortest distance diff for circular wrapping
             const getDiff = (idx) => {
@@ -3560,6 +3574,7 @@
                     <div className="container">
                         <h2 className="section-title">Recognition</h2>
                         <div
+                            ref={containerRef}
                             className="coverflow-container"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
@@ -3611,7 +3626,7 @@
                                                     <div
                                                         key={`${currentIndex}-${resetTrigger}`}
                                                         className="coverflow-progress-fill"
-                                                        style={{ animationPlayState: auto ? 'running' : 'paused' }}
+                                                        style={{ animationPlayState: (auto && carouselFullyInView) ? 'running' : 'paused' }}
                                                     />
                                                 </div>
                                             )}
