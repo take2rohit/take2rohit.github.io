@@ -1570,12 +1570,14 @@
             transform: translateX(-400px) scale(0.76) translateZ(-100px) rotateY(20deg);
             opacity: 0.45;
             z-index: 3;
+            pointer-events: auto;
         }
 
         .coverflow-item.right-2 {
             transform: translateX(400px) scale(0.76) translateZ(-100px) rotateY(-20deg);
             opacity: 0.45;
             z-index: 3;
+            pointer-events: auto;
         }
 
         .coverflow-item.hidden {
@@ -3569,6 +3571,35 @@
                 isSwipingRef.current = false;
             };
 
+            // Resolve a click on the track to the visually front-most card at
+            // that pixel. Needed because the active card's overlay (scale 1.1 +
+            // translateZ) and the 3D `preserve-3d` track absorb clicks on
+            // flanking cards, so per-item onClick never fires for them.
+            // Z-order from front: active > left-1/right-1 > left-2/right-2.
+            const POS_PRIORITY = { active: 3, 'left-1': 2, 'right-1': 2, 'left-2': 1, 'right-2': 1 };
+            const handleTrackClick = (e) => {
+                const cards = e.currentTarget.querySelectorAll('.coverflow-item');
+                let bestIdx = -1;
+                let bestPriority = -1;
+                cards.forEach((el, i) => {
+                    const cls = el.className;
+                    let priority = 0;
+                    for (const key in POS_PRIORITY) {
+                        if (cls.indexOf(key) !== -1) { priority = POS_PRIORITY[key]; break; }
+                    }
+                    if (priority === 0) return; // hidden
+                    const r = el.getBoundingClientRect();
+                    if (e.clientX < r.left || e.clientX > r.right) return;
+                    if (e.clientY < r.top || e.clientY > r.bottom) return;
+                    if (priority > bestPriority) { bestPriority = priority; bestIdx = i; }
+                });
+                if (bestIdx >= 0 && bestIdx !== currentIndex) {
+                    e.preventDefault();
+                    setCurrentIndex(bestIdx);
+                    setResetTrigger(prev => prev + 1);
+                }
+            };
+
             return (
                 <section id="gallery" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
@@ -3589,7 +3620,7 @@
                                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
                             </button>
 
-                            <div className="coverflow-track">
+                            <div className="coverflow-track" onClick={handleTrackClick}>
                                 {items.map((item, i) => {
                                     const diff = getDiff(i);
                                     const isActive = diff === 0;
