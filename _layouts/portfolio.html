@@ -600,7 +600,40 @@
             margin-bottom: 0.5rem;
             color: var(--text-primary);
             font-family: var(--font-display);
-            animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Reserve a line of height so the line doesn't pop in as
+               characters are typed. */
+            min-height: 1.1em;
+        }
+
+        /* Chunky vertical caret. The span itself is zero-width so it
+           doesn't wedge surrounding characters apart when it sits in
+           the middle of text; the bar is drawn as a centered ::after
+           overlay. Text reads as :') -> :) -> :)) with the caret
+           sitting at the boundary, not occupying its own slot. */
+        .hero-cursor {
+            display: inline-block;
+            position: relative;
+            width: 0;
+            height: 1em;
+            vertical-align: -0.12em;
+            animation: heroCursorBlink 1s steps(1, end) infinite;
+        }
+
+        .hero-cursor::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 1.05em;
+            background: #d62828;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        @keyframes heroCursorBlink {
+            0%, 50%      { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
         }
 
         @keyframes slideInLeft {
@@ -1997,6 +2030,89 @@
             );
         };
 
+        // Types a greeting with human-like cadence and a typo-correction
+        // gesture: after the wrong smiley sits visible for a beat, the
+        // caret steps LEFT into the smiley, backspaces the ' and types
+        // the missing ) - same way a human would fix the face in place.
+        const TypedName = ({ name }) => {
+            const [text, setText] = useState('');
+            const [caret, setCaret] = useState(0);
+            const subject = name || 'Rohit Lal';
+
+            useEffect(() => {
+                let cancelled = false;
+                let buffer = '';
+                let pos = 0;
+                const sync = () => { setText(buffer); setCaret(pos); };
+                const wait = (ms) => new Promise(res => window.setTimeout(res, ms));
+                const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+                const delayFor = (ch) => {
+                    if (ch === ',' || ch === '!') return rand(420, 620);
+                    if (ch === ' ')               return rand(90, 180);
+                    if (ch === "'" || ch === '"') return rand(140, 240);
+                    return rand(110, 230);
+                };
+                const typeStr = async (str) => {
+                    for (const ch of str) {
+                        if (cancelled) return;
+                        buffer = buffer.slice(0, pos) + ch + buffer.slice(pos);
+                        pos += 1;
+                        sync();
+                        await wait(delayFor(ch));
+                    }
+                };
+                const backspace = async (n) => {
+                    for (let i = 0; i < n; i++) {
+                        if (cancelled || pos === 0) return;
+                        buffer = buffer.slice(0, pos - 1) + buffer.slice(pos);
+                        pos -= 1;
+                        sync();
+                        await wait(rand(60, 110));
+                    }
+                };
+                const moveLeft = async (n) => {
+                    for (let i = 0; i < n; i++) {
+                        if (cancelled || pos === 0) return;
+                        pos -= 1;
+                        sync();
+                        await wait(rand(100, 160));
+                    }
+                };
+
+                const moveToEnd = async () => {
+                    if (cancelled) return;
+                    await wait(rand(180, 260));
+                    pos = buffer.length;
+                    sync();
+                };
+
+                const firstName = subject.split(/\s+/)[0];
+                (async () => {
+                    await wait(1200);             // brief beat before typing starts
+                    await typeStr(`Hi, I'm ${firstName} :')`);
+                    if (cancelled) return;
+                    await wait(1500);             // let the wrong face sit visible
+                    await moveLeft(1);            // step caret left, now between ' and )
+                    await wait(280);              // pause - "ok now backspace"
+                    await backspace(1);           // delete the apostrophe
+                    await wait(280);              // pause - "now type the missing paren"
+                    await typeStr(')');           // fixes it to :))
+                    await moveToEnd();            // settle the caret at the end of the text
+                    await typeStr(' ');           // trailing whitespace so the caret rests away from )
+                })();
+
+                return () => { cancelled = true; };
+            }, [subject]);
+
+            return (
+                <React.Fragment>
+                    {text.slice(0, caret)}
+                    <span className="hero-cursor" aria-hidden="true" />
+                    {text.slice(caret)}
+                </React.Fragment>
+            );
+        };
+
         // ---- Hero ----
         const Hero = () => {
             const dp = aboutme.DP_Link || 'img/rohit.png';
@@ -2062,7 +2178,7 @@
                                 <img src={dp} alt={aboutme.Name || 'Profile'} className="hero-image" />
                             </div>
                             <div className="hero-content">
-                                <h1 className="hero-name">{aboutme.Name}</h1>
+                                <h1 className="hero-name"><TypedName name={aboutme.Name} /></h1>
                                 <p className="hero-expertise">
                                     {expertiseParts.map((p, i) => (
                                         <React.Fragment key={i}>
