@@ -2034,7 +2034,7 @@
             { id: 'contact',      label: 'Contact'      },
         ];
 
-        const Navigation = ({ active, onNavigate, onReset }) => {
+        const Navigation = ({ active, onNavigate }) => {
             const logoRef = useRef(null);
             const navInnerRef = useRef(null);
             const linksMeasureRef = useRef(null);
@@ -2075,11 +2075,11 @@
                 if (!useHamburger) setMenuOpen(false);
             }, [useHamburger]);
 
-            // Click handler: jump to the top instantly, then play the iris
-            // animation over the now-scrolled page so the shutter opens
-            // onto the hero. Setting scrollTop directly bypasses the
-            // global `html { scroll-behavior: smooth }` rule that would
-            // otherwise animate the jump.
+            // Jump to the top instantly, then play the iris animation over
+            // the now-scrolled page so the shutter opens onto the hero.
+            // Setting scrollTop directly bypasses the global
+            // `html { scroll-behavior: smooth }` rule that would otherwise
+            // animate the jump.
             const handleLogoClick = (e) => {
                 e.preventDefault();
                 setMenuOpen(false);
@@ -2088,7 +2088,6 @@
                 document.body.scrollTop = 0;
                 setShutter(true);
                 window.setTimeout(() => setShutter(false), 1850);
-                if (onReset) onReset();
             };
 
             const handleNavClick = (e, id) => {
@@ -3292,7 +3291,6 @@
         // ---- App ----
         const App = () => {
             const [active, setActive] = useState('hero');
-            const [resetKey, setResetKey] = useState(0);
 
             useEffect(() => {
                 const sectionIds = ['hero', 'news', 'publications', 'experience', 'projects', 'skills', 'gallery', 'travel', 'contact'];
@@ -3321,17 +3319,17 @@
 
             return (
                 <>
-                    <Navigation active={active} onNavigate={scrollToSection} onReset={() => setResetKey(k => k + 1)} />
+                    <Navigation active={active} onNavigate={scrollToSection} />
                     <div style={{ paddingTop: 60 }}>
-                        <Hero key={resetKey} />
-                        <NewsSection key={resetKey} />
-                        <Publications key={resetKey} />
-                        <Experience key={resetKey} />
-                        <Projects key={resetKey} />
-                        <Skills key={resetKey} />
-                        <Gallery key={resetKey} />
-                        <TravelMap key={resetKey} />
-                        <Contact key={resetKey} />
+                        <Hero />
+                        <NewsSection />
+                        <Publications />
+                        <Experience />
+                        <Projects />
+                        <Skills />
+                        <Gallery />
+                        <TravelMap />
+                        <Contact />
                         <footer className="footer">
                             <div className="container">
                                 <p>
