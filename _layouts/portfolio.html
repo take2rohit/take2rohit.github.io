@@ -2052,14 +2052,14 @@
                     if (ch === "'" || ch === '"') return rand(140, 240);
                     return rand(110, 230);
                 };
-                const typeStr = async (str) => {
+                const typeStr = async (str, fixedSpeed) => {
                     for (const ch of str) {
                         if (cancelled) return;
                         buffer = buffer.slice(0, pos) + ch + buffer.slice(pos);
                         pos += 1;
                         sync();
-                        await wait(delayFor(ch));
-                        }
+                        await wait(fixedSpeed != null ? fixedSpeed : delayFor(ch));
+                    }
                 };
                 const backspace = async (n) => {
                     for (let i = 0; i < n; i++) {
@@ -2086,19 +2086,16 @@
                         sync();
                 };
 
-                const firstName = subject.split(/\s+/)[0];
                 (async () => {
-                    await wait(1200);             // brief beat before typing starts
-                    await typeStr(`Hi, I'm ${firstName} :')`);
+                    await wait(600);              // brief beat before typing starts
+                    await typeStr('Hello, World!', 55);  // fast: ~55ms per char, classic dev greeting
                     if (cancelled) return;
-                    await wait(1500);             // let the wrong face sit visible
-                    await moveLeft(1);            // step caret left, now between ' and )
-                    await wait(280);              // pause - "ok now backspace"
-                    await backspace(1);           // delete the apostrophe
-                    await wait(280);              // pause - "now type the missing paren"
-                    await typeStr(')');           // fixes it to :))
-                    await moveToEnd();            // settle the caret at the end of the text
-                    await typeStr(' ');           // trailing whitespace so the caret rests away from )
+                    await wait(1500);             // let the greeting sit visible
+                    await backspace('Hello, World!'.length);
+                    await wait(320);              // pause - "let me actually introduce myself"
+                    await typeStr(`I'm ${subject}.`);    // normal cadence, full name with full stop
+                    await moveToEnd();            // ensure caret is at the end
+                    await typeStr(' ');           // trailing whitespace so the caret rests away
                 })();
 
                 return () => { cancelled = true; };
