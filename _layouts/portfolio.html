@@ -225,6 +225,46 @@
         .nav-link.active { color: var(--accent); }
         .nav-link.active::after { transform: scaleX(1); }
 
+        /* Hamburger menu button — hidden on desktop, revealed by the
+           mobile media query. Three bars morph into an X when .menu-open
+           is added to the parent nav. */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition-fast);
+        }
+
+        .nav-toggle:hover { background: var(--accent-light); }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 1px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.2s ease;
+            transform-origin: center;
+        }
+
+        .nav.menu-open .nav-toggle span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+        .nav.menu-open .nav-toggle span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
         /* News Section */
         .news-section {
             background: var(--bg-secondary);
@@ -825,11 +865,18 @@
             padding: 0.6rem 1rem;
         }
 
-        /* Top-venues marquee: compact card, venue names scroll horizontally */
-        .stat-card--marquee { padding-right: 0.75rem; }
+        /* Top-venues marquee: compact card, venue names scroll horizontally.
+           Width adapts to the row's remaining space so the card stays inside
+           the section column on narrow viewports instead of overflowing right. */
+        .stat-card--marquee {
+            padding-right: 0.75rem;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
 
         .stat-marquee {
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             overflow: hidden;
             position: relative;
             mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
@@ -1595,14 +1642,56 @@
             .hero-links { justify-content: center; }
 
             .section-title { font-size: 2rem; }
-            .section-title::before { left: -22px; font-size: 1.25rem; }
+            /* The decorative // sits at left:-30px on desktop, which lands
+               outside the container's 1.25rem padding on a narrow viewport
+               and clips against the screen edge. Hide on mobile. */
+            .section-title::before { display: none; }
             .section-title::after { width: 32px; height: 32px; }
 
+            /* Hamburger nav: hide the inline link list and reveal it as a
+               full-width slide-down panel below the bar when .open is set. */
+            .nav-inner { padding: 0.75rem var(--space-md); }
+            .nav-toggle { display: inline-flex; }
             .nav-links {
-                gap: 0.75rem;
-                font-size: 0.85rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 0;
+                background: rgba(250, 248, 245, 0.98);
+                backdrop-filter: blur(12px) saturate(180%);
+                -webkit-backdrop-filter: blur(12px) saturate(180%);
+                border-bottom: 1px solid var(--border-color);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 6px 16px var(--shadow-md);
             }
-            .nav-link { font-size: 0.85rem; }
+            .nav-links.open { max-height: calc(100vh - 60px); }
+            .nav-links li { border-top: 1px solid var(--border-color); }
+            .nav-link {
+                display: block;
+                padding: 0.95rem var(--space-md);
+                font-size: 1rem;
+            }
+            /* Underline indicator from desktop uses bottom:-1rem and would
+               sit outside the row in the stacked menu; not useful here. */
+            .nav-link::after { display: none; }
+
+            /* Marquee row: take the full row and shrink venue text so the
+               card never spills beyond the section's padded container. */
+            .stat-card--marquee {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+            .stat-marquee { max-width: 100%; }
+            .stat-marquee-item {
+                font-size: 1.5rem;
+                margin-right: 1.5rem;
+            }
 
             .publication-card-enhanced {
                 grid-template-columns: 1fr;
@@ -1782,10 +1871,22 @@
         const Navigation = ({ active, onNavigate }) => {
             const [scrolled, setScrolled] = useState(false);
             const [shutter, setShutter] = useState(false);
+            const [menuOpen, setMenuOpen] = useState(false);
             useEffect(() => {
                 const onScroll = () => setScrolled(window.scrollY > 20);
                 window.addEventListener('scroll', onScroll);
                 return () => window.removeEventListener('scroll', onScroll);
+            }, []);
+
+            // Snap the dropdown shut when the viewport crosses back above the
+            // mobile breakpoint - otherwise the .open class would leave the
+            // panel max-height pinned even though the bar is now horizontal.
+            useEffect(() => {
+                const onResize = () => {
+                    if (window.innerWidth > 768) setMenuOpen(false);
+                };
+                window.addEventListener('resize', onResize);
+                return () => window.removeEventListener('resize', onResize);
             }, []);
 
             // Click handler: jump to the top instantly, then play the iris
@@ -1795,6 +1896,7 @@
             // otherwise animate the jump.
             const handleLogoClick = (e) => {
                 e.preventDefault();
+                setMenuOpen(false);
                 if (shutter) return;
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
@@ -1802,9 +1904,15 @@
                 window.setTimeout(() => setShutter(false), 1850);
             };
 
+            const handleNavClick = (e, id) => {
+                e.preventDefault();
+                setMenuOpen(false);
+                onNavigate(id);
+            };
+
             return (
                 <React.Fragment>
-                    <nav className="nav" style={{ boxShadow: scrolled ? '0 2px 8px var(--shadow)' : 'none' }}>
+                    <nav className={`nav ${menuOpen ? 'menu-open' : ''}`} style={{ boxShadow: scrolled ? '0 2px 8px var(--shadow)' : 'none' }}>
                         <div className="nav-inner">
                             <a href="#" className="nav-logo" onClick={handleLogoClick}>
                                 <svg className="nav-logo-iris" viewBox="0 0 24 24" fill="none"
@@ -1820,13 +1928,24 @@
                                 </svg>
                                 <span>{aboutme.Name || 'Rohit Lal'}</span>
                             </a>
-                            <ul className="nav-links">
+                            <button
+                                type="button"
+                                className="nav-toggle"
+                                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                                aria-expanded={menuOpen}
+                                onClick={() => setMenuOpen(o => !o)}
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
                                 {NAV_SECTIONS.map(s => (
                                     <li key={s.id}>
                                         <a
                                             href={`#${s.id}`}
                                             className={`nav-link ${active === s.id ? 'active' : ''}`}
-                                            onClick={(e) => { e.preventDefault(); onNavigate(s.id); }}
+                                            onClick={(e) => handleNavClick(e, s.id)}
                                         >{s.label}</a>
                                     </li>
                                 ))}
