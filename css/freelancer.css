@@ -9851,3 +9851,113 @@ form .row:first-child .floating-label-form-group {
 .copyright {
   background-color: #1a252f;
 }
+
+@media (max-width: 991.98px) {
+  #mainNav .navbar-toggler {
+    border: none;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.25s ease, transform 0.2s ease;
+  }
+  #mainNav .navbar-toggler:hover, #mainNav .navbar-toggler:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    outline: none;
+  }
+  #mainNav .navbar-toggler:active {
+    transform: scale(0.95);
+  }
+  #mainNav .navbar-toggler[aria-expanded="true"] .fa-bars::before {
+    content: "\f00d";
+  }
+  #mainNav .navbar-toggler i {
+    font-size: 1.15rem;
+  }
+  #navbarResponsive {
+    position: absolute;
+    top: 100%;
+    right: 15px;
+    width: 240px;
+    background: rgba(44, 62, 80, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    padding: 8px 0;
+    margin-top: 10px;
+    z-index: 1050;
+    overflow: hidden;
+    transform-origin: top right;
+  }
+  #navbarResponsive.collapsing {
+    display: block !important;
+    height: auto !important;
+    opacity: 0;
+    transform: scale(0.92) translateY(-10px);
+    transition: opacity 0.22s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #navbarResponsive.collapse:not(.show) {
+    display: none;
+  }
+  #navbarResponsive.collapse.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #navbarResponsive .navbar-nav {
+    margin-top: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  #navbarResponsive .navbar-nav li.nav-item {
+    margin: 0;
+    width: 100%;
+  }
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link {
+    color: rgba(255, 255, 255, 0.95) !important;
+    padding: 12px 18px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+    text-align: left;
+    border: none !important;
+    transition: background-color 0.25s ease, color 0.25s ease !important;
+  }
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link::after {
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.7rem;
+    opacity: 0.45;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link:hover, 
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link:active, 
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link:focus {
+    background-color: rgba(26, 188, 156, 0.15) !important;
+    color: #1abc9c !important;
+  }
+  #navbarResponsive .navbar-nav li.nav-item a.nav-link:hover::after {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+  #navbarResponsive .navbar-nav li.nav-item:not(:last-child) a.nav-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+}

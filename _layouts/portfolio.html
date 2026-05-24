@@ -63,12 +63,16 @@
 
         html { scroll-behavior: smooth; }
 
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: var(--font-body);
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
-            overflow-x: hidden;
             font-size: 18px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -224,6 +228,10 @@
         .nav-link:hover { color: var(--text-primary); }
         .nav-link.active { color: var(--accent); }
         .nav-link.active::after { transform: scaleX(1); }
+
+        .nav-link-chevron {
+            display: none;
+        }
 
         /* Hamburger menu button — hidden on desktop, revealed by the
            mobile media query. Three bars morph into an X when .menu-open
@@ -1501,6 +1509,12 @@
             position: relative;
         }
 
+        .journey-map {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
         /* Skills - color-coded pills */
         .skills-categories {
             display: flex;
@@ -1625,61 +1639,150 @@
 
         .footer a:hover { text-decoration: underline; }
 
+        /* Tablet & Mobile Heading Spacing Fix */
+        @media (max-width: 1200px) {
+            .section-title {
+                display: block !important;
+            }
+            .section-title::before {
+                display: inline-block !important;
+                position: static !important;
+                transform: none !important;
+                margin-right: 0.5rem;
+                font-size: 1.25rem !important;
+                opacity: 0.35 !important;
+            }
+        }
+
+        /* Tablet Layout Adjustments (iPads) */
+        @media (max-width: 1024px) {
+            .hero-wrapper {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: var(--space-lg);
+            }
+            .hero-links {
+                justify-content: center !important;
+            }
+        }
+
         /* Mobile */
         @media (max-width: 768px) {
             body { font-size: 16px; }
-
-            .hero-wrapper {
-                flex-direction: column;
-                text-align: center;
-                gap: var(--space-lg);
-            }
 
             .hero-name { font-size: 2.5rem; }
             .hero-expertise { font-size: 1.1rem; }
             .hero-bio { font-size: 1rem; }
             .hero-image { width: 220px; height: 320px; }
-            .hero-links { justify-content: center; }
 
             .section-title { font-size: 2rem; }
-            /* The decorative // sits at left:-30px on desktop, which lands
-               outside the container's 1.25rem padding on a narrow viewport
-               and clips against the screen edge. Hide on mobile. */
-            .section-title::before { display: none; }
             .section-title::after { width: 32px; height: 32px; }
 
             /* Hamburger nav: hide the inline link list and reveal it as a
-               full-width slide-down panel below the bar when .open is set. */
-            .nav-inner { padding: 0.75rem var(--space-md); }
-            .nav-toggle { display: inline-flex; }
+               sleek floating iPhone-style context menu popover on the right. */
+            .nav-inner {
+                padding: 0.75rem var(--space-md);
+                position: relative;
+            }
+            .nav-toggle {
+                display: inline-flex;
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: var(--accent-light) !important;
+                border: 1px solid rgba(30, 58, 95, 0.12) !important;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px rgba(30, 58, 95, 0.04);
+                position: relative;
+                z-index: 110;
+                transition: transform 0.2s var(--transition-fast), background var(--transition-fast);
+            }
+            .nav-toggle span {
+                background: var(--accent) !important;
+            }
+            .nav-toggle:hover, .nav-toggle:active {
+                background: rgba(30, 58, 95, 0.15) !important;
+            }
+            .nav-toggle:active {
+                transform: scale(0.92);
+            }
             .nav-links {
                 position: absolute;
                 top: 100%;
-                left: 0;
-                right: 0;
+                right: var(--space-md);
+                width: 200px;
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0;
-                padding: 0;
-                background: rgba(250, 248, 245, 0.98);
-                backdrop-filter: blur(12px) saturate(180%);
-                -webkit-backdrop-filter: blur(12px) saturate(180%);
+                padding: 6px 0;
+                background: rgba(250, 248, 245, 0.96);
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                border: 1px solid var(--border-color);
+                border-radius: 14px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+                margin-top: 8px;
+                
+                /* Premium Popover Transition */
+                opacity: 0;
+                transform: scale(0.92) translateY(-8px);
+                transform-origin: top right;
+                pointer-events: none;
+                visibility: hidden;
+                transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                            visibility 0.2s;
+            }
+            .nav-links.open {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                pointer-events: auto;
+                visibility: visible;
+                max-height: none; /* Override any legacy restrictions */
+            }
+            .nav-links li {
+                border-top: none;
+            }
+            .nav-links li:not(:last-child) {
                 border-bottom: 1px solid var(--border-color);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: 0 6px 16px var(--shadow-md);
             }
-            .nav-links.open { max-height: calc(100vh - 60px); }
-            .nav-links li { border-top: 1px solid var(--border-color); }
             .nav-link {
-                display: block;
-                padding: 0.95rem var(--space-md);
-                font-size: 1rem;
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.7rem 1rem !important;
+                font-size: 0.9rem !important;
+                font-weight: 500;
+                color: var(--text-secondary);
+                transition: background var(--transition-fast), color var(--transition-fast);
             }
-            /* Underline indicator from desktop uses bottom:-1rem and would
-               sit outside the row in the stacked menu; not useful here. */
-            .nav-link::after { display: none; }
+            .nav-link:hover, .nav-link:active {
+                background: var(--bg-hover);
+                color: var(--accent) !important;
+            }
+            /* Hide the desktop underline block completely on mobile */
+            .nav-link::after, .nav-link.active::after {
+                display: none !important;
+            }
+
+            /* Premium mobile chevron caret positioning on the right of flex */
+            .nav-link-chevron {
+                display: block !important;
+                font-size: 1.15rem;
+                line-height: 1;
+                font-weight: 400;
+                opacity: 0.4;
+                transition: transform 0.2s var(--transition-fast), opacity 0.2s var(--transition-fast);
+            }
+            .nav-link:hover .nav-link-chevron, 
+            .nav-link:active .nav-link-chevron {
+                opacity: 0.8;
+                transform: translateX(2px) !important;
+            }
+            .nav-link.active .nav-link-chevron {
+                opacity: 0.8;
+            }
 
             /* Marquee row: take the full row and shrink venue text so the
                card never spills beyond the section's padded container. */
@@ -1946,7 +2049,10 @@
                                             href={`#${s.id}`}
                                             className={`nav-link ${active === s.id ? 'active' : ''}`}
                                             onClick={(e) => handleNavClick(e, s.id)}
-                                        >{s.label}</a>
+                                        >
+                                            <span>{s.label}</span>
+                                            <span className="nav-link-chevron" aria-hidden="true">›</span>
+                                        </a>
                                     </li>
                                 ))}
                             </ul>
