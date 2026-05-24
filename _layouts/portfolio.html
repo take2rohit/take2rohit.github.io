@@ -1971,7 +1971,7 @@
             { id: 'contact',      label: 'Contact'      },
         ];
 
-        const Navigation = ({ active, onNavigate }) => {
+        const Navigation = ({ active, onNavigate, onReset }) => {
             const [scrolled, setScrolled] = useState(false);
             const [shutter, setShutter] = useState(false);
             const [menuOpen, setMenuOpen] = useState(false);
@@ -2005,6 +2005,7 @@
                 document.body.scrollTop = 0;
                 setShutter(true);
                 window.setTimeout(() => setShutter(false), 1850);
+                if (onReset) onReset();
             };
 
             const handleNavClick = (e, id) => {
@@ -3181,6 +3182,7 @@
         // ---- App ----
         const App = () => {
             const [active, setActive] = useState('hero');
+            const [resetKey, setResetKey] = useState(0);
 
             useEffect(() => {
                 const sectionIds = ['hero', 'news', 'publications', 'experience', 'projects', 'skills', 'gallery', 'travel', 'contact'];
@@ -3209,17 +3211,17 @@
 
             return (
                 <>
-                    <Navigation active={active} onNavigate={scrollToSection} />
+                    <Navigation active={active} onNavigate={scrollToSection} onReset={() => setResetKey(k => k + 1)} />
                     <div style={{ paddingTop: 60 }}>
-                        <Hero />
-                        <NewsSection />
-                        <Publications />
-                        <Experience />
-                        <Projects />
-                        <Skills />
-                        <Gallery />
-                        <TravelMap />
-                        <Contact />
+                        <Hero key={resetKey} />
+                        <NewsSection key={resetKey} />
+                        <Publications key={resetKey} />
+                        <Experience key={resetKey} />
+                        <Projects key={resetKey} />
+                        <Skills key={resetKey} />
+                        <Gallery key={resetKey} />
+                        <TravelMap key={resetKey} />
+                        <Contact key={resetKey} />
                         <footer className="footer">
                             <div className="container">
                                 <p>
