@@ -113,6 +113,7 @@
             letter-spacing: -0.02em;
             font-family: var(--font-display);
             padding: 6px 14px;
+            white-space: nowrap;
             transition: color var(--transition-fast), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -1664,19 +1665,6 @@
             .hero-links {
                 justify-content: center !important;
             }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            body { font-size: 16px; }
-
-            .hero-name { font-size: 2.5rem; }
-            .hero-expertise { font-size: 1.1rem; }
-            .hero-bio { font-size: 1rem; }
-            .hero-image { width: 220px; height: 320px; }
-
-            .section-title { font-size: 2rem; }
-            .section-title::after { width: 32px; height: 32px; }
 
             /* Hamburger nav: hide the inline link list and reveal it as a
                sleek floating iPhone-style context menu popover on the right. */
@@ -1783,6 +1771,19 @@
             .nav-link.active .nav-link-chevron {
                 opacity: 0.8;
             }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+
+            .hero-name { font-size: 2.5rem; }
+            .hero-expertise { font-size: 1.1rem; }
+            .hero-bio { font-size: 1rem; }
+            .hero-image { width: 220px; height: 320px; }
+
+            .section-title { font-size: 2rem; }
+            .section-title::after { width: 32px; height: 32px; }
 
             /* Marquee row: take the full row and shrink venue text so the
                card never spills beyond the section's padded container. */
@@ -1986,7 +1987,7 @@
             // panel max-height pinned even though the bar is now horizontal.
             useEffect(() => {
                 const onResize = () => {
-                    if (window.innerWidth > 768) setMenuOpen(false);
+                    if (window.innerWidth > 1024) setMenuOpen(false);
                 };
                 window.addEventListener('resize', onResize);
                 return () => window.removeEventListener('resize', onResize);
