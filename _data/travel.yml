@@ -4,23 +4,33 @@
 # Required fields:
 #   name        - label shown next to the marker
 #   lat, lng    - WGS84 coordinates fed into d3.geoAlbersUsa()
-#   description - one-line context shown in the hover tooltip
-#   year        - year(s) visited
-#   image       - relative image path shown in the tooltip
+#   description - tooltip blurb. HARD LIMIT: 8 words or fewer. Punchy
+#                 and concrete (e.g. "Misty blue ridges and 1,500 black bears")
+#                 beats generic ("Great national park").
+#   image       - URL or relative path shown in the tooltip
 #   type        - 'city' (concentric circles marker) or 'park' (triangle marker)
 #
-# Optional (only used when type=city, controls label positioning):
-#   textAnchor  - SVG text-anchor: 'start' | 'middle' | 'end'
-#   offsetX     - x offset of label from marker (px)
-#   offsetY     - y offset of label from marker (px)
+# Optional:
+#   home               - true for the city Rohit currently lives in
+#                        (renders red marker + pulsing ring + bold red label)
+#   textAnchor         - SVG text-anchor: 'start' | 'middle' | 'end'
+#   offsetX            - x offset of label from marker (px)
+#   offsetY            - y offset of label from marker (px)
+#   image_credit       - short attribution text (e.g. "Wikipedia: Huntsville, AL")
+#   image_credit_url   - link clicked from the tooltip credit line
+#
+# TODO: swap the Wikipedia placeholder URLs below for Rohit's own photos.
+# All current `image:` values point to Wikimedia-Commons thumbnails licensed
+# CC-BY-SA or public domain. Source page is in `image_credit_url`.
 
 cities:
   - name: Huntsville
     lat: 34.7304
     lng: -86.5861
     description: NASA IMPACT - Research Scientist
-    year: 2024-Present
-    image: img/portfolio/surya.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Huntsville_Art_Museum_-_front_fa%C3%A7ade_and_stairs_2023.jpg/500px-Huntsville_Art_Museum_-_front_fa%C3%A7ade_and_stairs_2023.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Huntsville%2C_Alabama
     type: city
     home: true
     textAnchor: end
@@ -31,8 +41,9 @@ cities:
     lat: 33.9806
     lng: -117.3755
     description: UC Riverside - Master's Degree
-    year: 2022-2024
-    image: img/portfolio/person.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mission_Inn%27s_main_interior_courtyard.jpg/500px-Mission_Inn%27s_main_interior_courtyard.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Riverside%2C_California
     type: city
     textAnchor: start
     offsetX: 15
@@ -42,8 +53,9 @@ cities:
     lat: 40.7128
     lng: -74.0060
     description: Business & Culture Hub
-    year: '2023'
-    image: img/portfolio/word_emb.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg/500px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/New_York_City
     type: city
     textAnchor: end
     offsetX: -15
@@ -53,8 +65,9 @@ cities:
     lat: 34.0522
     lng: -118.2437
     description: Tech & Entertainment
-    year: '2023'
-    image: img/portfolio/surya.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/500px-Hollywood_Sign_%28Zuschnitt%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Los_Angeles
     type: city
     textAnchor: end
     offsetX: -15
@@ -64,8 +77,9 @@ cities:
     lat: 41.8781
     lng: -87.6298
     description: Midwest Adventures
-    year: '2022'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/500px-Chicago_River_ferry_b.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Chicago
     type: city
     textAnchor: middle
     offsetX: 0
@@ -75,8 +89,9 @@ cities:
     lat: 47.6062
     lng: -122.3321
     description: Pacific Northwest
-    year: '2024'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Seattle_Center_as_night_falls.jpg/500px-Seattle_Center_as_night_falls.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Seattle
     type: city
     textAnchor: end
     offsetX: -15
@@ -86,8 +101,9 @@ cities:
     lat: 42.3601
     lng: -71.0589
     description: Academic Excellence
-    year: '2023'
-    image: img/portfolio/word_emb.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ISH_WC_Boston4.jpg/500px-ISH_WC_Boston4.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Boston
     type: city
     textAnchor: end
     offsetX: -15
@@ -97,8 +113,9 @@ cities:
     lat: 33.7490
     lng: -84.3880
     description: Southern Charm
-    year: '2023'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/A2ATL20250614-0721_%28cropped%29.jpg/500px-A2ATL20250614-0721_%28cropped%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Atlanta
     type: city
     textAnchor: start
     offsetX: 15
@@ -108,8 +125,9 @@ cities:
     lat: 37.7749
     lng: -122.4194
     description: Innovation Valley
-    year: '2024'
-    image: img/portfolio/surya.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/San_Francisco_Downtown_Aerial%2C_August_2025.jpg/500px-San_Francisco_Downtown_Aerial%2C_August_2025.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/San_Francisco
     type: city
     textAnchor: middle
     offsetX: 0
@@ -119,8 +137,9 @@ cities:
     lat: 36.1627
     lng: -86.7816
     description: Music City Vibes
-    year: '2023'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Nashville%2C_TN_skyline.jpg/500px-Nashville%2C_TN_skyline.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Nashville%2C_Tennessee
     type: city
     textAnchor: middle
     offsetX: 0
@@ -130,8 +149,9 @@ cities:
     lat: 29.9511
     lng: -90.0715
     description: Culture & Jazz
-    year: '2022'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_%28cropped%29.jpg/500px-New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_%28cropped%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/New_Orleans
     type: city
     textAnchor: middle
     offsetX: 0
@@ -141,8 +161,9 @@ cities:
     lat: 38.9072
     lng: -77.0369
     description: Nation's Capital
-    year: '2024'
-    image: img/portfolio/word_emb.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/12-07-13-washington-by-RalfR-08.jpg/500px-12-07-13-washington-by-RalfR-08.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Washington%2C_D.C.
     type: city
     textAnchor: middle
     offsetX: 0
@@ -152,8 +173,9 @@ cities:
     lat: 28.5383
     lng: -81.3792
     description: Sunshine State
-    year: '2023'
-    image: img/portfolio/classifier.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Orlando%2C_Florida_%28cropped%29.jpg/500px-Orlando%2C_Florida_%28cropped%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Orlando%2C_Florida
     type: city
     textAnchor: middle
     offsetX: 0
@@ -163,19 +185,9 @@ cities:
     lat: 36.1699
     lng: -115.1398
     description: Desert Lights
-    year: '2024'
-    image: img/portfolio/surya.webp
-    type: city
-    textAnchor: middle
-    offsetX: 0
-    offsetY: 25
-
-  - name: Denver
-    lat: 39.7392
-    lng: -104.9903
-    description: Mountain Escape
-    year: '2023'
-    image: img/portfolio/digit_rec.webp
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Las_Vegas_from_above_%2840064746644%29.jpg/500px-Las_Vegas_from_above_%2840064746644%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Las_Vegas
     type: city
     textAnchor: middle
     offsetX: 0
@@ -185,71 +197,71 @@ cities:
   - name: Death Valley
     lat: 36.5054
     lng: -117.0794
-    description: Death Valley National Park
-    year: '2024'
-    image: img/portfolio/classifier.webp
+    description: Hottest place on Earth, salt flats and silence
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Mesquite_Sand_Dunes_in_Death_Valley.jpg/500px-Mesquite_Sand_Dunes_in_Death_Valley.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Death_Valley_National_Park
     type: park
 
   - name: Mount Rainier
     lat: 46.8523
     lng: -121.7603
-    description: Mount Rainier National Park
-    year: '2023'
-    image: img/portfolio/digit_rec.webp
+    description: Glacier-capped volcano looming over the Cascades
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Mount_Rainier_from_above_Myrtle_Falls_in_August.JPG/500px-Mount_Rainier_from_above_Myrtle_Falls_in_August.JPG
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Mount_Rainier_National_Park
     type: park
 
   - name: Zion
     lat: 37.2982
     lng: -113.0263
-    description: Zion National Park
-    year: '2024'
-    image: img/portfolio/surya.webp
+    description: Red-rock cathedrals you can hike right through
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Zion_angels_landing_view.jpg/500px-Zion_angels_landing_view.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Zion_National_Park
     type: park
 
   - name: Bryce Canyon
     lat: 37.5930
     lng: -112.1871
-    description: Bryce Canyon National Park
-    year: '2023'
-    image: img/portfolio/word_emb.webp
+    description: An amphitheatre of orange hoodoos at sunrise
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Inspiration_Point_Bryce_Canyon_November_2018_panorama.jpg/500px-Inspiration_Point_Bryce_Canyon_November_2018_panorama.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Bryce_Canyon_National_Park
     type: park
 
   - name: Grand Canyon
     lat: 36.0544
     lng: -112.1401
-    description: Grand Canyon National Park
-    year: '2024'
-    image: img/portfolio/classifier.webp
-    type: park
-
-  - name: Yellowstone
-    lat: 44.4280
-    lng: -110.5885
-    description: Yellowstone National Park
-    year: '2022'
-    image: img/portfolio/classifier.webp
+    description: A mile-deep crack painted layer by layer
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg/500px-Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Grand_Canyon_National_Park
     type: park
 
   - name: North Cascades
     lat: 48.7718
     lng: -121.2985
-    description: North Cascades National Park
-    year: '2024'
-    image: img/portfolio/word_emb.webp
+    description: American Alps with almost no crowds
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cascade_Pass_and_Pelton_Basin.jpg/500px-Cascade_Pass_and_Pelton_Basin.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/North_Cascades_National_Park
     type: park
 
   - name: Great Smoky Mountains
     lat: 35.6131
     lng: -83.5571
-    description: Great Smoky Mountains National Park
-    year: '2023'
-    image: img/portfolio/classifier.webp
+    description: Misty blue ridges and roughly 1,500 black bears
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/View_atop_Cliff_Tops_on_Mount_LeConte%2C_GSMNP%2C_TN.jpg/500px-View_atop_Cliff_Tops_on_Mount_LeConte%2C_GSMNP%2C_TN.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Great_Smoky_Mountains_National_Park
     type: park
 
   - name: Saguaro
     lat: 32.2967
     lng: -110.7574
-    description: Saguaro National Park
-    year: '2024'
-    image: img/portfolio/classifier.webp
+    description: Forests of 40-foot cacti that wave back
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Saguaro_Sunset.jpg/500px-Saguaro_Sunset.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Saguaro_National_Park
     type: park

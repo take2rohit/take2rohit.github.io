@@ -171,14 +171,34 @@ cities:
   - name: Huntsville
     lat: 34.7304
     lng: -86.5861
-    description: NASA IMPACT, Research Scientist
-    year: 2024-Present
-    image: img/portfolio/...
-    type: city          # 'city' (concentric-circle marker) or 'park' (triangle marker)
-    textAnchor: end     # 'start' | 'middle' | 'end' - controls label alignment
+    description: NASA IMPACT - Research Scientist   # 8 words max, see rules
+    image: img/photos/huntsville.jpg                # local path OR full URL
+    image_credit: Rohit Lal                         # shown as 'Photo: <credit>' in tooltip
+    image_credit_url: https://...                   # optional - wraps the credit text in a link
+    type: city                                      # 'city' (concentric circles) or 'park' (triangle)
+    home: true                                      # OPTIONAL - red marker + pulse + bold red label
+    textAnchor: end                                 # 'start' | 'middle' | 'end' label alignment
     offsetX: -15
     offsetY: 5
 ```
+
+**Writing rules** (also codified in `CLAUDE.md`):
+
+* **No `year:` field.** The tooltip does not render it; do not reintroduce
+  the field without updating the schema.
+* **`description:` is hard-capped at 8 words.** Punchy and specific beats
+  generic; e.g. "Misty blue ridges and 1,500 black bears" instead of
+  "Beautiful national park with great views".
+
+> **TODO**: replace the Wikipedia placeholder images with Rohit's own photos.
+> Every entry in `travel.yml` currently has an `image:` pointing at a 500px
+> Wikimedia-Commons thumbnail (CC-BY-SA or public domain) with `image_credit:
+> Wikipedia` and `image_credit_url:` set to the relevant Wikipedia article.
+> When swapping in personal photos: drop a JPG/WebP into `img/photos/`, point
+> `image:` at the local path, and update `image_credit:` (e.g. to "Rohit Lal")
+> and `image_credit_url:` (optional, can be removed). The tooltip is fixed at
+> the centre of the map container at 320 x ~340 px - images are cropped via
+> `object-fit: cover` so any aspect ratio works.
 
 ### `patents.yml`
 

@@ -35,3 +35,20 @@ Other acceptable options when they fit naturally:
 
 This rule applies both to text written into files and to text generated in
 chat about this project.
+
+## Travel map (`_data/travel.yml`) writing rules
+
+The travel map's tooltip is small and dense. Two hard rules for entries in
+`_data/travel.yml`:
+
+1. **No `year:` field.** The tooltip does not display it and we don't keep
+   it in the data. Don't reintroduce the field without changing the schema.
+2. **`description:` must be 8 words or fewer.** Punchy, concrete, and
+   specific is the bar - "Misty blue ridges and 1,500 black bears" reads
+   better than "Beautiful national park with great views". Generic phrases
+   like "Adventure!" or "Great park" are worse than a longer specific line,
+   so if you can't be both short AND interesting, ask the user before
+   trimming.
+
+These rules apply to both cities (`type: city`) and national parks
+(`type: park`).

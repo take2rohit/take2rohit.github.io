@@ -636,6 +636,22 @@
             50.01%, 100% { opacity: 0; }
         }
 
+        /* Word-style selection highlight on the typed name. */
+        .hero-name-sel {
+            background: rgba(30, 58, 95, 0.28);
+            border-radius: 2px;
+        }
+
+        /* Underline drawn under the formatted range. Thick enough to read
+           against the heavy display font; offset a touch so it sits below
+           descenders. */
+        .hero-name-ul {
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            text-decoration-thickness: 3px;
+            text-underline-offset: 6px;
+        }
+
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-30px); }
             to   { opacity: 1; transform: translateX(0); }
@@ -1616,14 +1632,19 @@
             .journey-map-container { height: 400px; }
         }
 
-        /* Map tooltip */
+        /* Map tooltip: anchored at the centre of the map container with a
+           fixed size, so it never spills off the edges no matter which
+           marker is being hovered. */
         .map-tooltip {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: var(--bg-secondary);
             border: 2px solid var(--accent);
             border-radius: 12px;
             box-shadow: 0 12px 40px var(--shadow-md);
-            width: 280px;
+            width: 320px;
             overflow: hidden;
             pointer-events: none;
             z-index: 100;
@@ -1631,7 +1652,7 @@
 
         .map-tooltip img {
             width: 100%;
-            height: 140px;
+            height: 180px;
             object-fit: cover;
             display: block;
         }
@@ -1639,7 +1660,7 @@
         .map-tooltip-body { padding: 14px; }
 
         .map-tooltip-name {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 4px;
@@ -1656,7 +1677,22 @@
         .map-tooltip-year {
             font-size: 0.8rem;
             color: var(--text-secondary);
+            margin-bottom: 6px;
         }
+
+        .map-tooltip-credit {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        .map-tooltip-credit a {
+            color: var(--text-tertiary);
+            text-decoration: underline;
+            pointer-events: auto;
+        }
+
+        .map-tooltip-credit a:hover { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -2030,13 +2066,15 @@
             );
         };
 
-        // Types a greeting with human-like cadence and a typo-correction
-        // gesture: after the wrong smiley sits visible for a beat, the
-        // caret steps LEFT into the smiley, backspaces the ' and types
-        // the missing ) - same way a human would fix the face in place.
+        // Types a "Hello, World!" greeting, replaces it with "I'm <Name>.",
+        // then performs a Word-style gesture: caret nudges left, drag-selects
+        // the name across to the start, applies an underline to the selected
+        // range, deselects, and parks the caret at the end.
         const TypedName = ({ name }) => {
             const [text, setText] = useState('');
             const [caret, setCaret] = useState(0);
+            const [selRange, setSelRange] = useState(null);
+            const [ulRange, setUlRange] = useState(null);
             const subject = name || 'Rohit Lal';
 
             useEffect(() => {
@@ -2078,13 +2116,26 @@
                         await wait(rand(100, 160));
                     }
                 };
-
                 const moveToEnd = async () => {
                     if (cancelled) return;
                     await wait(rand(180, 260));
                     pos = buffer.length;
-                        sync();
+                    sync();
                 };
+                // Word-style drag-select: anchor at the current caret, head
+                // sweeps left one character at a time leaving a highlight.
+                const dragSelectLeft = async (n) => {
+                    const anchor = pos;
+                    for (let i = 0; i < n; i++) {
+                        if (cancelled || pos === 0) return;
+                        pos -= 1;
+                        setSelRange([pos, anchor]);
+                        sync();
+                        await wait(rand(38, 65));
+                    }
+                };
+                const applyUnderlineToSelection = (range) => { setUlRange(range); };
+                const clearSelection = () => { setSelRange(null); };
 
                 (async () => {
                     await wait(600);              // brief beat before typing starts
@@ -2094,20 +2145,58 @@
                     await backspace('Hello, World!'.length);
                     await wait(320);              // pause - "let me actually introduce myself"
                     await typeStr(`I'm ${subject}.`);    // normal cadence, full name with full stop
-                    await moveToEnd();            // ensure caret is at the end
+
+                    if (cancelled) return;
+                    // "Rohit Lal" range inside "I'm Rohit Lal." starts after
+                    // the "I'm " prefix and ends right before the period.
+                    const prefix = `I'm `;
+                    const nameStart = prefix.length;
+                    const nameEnd = nameStart + subject.length;
+
+                    await wait(650);              // admire the line for a beat
+                    await moveLeft(1);            // caret nudges off the period, lands after l
+                    await wait(380);
+                    await dragSelectLeft(subject.length);  // drag-select "Rohit Lal" right-to-left
+                    await wait(550);              // selection sits visible
+                    applyUnderlineToSelection([nameStart, nameEnd]);  // Cmd+U lands
+                    await wait(900);              // admire the underlined name
+                    clearSelection();             // click-away, deselect
+                    await wait(220);
+                    await moveToEnd();            // caret back to the end of "Lal."
                     await typeStr(' ');           // trailing whitespace so the caret rests away
                 })();
 
                 return () => { cancelled = true; };
             }, [subject]);
 
-            return (
-                <React.Fragment>
-                    {text.slice(0, caret)}
-                    <span className="hero-cursor" aria-hidden="true" />
-                    {text.slice(caret)}
-                </React.Fragment>
-            );
+            // Render the text as 1-3 segments based on the active selection
+            // and underline ranges, with the caret slotted in at its position.
+            const splitPoints = (() => {
+                const set = new Set([0, text.length, caret]);
+                if (selRange) { set.add(selRange[0]); set.add(selRange[1]); }
+                if (ulRange)  { set.add(ulRange[0]);  set.add(ulRange[1]); }
+                return [...set].filter(p => p >= 0 && p <= text.length).sort((a, b) => a - b);
+            })();
+            const nodes = [];
+            for (let s = 0; s < splitPoints.length; s++) {
+                const start = splitPoints[s];
+                if (start === caret) {
+                    nodes.push(<span key={`c${s}`} className="hero-cursor" aria-hidden="true" />);
+                }
+                if (s === splitPoints.length - 1) break;
+                const end = splitPoints[s + 1];
+                if (start === end) continue;
+                const inSel = selRange && start >= selRange[0] && end <= selRange[1];
+                const inUL  = ulRange  && start >= ulRange[0]  && end <= ulRange[1];
+                const cls = [
+                    inSel ? 'hero-name-sel' : '',
+                    inUL  ? 'hero-name-ul'  : '',
+                ].filter(Boolean).join(' ');
+                nodes.push(
+                    <span key={`s${start}`} className={cls}>{text.slice(start, end)}</span>
+                );
+            }
+            return <React.Fragment>{nodes}</React.Fragment>;
         };
 
         // ---- Hero ----
@@ -2671,7 +2760,6 @@
             const [mapData, setMapData] = useState(null);
             const [pathFn, setPathFn] = useState(null);
             const [hover, setHover] = useState(null);
-            const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
             const containerRef = useRef(null);
 
             useEffect(() => {
@@ -2691,18 +2779,9 @@
 
             const cities = travelData.cities || [];
 
-            const handleMarkerEnter = (city, x, y, e) => {
-                if (!containerRef.current) return;
-                const rect = containerRef.current.getBoundingClientRect();
-                const svg = e.currentTarget.closest('svg');
-                if (!svg) return;
-                const svgRect = svg.getBoundingClientRect();
-                setTooltipPos({
-                    x: svgRect.left - rect.left + (x / 960) * svgRect.width,
-                    y: svgRect.top  - rect.top  + (y / 600) * svgRect.height,
-                });
-                setHover(city);
-            };
+            // Tooltip is centred in the map container by CSS, so the marker
+            // enter handler only needs to know which city to show.
+            const handleMarkerEnter = (city) => setHover(city);
 
             return (
                 <section id="travel" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
@@ -2733,7 +2812,7 @@
                                         if (!proj) return null;
                                         const { x, y } = proj;
                                         const isPark = c.type === 'park';
-                                        const onEnter = (e) => handleMarkerEnter(c, x, y, e);
+                                        const onEnter = () => handleMarkerEnter(c);
                                         const onLeave = () => setHover(null);
                                         // Home city (where Rohit lives) gets a red marker + label.
                                         const markerColor = c.home ? '#d62828' : 'var(--accent)';
@@ -2815,15 +2894,18 @@
                                 </svg>
                             )}
                             {hover && (
-                                <div
-                                    className="map-tooltip"
-                                    style={{ left: `${tooltipPos.x}px`, top: `${tooltipPos.y - 220}px`, transform: 'translateX(-50%)' }}
-                                >
-                                    {hover.image && <img src={hover.image} alt={hover.name} />}
+                                <div className="map-tooltip">
+                                    {hover.image && <img src={hover.image} alt={hover.name} loading="lazy" />}
                                     <div className="map-tooltip-body">
                                         <div className="map-tooltip-name">{hover.name}</div>
                                         <div className="map-tooltip-desc">{hover.description}</div>
-                                        <div className="map-tooltip-year">{hover.year}</div>
+                                        {hover.image_credit && (
+                                            <div className="map-tooltip-credit">
+                                                Photo: {hover.image_credit_url ? (
+                                                    <a href={hover.image_credit_url} target="_blank" rel="noopener noreferrer">{hover.image_credit}</a>
+                                                ) : hover.image_credit}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             )}
