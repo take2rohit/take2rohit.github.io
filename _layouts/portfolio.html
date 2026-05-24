@@ -497,10 +497,6 @@
         #travel .section-title::after { border-radius: 50%; opacity: 0.3; box-shadow: 20px 0 0 -5px rgba(30, 58, 95, 0.20), -20px 0 0 -5px rgba(30, 58, 95, 0.20); }
         #travel.visible .section-title::after { box-shadow: 15px 0 0 -5px rgba(30, 58, 95, 0.25), -15px 0 0 -5px rgba(30, 58, 95, 0.25), 0 15px 0 -5px rgba(30, 58, 95, 0.20); }
 
-        /* triangle */
-        #contact .section-title::after { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); border: none; background: rgba(30, 58, 95, 0.25); box-shadow: inset 0 -15px 0 0 rgba(30, 58, 95, 0.15); }
-        #contact.visible .section-title::after { transform: translateY(-50%) rotate(180deg); box-shadow: inset 0 -20px 0 0 rgba(30, 58, 95, 0.20); }
-
         .news-header .section-title { margin-bottom: 0; }
         .news-header .section-title::after { display: none; }
 
@@ -1562,66 +1558,6 @@
             color: white;
         }
 
-        /* Contact form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group { margin-bottom: var(--space-md); }
-
-        .form-label {
-            display: block;
-            margin-bottom: var(--space-xs);
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: all var(--transition-fast);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-light);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 0.85rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-family: var(--font-body);
-        }
-
-        .form-submit:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--accent-light);
-        }
-
         /* Footer */
         .footer {
             background: var(--bg-secondary);
@@ -2007,7 +1943,7 @@
                 );
         };
 
-        const useInView = (threshold = 0.1) => {
+        const useInView = (threshold = 0) => {
             const ref = useRef(null);
             const [visible, setVisible] = useState(false);
             useEffect(() => {
@@ -2031,7 +1967,6 @@
             { id: 'skills',       label: 'Skills'       },
             { id: 'gallery',      label: 'Recognition'  },
             { id: 'travel',       label: 'Journey'      },
-            { id: 'contact',      label: 'Contact'      },
         ];
 
         const Navigation = ({ active, onNavigate }) => {
@@ -2224,9 +2159,9 @@
 
         // ---- News ----
         const NewsSection = () => {
-            // Fade-in trigger: low threshold so the section becomes visible
-            // as soon as the reader scrolls it into view, same as every other section.
-            const [sectionRef, visible] = useInView(0.1);
+            // Fade-in trigger: same as every other section - fire the
+            // moment any pixel of the section enters the viewport.
+            const [sectionRef, visible] = useInView();
             const items = (newsData && newsData.news) ? newsData.news : [];
             const listRef = useRef(null);
             const autoRef = useRef(null);
@@ -2239,7 +2174,7 @@
             // Separate observer on the news-list itself. Drift is only allowed
             // while the list is almost entirely in the viewport; ratio >= 0.85
             // means the reader is genuinely parked at News.
-            const START_DELAY_MS = 2500;
+            const START_DELAY_MS = 800;
             useEffect(() => {
                 const node = listRef.current;
                 if (!node) return;
@@ -3250,50 +3185,12 @@
             );
         };
 
-        // ---- Contact ----
-        const Contact = () => {
-            const [ref, visible] = useInView();
-            const [form, setForm] = useState({ name: '', email: '', message: '' });
-            const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                const to = (aboutme.Email || 'mailto:take2rohit@gmail.com').replace(/^mailto:/, '');
-                const subject = encodeURIComponent(`Portfolio Contact from ${form.name || 'someone'}`);
-                const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.email}`);
-                window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-            };
-
-            return (
-                <section id="contact" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
-                    <div className="container">
-                        <h2 className="section-title">Get In Touch</h2>
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="name">Name</label>
-                                <input id="name" name="name" type="text" className="form-input" value={form.name} onChange={handleChange} required />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="email">Email</label>
-                                <input id="email" name="email" type="email" className="form-input" value={form.email} onChange={handleChange} required />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="message">Message</label>
-                                <textarea id="message" name="message" className="form-textarea" value={form.message} onChange={handleChange} required />
-                            </div>
-                            <button type="submit" className="form-submit">Send Message</button>
-                        </form>
-                    </div>
-                </section>
-            );
-        };
-
         // ---- App ----
         const App = () => {
             const [active, setActive] = useState('hero');
 
             useEffect(() => {
-                const sectionIds = ['hero', 'news', 'publications', 'experience', 'projects', 'skills', 'gallery', 'travel', 'contact'];
+                const sectionIds = ['hero', 'news', 'publications', 'experience', 'projects', 'skills', 'gallery', 'travel'];
                 const onScroll = () => {
                     const y = window.scrollY + 200;
                     for (const id of sectionIds) {
@@ -3329,7 +3226,6 @@
                         <Skills />
                         <Gallery />
                         <TravelMap />
-                        <Contact />
                         <footer className="footer">
                             <div className="container">
                                 <p>
