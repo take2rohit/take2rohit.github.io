@@ -875,13 +875,13 @@
            the section column on narrow viewports instead of overflowing right. */
         .stat-card--marquee {
             padding-right: 0.75rem;
-            flex: 1 1 auto;
+            flex: 1 1 0;
             min-width: 0;
         }
 
         .stat-marquee {
-            width: 100%;
-            max-width: 500px;
+            flex: 1 1 0;
+            min-width: 0;
             overflow: hidden;
             position: relative;
             mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
@@ -1761,7 +1761,7 @@
                 flex: 1 1 100%;
                 width: 100%;
             }
-            .stat-marquee { max-width: 100%; }
+            .stat-marquee { flex: 1 1 100%; }
             .stat-marquee-item {
                 font-size: 1.5rem;
                 margin-right: 1.5rem;
