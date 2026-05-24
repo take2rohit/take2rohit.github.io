@@ -1817,8 +1817,10 @@
 
             .section-title { font-size: 2rem; }
             .section-title::after { width: 32px; height: 32px; }
+        }
 
-        /* Hamburger Mode Styles (triggered dynamically when spacing is tight) */
+        /* Hamburger Mode Styles (triggered dynamically when spacing is tight,
+           regardless of viewport width - JS toggles .has-hamburger on .nav). */
         .nav.has-hamburger .nav-inner {
             padding: 0.75rem var(--space-md);
             position: relative;
@@ -3605,6 +3607,66 @@
 
             const cities = travelData.cities || [];
 
+            // Native event delegation for marker hover / click. React's
+            // synthetic events on SVG `<g>` elements do not reliably fire
+            // for real (trusted) mouse input from production browsers - see
+            // commit history. Verified by capturing events at the document
+            // level: native pointerover / click on the marker children DO
+            // fire, but the React handler attached to the marker `<g>` is
+            // never invoked. Attaching native listeners on the parent SVG
+            // and dispatching manually based on event target sidesteps the
+            // problem entirely.
+            useEffect(() => {
+                if (!mapData || !pathFn) return;
+                const svg = svgRef.current;
+                if (!svg) return;
+
+                const markerForEvent = (e) => {
+                    const t = e.target;
+                    return t && t.closest ? t.closest('.travel-marker') : null;
+                };
+                const cityForMarker = (markerEl) => {
+                    const idx = parseInt(markerEl.getAttribute('data-idx'), 10);
+                    return Number.isFinite(idx) ? cities[idx] : null;
+                };
+
+                const onMouseOver = (e) => {
+                    const m = markerForEvent(e);
+                    if (!m) return;
+                    // mouseover fires for every child entry; only react when
+                    // crossing from outside the marker to inside.
+                    const related = e.relatedTarget;
+                    if (related && related.closest && related.closest('.travel-marker') === m) return;
+                    const c = cityForMarker(m);
+                    if (c) setHovered(c);
+                };
+                const onMouseOut = (e) => {
+                    const m = markerForEvent(e);
+                    if (!m) return;
+                    const related = e.relatedTarget;
+                    if (related && related.closest && related.closest('.travel-marker') === m) return;
+                    setHovered(null);
+                };
+                const onMarkerClick = (e) => {
+                    const m = markerForEvent(e);
+                    if (!m) return;
+                    e.stopPropagation();
+                    const c = cityForMarker(m);
+                    if (!c) return;
+                    setHovered(null);
+                    setPinned(prev => (prev && prev.name === c.name ? null : c));
+                };
+
+                svg.addEventListener('mouseover', onMouseOver);
+                svg.addEventListener('mouseout', onMouseOut);
+                svg.addEventListener('click', onMarkerClick, true);
+                return () => {
+                    svg.removeEventListener('mouseover', onMouseOver);
+                    svg.removeEventListener('mouseout', onMouseOut);
+                    svg.removeEventListener('click', onMarkerClick, true);
+                };
+            }, [mapData, pathFn, cities]);
+
             return (
                 <section id="travel" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
@@ -3659,18 +3721,9 @@
                                         if (!proj) return null;
                                         const { x, y } = proj;
                                         const isPark = c.type === 'park';
-                                        const onEnter = () => setHovered(c);
-                                        const onLeave = () => setHovered(null);
-                                        // Click also clears the synthetic hover that touch
-                                        // browsers emit alongside a tap - otherwise hovered
-                                        // would race the pinned toggle and flash the tooltip
-                                        // before the second tap. With hovered cleared, the
-                                        // tooltip is driven purely by `pinned` on touch.
-                                        const onClick = (e) => {
-                                            e.stopPropagation();
-                                            setHovered(null);
-                                            setPinned(prev => (prev && prev.name === c.name ? null : c));
-                                        };
+                                        // No React event handlers on the marker; events are
+                                        // wired via native delegation above. data-idx lets the
+                                        // delegated listener map the hit target back to its city.
                                         // Home city (where Rohit lives) gets a red marker + label.
                                         const markerColor = c.home ? '#d62828' : 'var(--accent)';
                                         const labelColor = c.home ? '#d62828' : 'var(--text-primary)';
@@ -3678,7 +3731,7 @@
 
                                         if (isPark) {
                                             return (
-                                                <g key={i} className="travel-marker" style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}>
+                                                <g key={i} className="travel-marker" data-idx={i} style={{ cursor: 'pointer' }}>
                                                     <circle cx={x} cy={y} r="14" fill={markerColor} opacity="0.06" />
                                                     <g transform={`translate(${x}, ${y})`}>
                                                         <path d="M 0,-9 L 7,6 L -7,6 Z" fill="none" stroke={markerColor} strokeWidth="2" opacity="0.6" />
@@ -3690,7 +3743,7 @@
                                         }
 
                                         return (
-                                            <g key={i} className="travel-marker" style={{ cursor: 'pointer' }} onMouseEnter={onEnter} onMouseLeave={onLeave} onClick={onClick}>
+                                            <g key={i} className="travel-marker" data-idx={i} style={{ cursor: 'pointer' }}>
                                                 <circle cx={x} cy={y} r="16" fill={markerColor} opacity="0.08" />
                                                 {c.home && <circle className="home-pulse" cx={x} cy={y} r="5" />}
                                                 <g transform={`translate(${x}, ${y})`}>
