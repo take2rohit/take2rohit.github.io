@@ -1668,7 +1668,7 @@
         }
 
         /* Compact Horizontal Navigation for Tablets (e.g. iPad Air / iPad Portrait) */
-        @media (min-width: 601px) and (max-width: 1070px) {
+        @media (min-width: 721px) and (max-width: 1070px) {
             .nav-inner {
                 padding: 0.75rem 1rem !important;
             }
@@ -2061,8 +2061,8 @@
                     const space = containerWidth - logoWidth - linksWidth;
                     
                     // Switch to hamburger if remaining space is less than 30px,
-                    // or if the viewport width is standard mobile range (<= 600px).
-                    setUseHamburger(space < 30 || window.innerWidth <= 600);
+                    // or if the viewport width is standard mobile range (<= 720px).
+                    setUseHamburger(space < 30 || window.innerWidth <= 720);
                 };
 
                 checkCollision();
