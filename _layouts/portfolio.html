@@ -1667,8 +1667,8 @@
             }
         }
 
-        /* Compact Horizontal Navigation for Tablets (e.g. iPad Air) */
-        @media (min-width: 769px) and (max-width: 1070px) {
+        /* Compact Horizontal Navigation for Tablets (e.g. iPad Air / iPad Portrait) */
+        @media (min-width: 601px) and (max-width: 1070px) {
             .nav-inner {
                 padding: 0.75rem 1rem !important;
             }
@@ -2061,8 +2061,8 @@
                     const space = containerWidth - logoWidth - linksWidth;
                     
                     // Switch to hamburger if remaining space is less than 30px,
-                    // or if the viewport width is standard mobile range (<= 768px).
-                    setUseHamburger(space < 30 || window.innerWidth <= 768);
+                    // or if the viewport width is standard mobile range (<= 600px).
+                    setUseHamburger(space < 30 || window.innerWidth <= 600);
                 };
 
                 checkCollision();
@@ -2125,13 +2125,19 @@
                                 flexDirection: 'row',
                                 flexWrap: 'nowrap',
                                 gap: window.innerWidth <= 1070 ? '0.75rem' : '1.5rem',
-                                fontSize: window.innerWidth <= 1070 ? '0.85rem' : '0.95rem',
                                 top: '-9999px',
                                 left: '-9999px'
                             }}>
                                 {NAV_SECTIONS.map(s => (
                                     <li key={s.id}>
-                                        <span style={{ whiteSpace: 'nowrap' }}>{s.label}</span>
+                                        <a href="#" className="nav-link" style={{
+                                            fontSize: window.innerWidth <= 1070 ? '0.85rem' : '0.95rem',
+                                            fontWeight: 500,
+                                            whiteSpace: 'nowrap',
+                                            pointerEvents: 'none'
+                                        }}>
+                                            <span>{s.label}</span>
+                                        </a>
                                     </li>
                                 ))}
                             </ul>
