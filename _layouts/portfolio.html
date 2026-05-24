@@ -73,7 +73,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
-            font-size: 18px;
+            font-size: 1.125rem;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -1857,6 +1857,34 @@
             }
 
             .journey-map-container { height: 400px; }
+        }
+
+        /* High-DPI and Ultra-Wide / 4K Monitor Scaling */
+        @media (min-width: 1600px) {
+            html {
+                font-size: 19px;
+            }
+            .container, .nav-inner {
+                max-width: 1440px;
+            }
+        }
+
+        @media (min-width: 2200px) {
+            html {
+                font-size: 22px;
+            }
+            .container, .nav-inner {
+                max-width: 1800px;
+            }
+        }
+
+        @media (min-width: 3200px) {
+            html {
+                font-size: 26px;
+            }
+            .container, .nav-inner {
+                max-width: 2400px;
+            }
         }
 
         /* Map tooltip: anchored at the centre of the map container with a
