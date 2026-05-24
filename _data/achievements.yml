@@ -1,6 +1,6 @@
-# Awards & Achievements rendered in the Netflix-style carousel on the home page.
+# Recognition section rendered in the Netflix-style carousel on the home page.
 # Each entry should have:
-#   title       - short award/achievement name
+#   title       - short award/recognition name
 #   description - one-sentence context (shown on hover overlay)
 #   date        - human-friendly date string
 #   icon        - emoji shown as the badge in the top-right of the card
@@ -26,22 +26,18 @@
   description: Recognized as Outstanding Reviewer at the International Conference on Computer Vision for exceptional peer review contributions.
   date: October 2025
   icon: 📝
-  image: img/portfolio/classifier.webp
+  image: img/achievements/iccv25.png
+  link: https://iccv.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer
 
 - title: ICML Spotlight Paper
   description: Layer-wise Alignment paper accepted as SPOTLIGHT presentation at ICML 2025, ranking in the top 2.6% of all submissions.
   date: July 2025
   icon: ✨
-  image: img/portfolio/digit_rec.webp
+  image: img/achievements/icml.jpeg
+  link: https://www.linkedin.com/feed/update/urn:li:activity:7323783710875488257
 
 - title: Smart India Hackathon Winner
   description: First position at Smart India Hackathon 2020 conducted by MHRD, winning cash prize of ₹1,00,000.
   date: August 2020
   icon: 💡
   image: img/portfolio/number.webp
-
-- title: TechnoSeason First Prize
-  description: Awarded first prize at TechnoSeason 2017 for the harmonic motion analyzer project using computer vision and MATLAB.
-  date: '2017'
-  icon: 🎯
-  image: img/portfolio/shm.webp

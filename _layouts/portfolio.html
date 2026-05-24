@@ -605,7 +605,7 @@
             min-height: 1.1em;
         }
 
-        /* Chunky vertical caret. The span itself is zero-width so it
+/* Chunky vertical caret. The span itself is zero-width so it
            doesn't wedge surrounding characters apart when it sits in
            the middle of text; the bar is drawn as a centered ::after
            overlay. Text reads as :') -> :) -> :)) with the caret
@@ -1738,7 +1738,7 @@
             { id: 'experience',   label: 'Experience'   },
             { id: 'projects',     label: 'Projects'     },
             { id: 'skills',       label: 'Skills'       },
-            { id: 'gallery',      label: 'Awards'       },
+            { id: 'gallery',      label: 'Recognition'  },
             { id: 'travel',       label: 'Journey'      },
             { id: 'contact',      label: 'Contact'      },
         ];
@@ -2059,7 +2059,7 @@
                         pos += 1;
                         sync();
                         await wait(delayFor(ch));
-                    }
+                        }
                 };
                 const backspace = async (n) => {
                     for (let i = 0; i < n; i++) {
@@ -2083,7 +2083,7 @@
                     if (cancelled) return;
                     await wait(rand(180, 260));
                     pos = buffer.length;
-                    sync();
+                        sync();
                 };
 
                 const firstName = subject.split(/\s+/)[0];
@@ -2597,7 +2597,7 @@
             return (
                 <section id="gallery" ref={ref} className={`section ${visible ? 'visible' : ''}`}>
                     <div className="container">
-                        <h2 className="section-title">Awards &amp; Achievements</h2>
+                        <h2 className="section-title">Recognition</h2>
                         <div
                             className="gallery-carousel-container"
                             onMouseEnter={() => setAuto(false)}
