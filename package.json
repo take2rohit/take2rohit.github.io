@@ -1,0 +1,21 @@
+{
+  "name": "rohitlal-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for rohitlal.com. Pre-compiles the React/JSX app at build time so the browser no longer ships Babel-standalone.",
+  "scripts": {
+    "build:js": "babel src/app.jsx --out-file assets/js/app.js --source-maps",
+    "watch:js": "babel src/app.jsx --out-file assets/js/app.js --source-maps --watch"
+  },
+  "browserslist": [
+    "defaults",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.28.0",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.0"
+  }
+}

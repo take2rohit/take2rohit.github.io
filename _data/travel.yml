@@ -27,7 +27,7 @@ cities:
   - name: Huntsville
     lat: 34.7304
     lng: -86.5861
-    description: NASA IMPACT - Research Scientist
+    description: NASA ODSI - Research Scientist
     image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Huntsville_Art_Museum_-_front_fa%C3%A7ade_and_stairs_2023.jpg/500px-Huntsville_Art_Museum_-_front_fa%C3%A7ade_and_stairs_2023.jpg
     image_credit: Wikipedia
     image_credit_url: https://en.wikipedia.org/wiki/Huntsville%2C_Alabama

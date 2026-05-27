@@ -39,6 +39,13 @@ jobs:
           ruby-version: '3.2' # sass-embedded >= 1.79 needs >= 3.2 (was 3.1)
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 2 # bump to invalidate the previous Ruby 3.1 cache
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Compile React app (JSX -> assets/js/app.js)
+        run: npm ci && npm run build:js
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
