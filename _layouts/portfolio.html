@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the js flag before the body is parsed so the crawler fallback is
+         hidden from real users without a flash. Crawlers/extractors that do not
+         run JS leave the flag unset and read the fallback content normally. -->
+    <script>document.documentElement.className += ' js';</script>
+    <style>
+        #static-content { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+        html.js #static-content { display: none; }
+    </style>
     <title>{{ site.data.aboutme.Name }} | AI Researcher</title>
     <meta name="description" content="{{ site.description | strip_newlines | strip }}">
     <meta name="author" content="{{ site.data.aboutme.Name }}">
@@ -2362,13 +2370,17 @@
     <div id="root"></div>
 
     {% comment %}
-    No-JS / crawler fallback. This site renders client-side via React, so bots
-    that do not execute JavaScript (most LLM crawlers) would otherwise see no
-    content. This block renders the same _data/*.yml content as semantic HTML
-    so it is always present and always current. Real users with JS never see it.
+    Crawler / no-JS fallback. This site renders client-side via React, so bots
+    and LLM fetchers that do not run JavaScript would otherwise see no content.
+    It must NOT be wrapped in <noscript>: readability extractors (and Claude's
+    web fetch) strip <noscript> before reading, which is why earlier fetches
+    returned only meta tags. Instead this is real DOM content rendered from
+    _data/*.yml; it is hidden from sighted users only after JS confirms it is
+    running (the html.js class set in <head>), and stays visible for genuine
+    no-JS visitors. Hiding is via a stylesheet rule, not inline style/hidden/
+    aria-hidden, so extractors still treat it as visible text. Always current.
     {% endcomment %}
-    <noscript>
-    <main id="content-fallback">
+    <main id="static-content">
       <h1>{{ site.data.aboutme.Name }}</h1>
       <p>{{ site.data.aboutme.Area_Of_Expertise | replace: '|', '&middot;' | strip }} &middot; {{ site.data.experience[0].title }} at {{ site.data.experience[0].company }}</p>
       <div>{{ site.data.aboutme.Bio_Short | markdownify }}</div>
@@ -2415,7 +2427,6 @@
       <p>A complete plain-text version of this profile for language models is
       available at <a href="{{ '/llms.txt' | absolute_url }}">/llms.txt</a>.</p>
     </main>
-    </noscript>
 
     <!-- Jekyll-rendered JSON data blocks. React reads these on mount. -->
     <script type="application/json" id="data-aboutme">{{ site.data.aboutme | jsonify }}</script>
