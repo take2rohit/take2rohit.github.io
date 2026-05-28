@@ -8,7 +8,8 @@
 #                 and concrete (e.g. "Misty blue ridges and 1,500 black bears")
 #                 beats generic ("Great national park").
 #   image       - URL or relative path shown in the tooltip
-#   type        - 'city' (concentric circles marker) or 'park' (triangle marker)
+#   type        - 'city' (concentric circles), 'park' (triangle), or
+#                 'school' (graduation cap, no text label - shown in legend)
 #
 # Optional:
 #   home               - true for the city Rohit currently lives in
@@ -41,13 +42,10 @@ cities:
     lat: 33.9806
     lng: -117.3755
     description: UC Riverside - Master's Degree
-    image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mission_Inn%27s_main_interior_courtyard.jpg/500px-Mission_Inn%27s_main_interior_courtyard.jpg
-    image_credit: Wikipedia
-    image_credit_url: https://en.wikipedia.org/wiki/Riverside%2C_California
-    type: city
-    textAnchor: end
-    offsetX: -15
-    offsetY: 5
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/University_of_California_Clocktower.jpg/500px-University_of_California_Clocktower.jpg
+    image_credit: Wikimedia Commons
+    image_credit_url: https://commons.wikimedia.org/wiki/File:University_of_California_Clocktower.jpg
+    type: school
 
   - name: New York
     lat: 40.7128

@@ -1749,6 +1749,7 @@
                                         if (!proj) return null;
                                         const { x, y } = proj;
                                         const isPark = c.type === 'park';
+                                        const isSchool = c.type === 'school';
                                         // No React event handlers on the marker; events are
                                         // wired via native delegation above. data-idx lets the
                                         // delegated listener map the hit target back to its city.
@@ -1765,6 +1766,23 @@
                                                         <path d="M 0,-9 L 7,6 L -7,6 Z" fill="none" stroke={markerColor} strokeWidth="2" opacity="0.6" />
                                                         <path d="M 0,-6 L 4,4 L -4,4 Z" fill={markerColor} />
                                                         <circle cy="-4" r="1.5" fill="var(--bg-secondary)" />
+                                                    </g>
+                                                </g>
+                                            );
+                                        }
+
+                                        if (isSchool) {
+                                            // Graduation cap. Identified in the legend by the
+                                            // city name rather than a text label on the map
+                                            // itself, to keep dense SoCal corner uncluttered.
+                                            return (
+                                                <g key={i} className="travel-marker" data-idx={i} style={{ cursor: 'pointer' }}>
+                                                    <circle cx={x} cy={y} r="14" fill={markerColor} opacity="0.06" />
+                                                    <g transform={`translate(${x}, ${y})`}>
+                                                        <path d="M -5,1 L -5,4 Q -5,6 -3,6 L 3,6 Q 5,6 5,4 L 5,1 Z" fill={markerColor} opacity="0.85" />
+                                                        <path d="M 0,-6 L 9,-1 L 0,3 L -9,-1 Z" fill={markerColor} />
+                                                        <line x1="7" y1="-1" x2="7" y2="5" stroke={markerColor} strokeWidth="1.2" strokeLinecap="round" />
+                                                        <circle cx="7" cy="6" r="1.4" fill={markerColor} />
                                                     </g>
                                                 </g>
                                             );
@@ -1796,7 +1814,7 @@
                                     {/* Legend tucked into the empty Atlantic east of Florida */}
                                     <g transform="translate(825, 430)" style={{ pointerEvents: 'none' }}>
                                         <rect
-                                            x="0" y="0" width="130" height="130"
+                                            x="0" y="0" width="130" height="160"
                                             rx="6"
                                             fill="var(--bg-secondary)"
                                             stroke="var(--border-color)"
@@ -1822,13 +1840,22 @@
                                         </g>
                                         <text x="38" y="84" fontSize="13" fontWeight="500" fill="var(--text-primary)">National park</text>
 
-                                        {/* Home marker */}
+                                        {/* Riverside (graduation cap, school type) */}
                                         <g transform="translate(22, 110)">
+                                            <path d="M -4,1 L -4,3 Q -4,5 -2,5 L 2,5 Q 4,5 4,3 L 4,1 Z" fill="var(--accent)" opacity="0.85" />
+                                            <path d="M 0,-5 L 7,-1 L 0,2 L -7,-1 Z" fill="var(--accent)" />
+                                            <line x1="5.5" y1="-1" x2="5.5" y2="4" stroke="var(--accent)" strokeWidth="1" strokeLinecap="round" />
+                                            <circle cx="5.5" cy="5" r="1.1" fill="var(--accent)" />
+                                        </g>
+                                        <text x="38" y="114" fontSize="13" fontWeight="500" fill="var(--text-primary)">Riverside</text>
+
+                                        {/* Home marker */}
+                                        <g transform="translate(22, 140)">
                                             <circle r="7" fill="none" stroke="#d62828" strokeWidth="1.5" opacity="0.3" />
                                             <circle r="5" fill="none" stroke="#d62828" strokeWidth="1.5" opacity="0.6" />
                                             <circle r="2.5" fill="#d62828" />
                                         </g>
-                                        <text x="38" y="114" fontSize="13" fontWeight="700" fill="#d62828">Home</text>
+                                        <text x="38" y="144" fontSize="13" fontWeight="700" fill="#d62828">Home</text>
                                     </g>
                                 </svg>
                             )}

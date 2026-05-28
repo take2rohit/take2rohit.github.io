@@ -2055,6 +2055,7 @@ const TravelMap = () => {
       y
     } = proj;
     const isPark = c.type === 'park';
+    const isSchool = c.type === 'school';
     // No React event handlers on the marker; events are
     // wired via native delegation above. data-idx lets the
     // delegated listener map the hit target back to its city.
@@ -2091,6 +2092,47 @@ const TravelMap = () => {
         cy: "-4",
         r: "1.5",
         fill: "var(--bg-secondary)"
+      })));
+    }
+    if (isSchool) {
+      // Graduation cap. Identified in the legend by the
+      // city name rather than a text label on the map
+      // itself, to keep dense SoCal corner uncluttered.
+      return /*#__PURE__*/React.createElement("g", {
+        key: i,
+        className: "travel-marker",
+        "data-idx": i,
+        style: {
+          cursor: 'pointer'
+        }
+      }, /*#__PURE__*/React.createElement("circle", {
+        cx: x,
+        cy: y,
+        r: "14",
+        fill: markerColor,
+        opacity: "0.06"
+      }), /*#__PURE__*/React.createElement("g", {
+        transform: `translate(${x}, ${y})`
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M -5,1 L -5,4 Q -5,6 -3,6 L 3,6 Q 5,6 5,4 L 5,1 Z",
+        fill: markerColor,
+        opacity: "0.85"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M 0,-6 L 9,-1 L 0,3 L -9,-1 Z",
+        fill: markerColor
+      }), /*#__PURE__*/React.createElement("line", {
+        x1: "7",
+        y1: "-1",
+        x2: "7",
+        y2: "5",
+        stroke: markerColor,
+        strokeWidth: "1.2",
+        strokeLinecap: "round"
+      }), /*#__PURE__*/React.createElement("circle", {
+        cx: "7",
+        cy: "6",
+        r: "1.4",
+        fill: markerColor
       })));
     }
     return /*#__PURE__*/React.createElement("g", {
@@ -2152,7 +2194,7 @@ const TravelMap = () => {
     x: "0",
     y: "0",
     width: "130",
-    height: "130",
+    height: "160",
     rx: "6",
     fill: "var(--bg-secondary)",
     stroke: "var(--border-color)",
@@ -2207,6 +2249,34 @@ const TravelMap = () => {
     fill: "var(--text-primary)"
   }, "National park"), /*#__PURE__*/React.createElement("g", {
     transform: "translate(22, 110)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M -4,1 L -4,3 Q -4,5 -2,5 L 2,5 Q 4,5 4,3 L 4,1 Z",
+    fill: "var(--accent)",
+    opacity: "0.85"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M 0,-5 L 7,-1 L 0,2 L -7,-1 Z",
+    fill: "var(--accent)"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "5.5",
+    y1: "-1",
+    x2: "5.5",
+    y2: "4",
+    stroke: "var(--accent)",
+    strokeWidth: "1",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "5.5",
+    cy: "5",
+    r: "1.1",
+    fill: "var(--accent)"
+  })), /*#__PURE__*/React.createElement("text", {
+    x: "38",
+    y: "114",
+    fontSize: "13",
+    fontWeight: "500",
+    fill: "var(--text-primary)"
+  }, "Riverside"), /*#__PURE__*/React.createElement("g", {
+    transform: "translate(22, 140)"
   }, /*#__PURE__*/React.createElement("circle", {
     r: "7",
     fill: "none",
@@ -2224,7 +2294,7 @@ const TravelMap = () => {
     fill: "#d62828"
   })), /*#__PURE__*/React.createElement("text", {
     x: "38",
-    y: "114",
+    y: "144",
     fontSize: "13",
     fontWeight: "700",
     fill: "#d62828"
