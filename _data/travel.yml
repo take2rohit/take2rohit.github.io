@@ -45,8 +45,8 @@ cities:
     image_credit: Wikipedia
     image_credit_url: https://en.wikipedia.org/wiki/Riverside%2C_California
     type: city
-    textAnchor: start
-    offsetX: 15
+    textAnchor: end
+    offsetX: -15
     offsetY: 5
 
   - name: New York
@@ -69,9 +69,21 @@ cities:
     image_credit: Wikipedia
     image_credit_url: https://en.wikipedia.org/wiki/Los_Angeles
     type: city
-    textAnchor: end
-    offsetX: -15
-    offsetY: 5
+    textAnchor: middle
+    offsetX: 0
+    offsetY: -20
+
+  - name: San Diego
+    lat: 32.7157
+    lng: -117.1611
+    description: Pacific beaches and the country's best zoo
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/San_Diego_skyline_18_%28cropped%29.jpg/500px-San_Diego_skyline_18_%28cropped%29.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/San_Diego
+    type: city
+    textAnchor: middle
+    offsetX: 0
+    offsetY: 25
 
   - name: Chicago
     lat: 41.8781
