@@ -265,3 +265,12 @@ cities:
     image_credit: Wikipedia
     image_credit_url: https://en.wikipedia.org/wiki/Saguaro_National_Park
     type: park
+
+  - name: Joshua Tree
+    lat: 33.8734
+    lng: -115.9010
+    description: Twisted yuccas and house-sized boulders at dawn
+    image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Joshua_Tree_-_Cyclops_%2B_Potato_Head_-_Sunrise.jpg/500px-Joshua_Tree_-_Cyclops_%2B_Potato_Head_-_Sunrise.jpg
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Joshua_Tree_National_Park
+    type: park
