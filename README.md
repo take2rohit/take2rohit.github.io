@@ -4,13 +4,6 @@ Personal portfolio at **[rohitlal.com](https://rohitlal.com/)**.
 
 Jekyll site driven by a single layout, [`_layouts/portfolio.html`](_layouts/portfolio.html). All content lives in YAML under [`_data/`](_data/) - no code changes needed for content updates. Each YAML file has inline comments explaining its fields.
 
----
-
-## TODO
-- [ ] Make it AI agent friendly and disoverable when page is getting scraped by web fetcher tools of Coding/AI agents
-- [ ] **Travel map hover photos.** [`_data/travel.yml`](_data/travel.yml) currently uses Wikipedia placeholder images for ~12 cities and parks. Replace each with a personal photo: drop a JPG/WebP into [`img/photos/`](img/photos/), point `image:` at the local path, set `image_credit: Rohit Lal`, and remove `image_credit_url:`. Tooltip is fixed at 320 x ~340 px with `object-fit: cover`, so any aspect ratio works.
-- [ ] **Clean up the dead-block publications.** [`_data/publications.yml`](_data/publications.yml) has commented-out entries from earlier template versions. Either re-enable or delete them.
-
 
 ---
 
