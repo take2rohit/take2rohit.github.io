@@ -353,9 +353,8 @@
         .news-list::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
         .news-item {
-            display: flex;
-            gap: var(--space-md);
-            padding: var(--space-md);
+            display: block;
+            padding: var(--space-sm) var(--space-md);
             background: var(--bg-primary);
             border-radius: 0.5rem;
             border: 2px solid var(--border-color);
@@ -387,11 +386,8 @@
             color: var(--accent);
             font-weight: 700;
             font-size: 1rem;
-            min-width: 80px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
+            display: inline;
+            margin-right: 0.5rem;
         }
 
         .news-date::before {
@@ -408,6 +404,7 @@
             line-height: 1.6;
             font-size: 1.0625rem;
             font-weight: 500;
+            display: inline;
         }
 
         .news-description a {
