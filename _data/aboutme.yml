@@ -31,7 +31,9 @@ Bio_Short : >
  If you'd like a copy of my CV, email me  take2rohit [at] gmail.com 
 
 # Stats strip rendered above the Publications cards. Edit freely.
-# Numbers below are from Google Scholar (q2nc3QoAAAAJ); refresh periodically.
+# Citations and h-index are auto-refreshed from Google Scholar (q2nc3QoAAAAJ)
+# about every two weeks by .github/workflows/update-citations.yml, so manual
+# edits to those two numbers get overwritten. Top Venues is manual.
 Stats:
   - number: '250+'
     label: Citations

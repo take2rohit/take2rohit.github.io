@@ -1,0 +1,74 @@
+name: Update Scholar stats
+
+# Refreshes the Citations and h-index numbers in _data/aboutme.yml from Google
+# Scholar (via SerpApi), commits the change to main, and triggers the Pages
+# deploy. Citations are rounded down to the nearest 50 and shown as "NNN+".
+#
+# Requires a repository secret named SERPAPI_KEY (Settings > Secrets and
+# variables > Actions). A free SerpApi plan easily covers a biweekly run.
+
+on:
+  schedule:
+    # Best-effort every two weeks: 1st and 15th of the month at 06:00 UTC.
+    # GitHub cron is UTC and may lag by a few minutes to an hour.
+    #
+    # Note: on a public repo GitHub auto-disables a scheduled workflow after
+    # 60 days with no repository activity. This one only commits when the
+    # rounded number changes, so during a long quiet stretch re-enable it once
+    # from the Actions tab (a single click). Normal repo commits reset the timer.
+    - cron: '0 6 1,15 * *'
+  # Lets you run it on demand from the Actions tab.
+  workflow_dispatch:
+
+# Least privilege: only what the two follow-up steps need.
+permissions:
+  contents: write   # commit the updated data file to main
+  actions: write    # dispatch the Jekyll deploy workflow
+
+# Never let two updates race each other.
+concurrency:
+  group: update-citations
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so the rebase-before-push below has a base to work from.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Refresh citation stats
+        id: update
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/update_citations.py
+
+      - name: Commit and push
+        if: steps.update.outputs.changed == 'true'
+        env:
+          SUMMARY: ${{ steps.update.outputs.summary }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/aboutme.yml
+          git commit -m "Auto-update Scholar stats: $SUMMARY"
+          # Rebase onto any commit that landed on main mid-run so the push is a
+          # fast-forward instead of a non-fast-forward rejection.
+          git pull --rebase origin main
+          git push
+
+      # A GITHUB_TOKEN push does not retrigger other workflows, so kick off the
+      # Pages deploy explicitly. workflow_dispatch is exempt from that rule.
+      - name: Trigger Pages deploy
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run jekyll.yml
