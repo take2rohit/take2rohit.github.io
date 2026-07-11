@@ -91,20 +91,32 @@ def fetch_stats(author_id, api_key):
 
 
 def set_stat(text, label, new_value):
-    """Replace the number: value on the line just above `label: <label>`.
+    """Replace the number: value belonging to the entry labelled `label`.
 
     Only the entry whose label matches is touched, so Citations, h-index and
-    Top Venues never bleed into each other. Returns (new_text, old_value).
+    Top Venues never bleed into each other. Handles both key orderings
+    (number above label, or label above number). Returns (new_text, old_value).
     """
-    pattern = re.compile(
-        r"(-\s*number:\s*)([^\n]*)(\n\s*label:\s*" + re.escape(label) + r"\b)"
-    )
-    m = pattern.search(text)
-    if not m:
-        fail("could not find a Stats entry labelled '%s' in %s" % (label, ABOUTME))
-    old_value = m.group(2).strip()
-    replacement = m.group(1) + "'" + new_value + "'" + m.group(3)
-    return text[: m.start()] + replacement + text[m.end():], old_value
+    lbl = re.escape(label)
+    quoted = "'" + new_value + "'"
+
+    # Case A: `- number: <value>` then `label: <label>` (the current layout).
+    a = re.compile(r"(-\s*number:\s*)([^\n]*)(\n\s*label:\s*" + lbl + r"\b)")
+    m = a.search(text)
+    if m:
+        old_value = m.group(2).strip()
+        new_text = text[: m.start()] + m.group(1) + quoted + m.group(3) + text[m.end():]
+        return new_text, old_value
+
+    # Case B: `- label: <label>` then `number: <value>` (keys reordered).
+    b = re.compile(r"(-\s*label:\s*" + lbl + r"\b[^\n]*\n\s*number:\s*)([^\n]*)")
+    m = b.search(text)
+    if m:
+        old_value = m.group(2).strip()
+        new_text = text[: m.start()] + m.group(1) + quoted + text[m.end():]
+        return new_text, old_value
+
+    fail("could not find a Stats entry labelled '%s' in %s" % (label, ABOUTME))
 
 
 def emit_output(changed, summary):

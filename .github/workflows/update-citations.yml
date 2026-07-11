@@ -12,10 +12,10 @@ on:
     # Best-effort every two weeks: 1st and 15th of the month at 06:00 UTC.
     # GitHub cron is UTC and may lag by a few minutes to an hour.
     #
-    # Note: on a public repo GitHub auto-disables a scheduled workflow after
-    # 60 days with no repository activity. This one only commits when the
-    # rounded number changes, so during a long quiet stretch re-enable it once
-    # from the Actions tab (a single click). Normal repo commits reset the timer.
+    # On a public repo GitHub auto-disables a scheduled workflow after 60 days
+    # with no repository activity, and no-op runs do not reset that timer. The
+    # Keepalive step below pushes a tiny empty commit if main goes stale, which
+    # resets the clock and keeps this workflow enabled unattended.
     - cron: '0 6 1,15 * *'
   # Lets you run it on demand from the Actions tab.
   workflow_dispatch:
@@ -35,13 +35,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Full history so the rebase-before-push below has a base to work from.
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -72,3 +72,24 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run jekyll.yml
+
+      # If the stats did not change, this run committed nothing, so it did not
+      # reset GitHub's 60-day scheduled-workflow-disable timer. When main has
+      # gone stale, push a tiny empty commit to reset it and stay enabled.
+      - name: Keepalive
+        if: steps.update.outputs.changed != 'true'
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          age_days=$(( (now - last) / 86400 ))
+          echo "Last commit on main is $age_days days old."
+          if [ "$age_days" -ge 40 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "chore: keepalive for scheduled workflow"
+            git pull --rebase origin main
+            git push
+            echo "Pushed a keepalive commit."
+          else
+            echo "Fresh enough; no keepalive needed."
+          fi
