@@ -6,3 +6,6 @@ _site
 
 node_modules
 assets/js/app.js.map
+
+__pycache__/
+*.pyc
