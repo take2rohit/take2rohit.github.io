@@ -284,3 +284,12 @@ cities:
     image_credit: Wikipedia
     image_credit_url: https://en.wikipedia.org/wiki/Joshua_Tree_National_Park
     type: park
+
+  - name: Olympic
+    lat: 47.8021
+    lng: -123.6044
+    description: Rainforest, glaciers, and wild Pacific coast collide
+    image: https://commons.wikimedia.org/wiki/Special:FilePath/Hoh_Rainforest.jpg?width=500
+    image_credit: Wikipedia
+    image_credit_url: https://en.wikipedia.org/wiki/Olympic_National_Park
+    type: park
