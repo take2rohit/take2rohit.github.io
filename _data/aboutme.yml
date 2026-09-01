@@ -35,9 +35,9 @@ Bio_Short : >
 # about every two weeks by .github/workflows/update-citations.yml, so manual
 # edits to those two numbers get overwritten. Top Venues is manual.
 Stats:
-  - number: '300+'
+  - number: '600+'
     label: Citations
-  - number: '9'
+  - number: '10'
     label: h-index
   - number: NeurIPS, ICML, ICCV, CVPR, WACV, IJCV
     label: Top Venues
