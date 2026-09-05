@@ -25,10 +25,13 @@
                     /\[\[([^\]]+)\]\]\(([^)]+)\)/g,
                     '[<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>]'
                 )
-                // [text](url): standard markdown link
+                // [text](url): standard markdown link. Same-page anchors (#section)
+                // stay in this tab; everything else opens in a new one.
                 .replace(
                     /\[([^\]]+)\]\(([^)]+)\)/g,
-                    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+                    (match, text, url) => url.startsWith('#')
+                        ? `<a href="${url}">${text}</a>`
+                        : `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`
                 )
                 // **bold**: used to highlight Rohit's name in author lists
                 .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -586,6 +589,12 @@
         const Hero = () => {
             const dp = aboutme.DP_Link || 'img/rohit.png';
             const expertiseParts = (aboutme.Area_Of_Expertise || '').split('|').map(p => p.trim()).filter(Boolean);
+            // Bio_Short is a folded YAML block: blank lines in the source arrive
+            // here as newlines, and each one starts a new paragraph.
+            const bioParagraphs = String(aboutme.Bio_Short || aboutme.About || '')
+                .split(/\n+/)
+                .map(p => p.trim())
+                .filter(Boolean);
             const emailHref = aboutme.Email || 'mailto:take2rohit@gmail.com';
 
             // Corner decoration: scripted sequence of squares. Each "square event"
@@ -656,7 +665,9 @@
                                         </React.Fragment>
                                     ))}
                                 </p>
-                                <p className="hero-bio" dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(aboutme.Bio_Short || aboutme.About || '') }} />
+                                {bioParagraphs.map((para, i) => (
+                                    <p key={i} className="hero-bio" dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(para) }} />
+                                ))}
                                 <div className="hero-links">
                                     <a href={emailHref} className="hero-link primary">
                                         <Icon name="email" /><span>Email</span>

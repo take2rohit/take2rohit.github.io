@@ -18,7 +18,7 @@
     <meta name="theme-color" content="#1e3a5f">
 
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="keywords" content="{{ site.data.aboutme.Name }}, {{ site.data.aboutme.Area_Of_Expertise | replace: '|', ',' | strip }}, AI researcher, foundation models, machine learning, NASA">
+    <meta name="keywords" content="{{ site.data.aboutme.Name }}, {{ site.data.aboutme.Area_Of_Expertise | replace: ' | ', ', ' | strip }}, AI researcher, foundation models, machine learning, NASA">
     <!-- LLM-friendly plain-text version of this site, generated from the same data. -->
     <link rel="alternate" type="text/markdown" href="{{ '/llms.txt' | absolute_url }}" title="Full profile and site content for LLMs">
     <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}">
@@ -31,7 +31,7 @@
     <meta property="og:image" content="{{ '/img/meta_img.jpg' | absolute_url }}">
     <meta property="og:image:width" content="2400">
     <meta property="og:image:height" content="1260">
-    <meta property="og:image:alt" content="{{ site.data.aboutme.Name }}, AI Researcher - Computer Vision, Generative AI, NLP - rohitlal.com">
+    <meta property="og:image:alt" content="{{ site.data.aboutme.Name }}, AI Researcher - {{ site.data.aboutme.Area_Of_Expertise | replace: ' | ', ', ' | strip }} - rohitlal.com">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@take2rohit">
@@ -452,6 +452,9 @@
         /* Section */
         .section {
             padding: var(--space-lg) 0 var(--space-md);
+            /* In-page anchor links (e.g. #travel in the bio) land below the
+               fixed nav, matching the 60px offset the nav's own scroll uses. */
+            scroll-margin-top: 60px;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;

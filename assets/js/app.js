@@ -40,8 +40,9 @@ const renderMarkdownLinks = text => {
   return String(text)
   // [[text]](url): common in news YAML; render as [<a>text</a>] with brackets visible
   .replace(/\[\[([^\]]+)\]\]\(([^)]+)\)/g, '[<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>]')
-  // [text](url): standard markdown link
-  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+  // [text](url): standard markdown link. Same-page anchors (#section)
+  // stay in this tab; everything else opens in a new one.
+  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => url.startsWith('#') ? `<a href="${url}">${text}</a>` : `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`)
   // **bold**: used to highlight Rohit's name in author lists
   .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   // *italic*: only when flanked by whitespace/boundaries (so author markers
@@ -674,6 +675,9 @@ const TypedName = ({
 const Hero = () => {
   const dp = aboutme.DP_Link || 'img/rohit.png';
   const expertiseParts = (aboutme.Area_Of_Expertise || '').split('|').map(p => p.trim()).filter(Boolean);
+  // Bio_Short is a folded YAML block: blank lines in the source arrive
+  // here as newlines, and each one starts a new paragraph.
+  const bioParagraphs = String(aboutme.Bio_Short || aboutme.About || '').split(/\n+/).map(p => p.trim()).filter(Boolean);
   const emailHref = aboutme.Email || 'mailto:take2rohit@gmail.com';
 
   // Corner decoration: scripted sequence of squares. Each "square event"
@@ -788,12 +792,13 @@ const Hero = () => {
     style: {
       color: 'var(--text-tertiary)'
     }
-  }, " | ")))), /*#__PURE__*/React.createElement("p", {
+  }, " | ")))), bioParagraphs.map((para, i) => /*#__PURE__*/React.createElement("p", {
+    key: i,
     className: "hero-bio",
     dangerouslySetInnerHTML: {
-      __html: renderMarkdownLinks(aboutme.Bio_Short || aboutme.About || '')
+      __html: renderMarkdownLinks(para)
     }
-  }), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "hero-links"
   }, /*#__PURE__*/React.createElement("a", {
     href: emailHref,
