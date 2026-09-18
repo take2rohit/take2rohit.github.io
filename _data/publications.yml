@@ -14,11 +14,16 @@
   video:
   image: img/papers/lunarfm.gif
   abstract: >
-    A multimodal lunar foundation model pretrained from scratch on nearly two
-    million co-registered tile bundles spanning 11 modalities at 1 m and 100 m
-    per pixel - one set of weights that transfers to crater detection, irregular
-    mare patch segmentation, and polar ice prospectivity, released openly with
-    benchmarks and fine-tuning code.
+    A multimodal [lunar foundation model](https://huggingface.co/nasa-ibm-ai4science/NASA-IBM-Lunar-Foundation-Model)
+    pretrained from scratch on
+    [nearly two million co-registered tile bundles](https://huggingface.co/datasets/nasa-ibm-ai4science/Sombench-pretraining-data)
+    spanning 11 modalities at 1 m and 100 m per pixel - one set of weights that transfers to
+    [crater detection](https://huggingface.co/datasets/nasa-ibm-ai4science/Sombench-WAC-Crater-Detection),
+    [irregular mare patch segmentation](https://huggingface.co/datasets/nasa-ibm-ai4science/Sombench-IMP-Segmentation),
+    and [polar ice prospectivity](https://huggingface.co/datasets/nasa-ibm-ai4science/Sombench-Ice-Prospectivity-Regression),
+    released openly with
+    [benchmarks](https://huggingface.co/collections/nasa-ibm-ai4science/lunar-fm-ml-ready-benchmark-dataset-sombench-6a957f19a832b723d15cb93a)
+    and [fine-tuning code](https://github.com/NASA-IMPACT/NASA-IBM-Lunar-Foundation-Model).
 
 - paper: "Surya: A Foundation Model for Heliophysics"
   author: "Sujit Roy, Johannes Schmude, **Rohit Lal**, Vishal Gaur, Marcus Freitag, Julian Kuehnert, ... , Juan Bernabe-Moreno, Rahul Ramachandran ."
@@ -31,10 +36,13 @@
   video: https://www.youtube.com/watch?v=KWMoF97C1Ds
   image: img/papers/surya.gif
   abstract: >
-    A 366M-parameter open foundation model trained on 9 years of NASA's Solar
-    Dynamics Observatory data - learns general-purpose solar representations
-    that transfer to flare forecasting, solar-wind prediction, and active-region
-    segmentation.
+    A 366M-parameter [open foundation model](https://huggingface.co/nasa-ibm-ai4science/Surya-1.0)
+    trained on 9 years of NASA's [Solar Dynamics Observatory](https://sdo.gsfc.nasa.gov/)
+    [data](https://huggingface.co/datasets/nasa-ibm-ai4science/core-sdo) - learns
+    general-purpose solar representations that transfer to
+    [flare forecasting](https://huggingface.co/datasets/nasa-ibm-ai4science/surya-bench-flare-forecasting),
+    [solar-wind prediction](https://huggingface.co/datasets/nasa-ibm-ai4science/Surya-bench-solarwind),
+    and [active-region segmentation](https://huggingface.co/datasets/nasa-ibm-ai4science/surya-bench-ar-segmentation).
 
 - paper: "Prithvi WxC: Foundation Model for Weather and Climate"
   author: "Johannes Schmude, Sujit Roy, Will Trojak, Johannes Jakubik, ..., **Rohit Lal**, ... , Manil Maskey,  Tsengdar J Lee, Rahul Ramachandran"
@@ -47,10 +55,13 @@
   video: https://www.youtube.com/watch?v=N6d0CqTjBbo
   image: img/papers/prithvi_downstream_gwflux.gif
   abstract: >
-    A 2.3B-parameter atmospheric foundation model trained on MERRA-2 reanalysis
-    that generalizes across forecasting, downscaling, gravity-wave
-    parameterization, and hurricane-track prediction - released openly on
-    Hugging Face.
+    A 2.3B-parameter [atmospheric foundation model](https://huggingface.co/Prithvi-WxC/prithvi.wxc.2300m.v1)
+    trained on [MERRA-2](https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/) reanalysis
+    that generalizes across [forecasting](https://huggingface.co/Prithvi-WxC/prithvi.wxc.rollout.2300m.v1),
+    [downscaling](https://github.com/IBM/granite-wxc),
+    [gravity-wave parameterization](https://github.com/NASA-IMPACT/gravity-wave-finetuning),
+    and hurricane-track prediction - released openly on
+    [Hugging Face](https://huggingface.co/Prithvi-WxC).
 
 - paper: "Layer-wise Alignment: Examining Safety Alignment Across Image Encoder Layers in Vision Language Models"
   author: "Saketh Bachu, Erfan Shayegani, **Rohit Lal**, Trishna Chakraborty, Arindam Dutta, ... Nael Abu-Ghazaleh, Amit K. Roy-Chowdhury"
@@ -63,9 +74,10 @@
   video:
   image: img/papers/layer_wise.png
   abstract: >
-    Shows that harmful information in vision-language models is unevenly
-    distributed across image-encoder layers - exposing a layer-dependent
-    safety-alignment weakness exploitable by jailbreak attacks.
+    Shows that harmful information in vision-language models is
+    [unevenly distributed across image-encoder layers](https://github.com/sakethbachu/Examining-Safety-Alignment-Across-Image-Encoder-Layers-in-Vision-Language-Models)
+    - exposing a layer-dependent safety-alignment weakness exploitable by
+    jailbreak attacks.
 
 - paper: "STRIDE: Single-Video based Temporally Continuous Occlusion-Robust 3D Pose Estimation"
   author: "**Rohit Lal**, Saketh Bachu, Yash Garg, Arindam Dutta, Calvin-Khang Ta, D. S. Raychaudhuri, Hannah D. Cruz, M. Salman Asif, Amit K. Roy-Chowdhury"
@@ -79,8 +91,9 @@
   image: img/papers/stride.gif
   abstract: >
     Test-time optimization that fits a per-instance optical-flow prior and an
-    SMPL body model to a single occluded in-the-wild video - temporally smooth,
-    occlusion-robust 3D human pose on the IARPA BRIAR benchmark.
+    [SMPL](https://smpl.is.tue.mpg.de/) body model to a single occluded
+    in-the-wild video - temporally smooth, occlusion-robust 3D human pose on the
+    [IARPA BRIAR](https://www.iarpa.gov/research-programs/briar) benchmark.
 
 - paper: "VOccl3D: A Video Benchmark Dataset for 3D Human Pose and Shape Estimation under Real Occlusions"
   author: "Yash Garg, Saketh Bachu, Arindam Dutta, **Rohit Lal**, Sarosij Bose, Calvin-Khang Ta, M. Salman Asif, Amit K. Roy-Chowdhury"
@@ -93,9 +106,11 @@
   video:
   image: img/papers/voccl3d.png
   abstract: >
-    250K+ frames of realistic (not patch-overlay) occlusions with body shape,
-    pose, segmentation, and silhouette ground truth - used to fine-tune
-    CLIFF/BEDLAM-CLIFF for substantial gains under heavy occlusion.
+    [250K+ frames](https://github.com/yashgarg98/VOccl3D-dataset) of realistic
+    (not patch-overlay) occlusions with body shape, pose, segmentation, and
+    silhouette ground truth - used to fine-tune
+    [CLIFF](https://github.com/huawei-noah/noah-research/tree/master/CLIFF)/[BEDLAM-CLIFF](https://bedlam.is.tue.mpg.de/)
+    for substantial gains under heavy occlusion.
 
 # - paper: "POISE: Pose Guided Human Silhouette Extraction under Occlusions"
 #   author: "Arindam Dutta, **Rohit Lal**, Dripta S. Raychaudhuri, Calvin-Khang Ta, Amit K. Roy-Chowdhury"

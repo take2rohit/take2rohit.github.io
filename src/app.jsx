@@ -829,7 +829,8 @@
                                     <p className="publication-venue">{pub.pub}</p>
                                     {pub.abstract && (
                                         <div className="publication-abstract">
-                                            <strong>TL;DR:</strong> {pub.abstract}
+                                            <strong>TL;DR:</strong>{' '}
+                                            <span dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(pub.abstract) }} />
                                         </div>
                                     )}
                                 </div>
