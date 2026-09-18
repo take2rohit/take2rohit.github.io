@@ -441,6 +441,71 @@
             fill: currentColor;
         }
 
+        /* NEW badge: only the entries added in the latest commit carry news.new (see CLAUDE.md). */
+        .news-new {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            vertical-align: 0.1em;
+            margin-right: 0.5rem;
+            padding: 0.1rem 0.5rem 0.1rem 0.4rem;
+            border-radius: var(--radius-sm);
+            background: #af653b;
+            color: #fbf6ef;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            line-height: 1.5;
+            overflow: hidden;
+            isolation: isolate;
+            box-shadow: 0 1px 2px var(--shadow-md);
+        }
+
+        /* Slow light sweep across the badge. */
+        .news-new::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+            transform: translateX(-120%);
+            animation: newsSheen 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* Pulsing dot. */
+        .news-new i {
+            position: relative;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #fbf6ef;
+            flex: none;
+        }
+        .news-new i::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1px solid #fbf6ef;
+            opacity: 0;
+            animation: newsPulse 2.4s ease-out infinite;
+        }
+
+        @keyframes newsSheen {
+            0%, 70% { transform: translateX(-120%); }
+            100% { transform: translateX(120%); }
+        }
+        @keyframes newsPulse {
+            0% { transform: scale(0.4); opacity: 0.9; }
+            70%, 100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .news-new::after, .news-new i::after { animation: none; }
+        }
+
         /* Container */
         .container {
             max-width: 1200px;
@@ -2420,7 +2485,7 @@
 
       <h2>News</h2>
       <ul>
-        {% for item in site.data.news.news limit: site.data.news.k %}<li>{{ item.date }}: {{ item.description | markdownify | strip_html | strip }}</li>
+        {% for item in site.data.news.news limit: site.data.news.k %}<li>{{ item.date }}{% if item.new %} (new){% endif %}: {{ item.description | markdownify | strip_html | strip }}</li>
         {% endfor %}
       </ul>
 

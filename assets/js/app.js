@@ -521,7 +521,11 @@ const NewsSection = () => {
     className: "news-item"
   }, /*#__PURE__*/React.createElement("div", {
     className: "news-date"
-  }, item.date), /*#__PURE__*/React.createElement("div", {
+  }, item.date), item.new && /*#__PURE__*/React.createElement("span", {
+    className: "news-new"
+  }, /*#__PURE__*/React.createElement("i", {
+    "aria-hidden": "true"
+  }), "New"), /*#__PURE__*/React.createElement("div", {
     className: "news-description",
     dangerouslySetInnerHTML: {
       __html: renderMarkdownLinks(item.description)

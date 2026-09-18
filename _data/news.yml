@@ -1,9 +1,13 @@
 k: 10     #limit the number of news to be displayed on the home page. default:10
+# new: true  marks an entry with the NEW badge on the site. Only the entries
+#            added in the most recent commit carry it (see CLAUDE.md).
 news:
   - date: Sep'26
+    new: true
     description: >
       Recognized among the Top 200 Reviewers at [ICLR 2026](https://iclr.cc/Conferences/2026/ProgramCommittee#top-200-reviewers).
   - date: Sep'26
+    new: true
     description: >
       Released NASA-IBM Lunar Foundation Model for lunar science [[NASA](https://science.nasa.gov/science-research/artificial-intelligence-lunar-foundation-model/)] [[IBM](https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model)] [[ArXiv](https://arxiv.org/abs/2609.13283)].
   - date: Apr'26
