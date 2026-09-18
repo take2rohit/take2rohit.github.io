@@ -3,6 +3,23 @@
 #   image    - 180x180 thumbnail; falls back to a generic portfolio image if missing
 #   abstract - one-line TL;DR rendered in a tinted box at the bottom of the card
 
+- paper: "Multimodal-Multiresolution Foundation Model for Lunar Remote Sensing"
+  author: "Paolo Fraccaro, Gabby Nyirjesy, Daniela Szwarcman, Himanshu Patil, Vishal Gaur, **Rohit Lal**, Rachel A. Slank, ... , Juan Bernabe-Moreno, Rahul Ramachandran, Sujit Roy"
+  pub: "arXiv preprint (NASA × IBM Lunar Foundation Model open release), 2026"
+  type: "Preprint"
+  paper_link: https://arxiv.org/abs/2609.13283
+  project_page: https://science.nasa.gov/science-research/artificial-intelligence-lunar-foundation-model/
+  code_link: https://github.com/NASA-IMPACT/NASA-IBM-Lunar-Foundation-Model
+  bibtex:
+  video:
+  image: img/papers/lunarfm.gif
+  abstract: >
+    A multimodal lunar foundation model pretrained from scratch on nearly two
+    million co-registered tile bundles spanning 11 modalities at 1 m and 100 m
+    per pixel - one set of weights that transfers to crater detection, irregular
+    mare patch segmentation, and polar ice prospectivity, released openly with
+    benchmarks and fine-tuning code.
+
 - paper: "Surya: A Foundation Model for Heliophysics"
   author: "Sujit Roy, Johannes Schmude, **Rohit Lal**, Vishal Gaur, Marcus Freitag, Julian Kuehnert, ... , Juan Bernabe-Moreno, Rahul Ramachandran ."
   pub: "arXiv preprint (NASA × IBM open release), 2025"
