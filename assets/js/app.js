@@ -1020,7 +1020,11 @@ const Publications = () => {
       className: "publication-venue"
     }, pub.pub), pub.abstract && /*#__PURE__*/React.createElement("div", {
       className: "publication-abstract"
-    }, /*#__PURE__*/React.createElement("strong", null, "TL;DR:"), " ", pub.abstract)));
+    }, /*#__PURE__*/React.createElement("strong", null, "TL;DR:"), ' ', /*#__PURE__*/React.createElement("span", {
+      dangerouslySetInnerHTML: {
+        __html: renderMarkdownLinks(pub.abstract)
+      }
+    }))));
   })), /*#__PURE__*/React.createElement(Lightbox, {
     data: lightbox,
     onClose: () => setLightbox(null)
