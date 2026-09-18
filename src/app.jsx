@@ -445,6 +445,7 @@
                                 {items.map((item, i) => (
                                     <div key={i} className="news-item">
                                         <div className="news-date">{item.date}</div>
+                                        {item.new && <span className="news-new"><i aria-hidden="true"></i>New</span>}
                                         <div
                                             className="news-description"
                                             dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(item.description) }}

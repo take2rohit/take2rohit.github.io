@@ -52,3 +52,20 @@ The travel map's tooltip is small and dense. Two hard rules for entries in
 
 These rules apply to both cities (`type: city`) and national parks
 (`type: park`).
+
+## News feed (`_data/news.yml`) NEW badge rule
+
+Each news entry may carry `new: true`. The site renders a small NEW badge
+next to the date of every entry that has it, and the crawler fallback
+appends "(new)" to the date.
+
+The badge always marks exactly the latest batch of news. Whenever a commit
+adds news entries (one or many), in that same commit:
+
+1. Add `new: true` to every entry being added.
+2. Remove `new: true` from every entry that already had it.
+
+No other entry should have `new: true`. Do not leave the flag on an entry
+from an earlier batch, and do not add the badge to an old entry when
+editing its text. This applies to manual edits, PRs, and any automated
+news additions.
