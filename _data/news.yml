@@ -5,6 +5,9 @@ news:
   - date: Sep'26
     new: true
     description: >
+      Our paper *A Multi-Modal Foundation Model for Full-Resolution Heliophysics* was accepted at NeurIPS 2026, work done with NASA, NVIDIA and IBM.
+  - date: Sep'26
+    description: >
       Released NASA-IBM Lunar Foundation Model for lunar science [[NASA](https://science.nasa.gov/science-research/artificial-intelligence-lunar-foundation-model/)] [[IBM](https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model)] [[ArXiv](https://arxiv.org/abs/2609.13283)].
   - date: Apr'26
     description: >
