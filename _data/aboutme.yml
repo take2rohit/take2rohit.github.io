@@ -51,7 +51,7 @@ Bio_Short : >
 # about every two weeks by .github/workflows/update-citations.yml, so manual
 # edits to those two numbers get overwritten. Top Venues is manual.
 Stats:
-  - number: '600+'
+  - number: '650+'
     label: Citations
   - number: '10'
     label: h-index
