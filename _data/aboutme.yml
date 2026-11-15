@@ -53,7 +53,7 @@ Bio_Short : >
 Stats:
   - number: '750+'
     label: Citations
-  - number: '10'
+  - number: '11'
     label: h-index
   - number: NeurIPS, ICML, ICCV, CVPR, WACV, IJCV
     label: Top Venues
