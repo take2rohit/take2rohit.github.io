@@ -2,8 +2,11 @@ k: 10     #limit the number of news to be displayed on the home page. default:10
 # new: true  marks an entry with the NEW badge on the site. Only the entries
 #            added in the most recent commit carry it (see CLAUDE.md).
 news:
-  - date: Sep'26
+  - date: Nov'26
     new: true
+    description: >
+      Gave two talks on the Surya Foundation Model at Supercomputing 2026 (SC26) at the NASA booth [[Schedule](https://science.nasa.gov/earth/supercomputing-2026-hyperwall-schedule/)].
+  - date: Sep'26
     description: >
       Our paper *A Multi-Modal Foundation Model for Full-Resolution Heliophysics* was accepted at NeurIPS 2026, work done with NASA, NVIDIA and IBM.
   - date: Sep'26
